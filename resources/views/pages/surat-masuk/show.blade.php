@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
-    <div class="d-flex justify-content-between mb-4">
+    <a href="{{ route('surat-masuk.index') }}" class="btn btn-warning btn-sm mr-3 mb-2">Kembali</a>
+    <div class="d-flex justify-content-start mb-2">
         <h4 class="fw-bold">Data Surat Masuk - {{ $item->no_agenda }}</h4>
     </div>
     <div class="row">
@@ -123,7 +124,7 @@
             </div>
         </div>
     </form>
-    @else
+    @elseif ($item->tanggal_pimpinan != NULL)
         <form action="{{ route('disposisi.store') }}" method="post">
             @csrf
             <div class="row">

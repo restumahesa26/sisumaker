@@ -8,7 +8,7 @@
                 <div class="d-flex align-items-end row">
                     <div class="col-sm-7">
                         <div class="card-body">
-                            <h5 class="card-title text-primary">Selamat Datang {{ Auth::user()->nama }}! 🎉</h5>
+                            <h5 class="card-title text-primary">Selamat Datang {{ Auth::user()->nama }}!!</h5>
                             <p class="mb-4">
                                 You have done <span class="fw-bold">72%</span> more sales today. Check your new
                                 badge in
@@ -49,8 +49,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <span class="fw-semibold d-block mb-1">Profit</span>
-                            <h3 class="card-title mb-2">$12,628</h3>
+                            <span class="fw-semibold d-block mb-1">Total Surat Masuk</span>
+                            <h3 class="card-title mb-2">100</h3>
                         </div>
                     </div>
                 </div>
@@ -73,8 +73,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <span>Sales</span>
-                            <h3 class="card-title text-nowrap mb-1">$4,679</h3>
+                            <span class="fw-semibold d-block mb-1">Total Surat Keluar</span>
+                            <h3 class="card-title mb-2">100</h3>
                         </div>
                     </div>
                 </div>
@@ -101,8 +101,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <span class="d-block mb-1">Payments</span>
-                            <h3 class="card-title text-nowrap mb-2">$2,456</h3>
+                            <span class="fw-semibold d-block mb-1">Payments</span>
+                            <h3 class="card-title mb-2">100</h3>
                         </div>
                     </div>
                 </div>
@@ -126,7 +126,7 @@
                                 </div>
                             </div>
                             <span class="fw-semibold d-block mb-1">Transactions</span>
-                            <h3 class="card-title mb-2">$14,857</h3>
+                            <h3 class="card-title mb-2">100</h3>
                         </div>
                     </div>
                 </div>

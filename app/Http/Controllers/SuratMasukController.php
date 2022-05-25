@@ -19,7 +19,7 @@ class SuratMasukController extends Controller
     public function index()
     {
         // ambil semua data surat masuk
-        $items = SuratMasuk::all();
+        $items = SuratMasuk::latest()->get();
 
         // tampilkan ke halaman index surat masuk
         return view('pages.surat-masuk.index', [
@@ -48,7 +48,7 @@ class SuratMasukController extends Controller
     {
         // membuat validasi
         $request->validate([
-            'no_agenda' => ['required', 'integer'],
+            'no_agenda' => ['required', 'integer', 'unique:surat_masuks'],
             'nomor_surat' => ['required', 'string', 'max:255'],
             'tanggal_surat' => ['required', 'date'],
             'perihal' => ['required', 'string', 'max:255'],
@@ -127,7 +127,6 @@ class SuratMasukController extends Controller
     {
         // membuat validasi
         $request->validate([
-            'no_agenda' => ['required', 'integer'],
             'nomor_surat' => ['required', 'string', 'max:255'],
             'tanggal_surat' => ['required', 'date'],
             'perihal' => ['required', 'string', 'max:255'],
@@ -143,6 +142,12 @@ class SuratMasukController extends Controller
 
         // ambil data surat masuk berdasarkan id
         $item = SuratMasuk::findOrFail($id);
+
+        if ($id != $item->id) {
+            $request->validate([
+                'no_agenda' => ['required', 'integer', 'unique:surat_masuks'],
+            ]);
+        }
 
         if ($request->softcopy) {
             $value = $request->file('softcopy');
@@ -206,5 +211,14 @@ class SuratMasukController extends Controller
             return redirect()->route('surat-masuk.show', $id);
         }
 
+    }
+
+    public function cetak_disposisi($id)
+    {
+        $item = Disposisi::where('surat_masuk_id', $id)->first();
+
+        return view('pages.pdf.disposisi', [
+            'item' => $item
+        ]);
     }
 }

@@ -4,7 +4,7 @@
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="d-flex justify-content-between mb-4">
         <h4 class="fw-bold">Data Surat Keluar</h4>
-        <a href="{{ route('surat-keluar.create') }}" class="btn btn-primary">Tambah Data</a>
+        <a href="{{ route('surat-keluar.create') }}" class="btn btn-primary"><i class="bx bx-plus-circle me-1"></i>Tambah Data</a>
     </div>
     <div class="row">
         <div class="col-lg-12 mb-4 order-0">

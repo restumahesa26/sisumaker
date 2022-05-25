@@ -35,6 +35,8 @@ Route::prefix('dashboard')
 
         Route::get('/surat-masuk/verifikasi-surat/{id}', [SuratMasukController::class, 'verifikasi'])->name('surat-masuk.verifikasi');
 
+        Route::get('/surat-masuk/cetak-disposisi-surat/{id}', [SuratMasukController::class, 'cetak_disposisi'])->name('surat-masuk.cetak-disposisi');
+
         Route::resource('surat-masuk', SuratMasukController::class);
 
         Route::resource('surat-keluar', SuratKeluarController::class);

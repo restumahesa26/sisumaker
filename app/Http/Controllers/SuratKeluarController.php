@@ -18,7 +18,7 @@ class SuratKeluarController extends Controller
     public function index()
     {
         // ambil semua data surat keluar
-        $items = SuratKeluar::all();
+        $items = SuratKeluar::latest()->get();
 
         // tampilkan ke halaman index surat keluar
         return view('pages.surat-keluar.index', [
@@ -47,7 +47,7 @@ class SuratKeluarController extends Controller
     {
         // membuat validasi
         $request->validate([
-            'no_agenda' => ['required', 'integer'],
+            'no_agenda' => ['required', 'integer', 'unique:surat_keluars'],
             'nomor_surat' => ['required', 'string', 'max:255'],
             'tanggal_surat' => ['required', 'date'],
             'perihal' => ['required', 'string', 'max:255'],
@@ -117,7 +117,6 @@ class SuratKeluarController extends Controller
     {
         // membuat validasi
         $request->validate([
-            'no_agenda' => ['required', 'integer'],
             'nomor_surat' => ['required', 'string', 'max:255'],
             'tanggal_surat' => ['required', 'date'],
             'perihal' => ['required', 'string', 'max:255'],
@@ -131,6 +130,12 @@ class SuratKeluarController extends Controller
         if ($request->softcopy) {
             $request->validate([
                 'softcopy' => 'required|mimes:jpeg,png,jpg,pdf',
+            ]);
+        }
+
+        if ($id != $item->id) {
+            $request->validate([
+                'no_agenda' => ['required', 'integer', 'unique:surat_keluars'],
             ]);
         }
 

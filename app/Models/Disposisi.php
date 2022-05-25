@@ -12,4 +12,9 @@ class Disposisi extends Model
     protected $fillable = [
         'user_id', 'surat_masuk_id', 'tujuan', 'tindak_lanjut', 'catatan'
     ];
+
+    public function surat_masuk()
+    {
+        return $this->hasOne(SuratMasuk::class, 'id', 'surat_masuk_id');
+    }
 }

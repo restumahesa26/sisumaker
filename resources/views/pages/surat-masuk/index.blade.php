@@ -5,7 +5,7 @@
     <div class="d-flex justify-content-between mb-4">
         <h4 class="fw-bold">Data Surat Masuk</h4>
         @if (Auth::user()->role == 'Sekretariat')
-            <a href="{{ route('surat-masuk.create') }}" class="btn btn-primary">Tambah Data</a>
+            <a href="{{ route('surat-masuk.create') }}" class="btn btn-primary"><i class="bx bx-plus-circle me-1"></i>Tambah Data</a>
         @endif
     </div>
     <div class="row">
@@ -33,7 +33,7 @@
                                             {{ $item->no_agenda }}
                                         </td>
                                         <td>{{ $item->nomor_surat }}</td>
-                                        <td>{{ $item->tanggal_surat }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') }}</td>
                                         <td>{{ \Carbon\Carbon::parse($item->tanggal_sekretariat)->translatedFormat('d F Y H:i') }}</td>
                                         <td>{{ ($item->tanggal_sekretaris != NULL) ? \Carbon\Carbon::parse($item->tanggal_sekretaris)->translatedFormat('d F Y H:i') : '-' }}</td>
                                         <td>{{ ($item->tanggal_pimpinan != NULL) ? \Carbon\Carbon::parse($item->tanggal_pimpinan)->translatedFormat('d F Y H:i') : '-' }}</td>
@@ -51,8 +51,14 @@
                                                 </form>
                                             @elseif (Auth::user()->role == 'Sekretaris' || Auth::user()->role == 'Pimpinan')
                                                 <a class="btn btn-info btn-sm" href="{{ route('surat-masuk.show', $item->id) }}">
-                                                    <i class="bx bx-edit-alt me-1"></i> Lihat
+                                                    <i class="bx bx-show-alt me-1"></i> Lihat
                                                 </a>
+                                                @if ($item->disposisi)
+                                                    <a class="btn btn-primary btn-sm" href="{{ route('surat-masuk.cetak-disposisi', $item->id) }}" target="_blank">
+                                                        <i class="bx bx-printer me-1"></i> Cetak Disposisi
+                                                    </a>
+                                                @endif
+
                                             @endif
                                         </td>
                                     </tr>
