@@ -31,6 +31,15 @@
                             @enderror
                         </div>
                         <div class="form-group mt-2">
+                            <label for="asal_surat">Asal Surat</label>
+                            <input type="text" name="asal_surat" id="asal_surat" value="{{ old('asal_surat') }}" placeholder="Masukkan Asal Surat" class="form-control @error('asal_surat') is-invalid @enderror">
+                            @error('asal_surat')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group mt-2">
                             <label for="tanggal_surat">Tanggal Surat</label>
                             <input type="text" name="tanggal_surat" id="tanggal_surat" value="{{ old('tanggal_surat') }}" placeholder="Masukkan Tanggal Surat" class="form-control @error('tanggal_surat') is-invalid @enderror">
                             @error('tanggal_surat')

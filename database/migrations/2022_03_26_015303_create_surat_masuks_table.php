@@ -19,11 +19,11 @@ class CreateSuratMasuksTable extends Migration
             $table->integer('no_agenda');
             $table->string('kode_unik')->nullable();
             $table->string('nomor_surat');
+            $table->string('asal_surat');
             $table->date('tanggal_surat');
             $table->string('perihal');
             $table->string('pengirim');
             $table->string('penerima');
-            $table->string('keterangan')->nullable();
             $table->string('softcopy')->nullable();
             $table->dateTime('tanggal_sekretariat');
             $table->dateTime('tanggal_sekretaris')->nullable();

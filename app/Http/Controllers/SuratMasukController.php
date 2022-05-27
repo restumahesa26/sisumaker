@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class SuratMasukController extends Controller
 {
@@ -19,7 +20,15 @@ class SuratMasukController extends Controller
     public function index()
     {
         // ambil semua data surat masuk
-        $items = SuratMasuk::latest()->get();
+        if (Auth::user()->role == 'Sekretariat') {
+            $items = SuratMasuk::latest()->get();
+        } elseif (Auth::user()->role == 'Sekretaris') {
+            $items = SuratMasuk::latest()->get();
+        } elseif (Auth::user()->role == 'Pimpinan') {
+            $items = SuratMasuk::latest()->where('tanggal_sekretaris', '!=', NULL)->get();
+        }
+
+
 
         // tampilkan ke halaman index surat masuk
         return view('pages.surat-masuk.index', [
@@ -59,7 +68,7 @@ class SuratMasukController extends Controller
 
         $value = $request->file('softcopy');
         $extension = $value->extension();
-        $fileNames = uniqid('surat_masuk_', microtime()) . '.' . $extension;
+        $fileNames = 'Surat-Masuk-' . $request->no_agenda . '.' . $extension;
         Storage::putFileAs('public/file-surat/surat-masuk', $value, $fileNames);
 
         // menambah data baru
@@ -68,11 +77,13 @@ class SuratMasukController extends Controller
             'no_agenda' => $request->no_agenda,
             'nomor_surat' => $request->nomor_surat,
             'tanggal_surat' => $request->tanggal_surat,
+            'asal_surat' => $request->asal_surat,
             'perihal' => $request->perihal,
             'pengirim' => $request->pengirim,
             'penerima' => $request->penerima,
             'softcopy' => $fileNames,
-            'tanggal_sekretariat' => Carbon::now()
+            'tanggal_sekretariat' => Carbon::now(),
+            'kode_unik' => uniqid('surat-', microtime())
         ]);
 
         // mengembalikan ke halaman index surat masuk
@@ -152,7 +163,7 @@ class SuratMasukController extends Controller
         if ($request->softcopy) {
             $value = $request->file('softcopy');
             $extension = $value->extension();
-            $fileNames = uniqid('surat_masuk_', microtime()) . '.' . $extension;
+            $fileNames = 'Surat-Masuk-' . $request->no_agenda . '.' . $extension;
             Storage::putFileAs('public/file-surat/surat-masuk', $value, $fileNames);
         }else {
             $fileNames = $item->softcopy;
@@ -163,6 +174,7 @@ class SuratMasukController extends Controller
             'no_agenda' => $request->no_agenda,
             'nomor_surat' => $request->nomor_surat,
             'tanggal_surat' => $request->tanggal_surat,
+            'asal_surat' => $request->asal_surat,
             'perihal' => $request->perihal,
             'pengirim' => $request->pengirim,
             'penerima' => $request->penerima,

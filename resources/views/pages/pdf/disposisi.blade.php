@@ -84,7 +84,7 @@
                                 <tr>
                                     <td style="width: 25%;">Surat dari</td>
                                     <td style="width: 3%;">:</td>
-                                    <td>Dinas Perpustakaan dan Kearsipan</td>
+                                    <td>{{ $item->surat_masuk->asal_surat }}</td>
                                 </tr>
                                 <tr>
                                     <td>No. Surat</td>
@@ -144,7 +144,7 @@
                                 <tr>
                                     <td style="width: 12%;">Perihal</td>
                                     <td style="width: 1.5%;">:</td>
-                                    <td>Undangan dan mohon karangan bunga</td>
+                                    <td>{{ $item->surat_masuk->perihal }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -160,14 +160,18 @@
                                 <tr>
                                     <td style="padding-top: 10px !important;">
                                         <label>
-                                            <input type="checkbox" style="transform: scale(1.8);">&nbsp;&nbsp;Sekretaris
+                                            <input type="checkbox" style="transform: scale(1.8);" @if ($item->tujuan == 'Sekretaris')
+                                                checked
+                                            @endif>&nbsp;&nbsp;Sekretaris
                                         </label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="padding-left: 30px !important;">
                                         <label>
-                                            <input type="checkbox" style="transform: scale(1.8);">&nbsp;&nbsp;Kasubbag
+                                            <input type="checkbox" style="transform: scale(1.8);" @if ($item->tujuan == 'Kasubbag Umum dan Perlengkapan')
+                                                checked
+                                            @endif>&nbsp;&nbsp;Kasubbag
                                             Umum dan Perlengkapan
                                         </label>
                                     </td>
@@ -175,7 +179,9 @@
                                 <tr>
                                     <td style="padding-left: 30px !important;">
                                         <label>
-                                            <input type="checkbox" style="transform: scale(1.8);">&nbsp;&nbsp;Kasubbag
+                                            <input type="checkbox" style="transform: scale(1.8);" @if ($item->tujuan == 'Kasubbag Keuangan')
+                                                checked
+                                            @endif>&nbsp;&nbsp;Kasubbag
                                             Keuangan
                                         </label>
                                     </td>
@@ -186,7 +192,9 @@
                                             <tbody>
                                                 <tr>
                                                     <td style="width: 6%;"><input type="checkbox"
-                                                            style="transform: scale(1.8);"></td>
+                                                            style="transform: scale(1.8);" @if ($item->tujuan == 'Kepala Bidang Perencanaan, Pengendalian, dan Evaluasi Pembangunan Daerah')
+                                                checked
+                                            @endif></td>
                                                     <td>Kepala Bidang Perencanaan, Pengendalian, dan Evaluasi
                                                         Pembangunan Daerah </td>
                                                 </tr>
@@ -200,7 +208,9 @@
                                             <tbody>
                                                 <tr style="margin: 0px !important;">
                                                     <td style="width: 6%;"><input type="checkbox"
-                                                            style="transform: scale(1.8);"></td>
+                                                            style="transform: scale(1.8);" @if ($item->tujuan == 'Kepala Bidang Perekonomian dan Sumber Daya Alam ')
+                                                checked
+                                            @endif></td>
                                                     <td>Kepala Bidang Perekonomian dan Sumber Daya Alam </td>
                                                 </tr>
                                             </tbody>
@@ -213,7 +223,9 @@
                                             <tbody>
                                                 <tr>
                                                     <td style="width: 6%;"><input type="checkbox"
-                                                            style="transform: scale(1.8);"></td>
+                                                            style="transform: scale(1.8);" @if ($item->tujuan == 'Kepala Bidang Pemerintahan dan Pembangunan Manusia')
+                                                checked
+                                            @endif></td>
                                                     <td>Kepala Bidang Pemerintahan dan Pembangunan Manusia </td>
                                                 </tr>
                                             </tbody>
@@ -226,7 +238,9 @@
                                             <tbody>
                                                 <tr>
                                                     <td style="width: 6%;"><input type="checkbox"
-                                                            style="transform: scale(1.8);"></td>
+                                                            style="transform: scale(1.8);" @if ($item->tujuan == 'Kepala Bidang Infrastruktur dan Kewilayahan')
+                                                checked
+                                            @endif></td>
                                                     <td>Kepala Bidang Infrastruktur dan Kewilayahan </td>
                                                 </tr>
                                             </tbody>
@@ -239,7 +253,9 @@
                                             <tbody>
                                                 <tr>
                                                     <td style="width: 6%;"><input type="checkbox"
-                                                            style="transform: scale(1.8);"></td>
+                                                            style="transform: scale(1.8);" @if ($item->tujuan == 'Kepala Bidang Penelitian dan Pengembangan')
+                                                checked
+                                            @endif></td>
                                                     <td>Kepala Bidang Penelitian dan Pengembangan </td>
                                                 </tr>
                                             </tbody>
@@ -252,7 +268,9 @@
                                             <tbody>
                                                 <tr>
                                                     <td style="width: 6%;"><input type="checkbox"
-                                                            style="transform: scale(1.8);"></td>
+                                                            style="transform: scale(1.8);" @if ($item->tujuan == 'Lainnya')
+                                                checked
+                                            @endif></td>
                                                     <td>......................................................... </td>
                                                 </tr>
                                             </tbody>
@@ -266,12 +284,14 @@
                         <table class="table table-borderless">
                             <tbody>
                                 <tr>
-                                    <td>Diteruskan kepada Sdr.:</td>
+                                    <td>Dengan hormat harap:</td>
                                 </tr>
                                 <tr>
                                     <td style="padding-top: 10px !important;">
                                         <label>
-                                            <input type="checkbox" style="transform: scale(1.3);">&nbsp;&nbsp;Tanggapan
+                                            <input type="checkbox" style="transform: scale(1.3);" @if ($item->tindak_lanjut == 'Tanggapan dan Saran')
+                                            checked
+                                        @endif>&nbsp;&nbsp;Tanggapan
                                             dan Saran
                                         </label>
                                     </td>
@@ -279,7 +299,9 @@
                                 <tr>
                                     <td>
                                         <label>
-                                            <input type="checkbox" style="transform: scale(1.3);">&nbsp;&nbsp;Proses
+                                            <input type="checkbox" style="transform: scale(1.3);" @if ($item->tindak_lanjut == 'Proses lebih lanjut')
+                                            checked
+                                        @endif>&nbsp;&nbsp;Proses
                                             lebih lanjut
                                         </label>
                                     </td>
@@ -288,21 +310,27 @@
                                     <td>
                                         <label>
                                             <input type="checkbox"
-                                                style="transform: scale(1.3);">&nbsp;&nbsp;Koordinasi/konfirmasikan
+                                                style="transform: scale(1.3);" @if ($item->tindak_lanjut == 'Koordinasi/konfirmasikan')
+                                            checked
+                                        @endif>&nbsp;&nbsp;Koordinasi/konfirmasikan
                                         </label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <label>
-                                            <input type="checkbox" style="transform: scale(1.3);">&nbsp;&nbsp;Pelajari
+                                            <input type="checkbox" style="transform: scale(1.3);" @if ($item->tindak_lanjut == 'Pelajari')
+                                            checked
+                                        @endif>&nbsp;&nbsp;Pelajari
                                         </label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <label>
-                                            <input type="checkbox" style="transform: scale(1.3);">&nbsp;&nbsp;Untuk
+                                            <input type="checkbox" style="transform: scale(1.3);" @if ($item->tindak_lanjut == 'Untuk ditindak lanjuti')
+                                            checked
+                                        @endif>&nbsp;&nbsp;Untuk
                                             ditindak lanjuti
                                         </label>
                                     </td>
@@ -310,7 +338,9 @@
                                 <tr>
                                     <td>
                                         <label>
-                                            <input type="checkbox" style="transform: scale(1.3);">&nbsp;&nbsp;Untuk
+                                            <input type="checkbox" style="transform: scale(1.3);" @if ($item->tindak_lanjut == 'Untuk diketahui/perhatian')
+                                            checked
+                                        @endif>&nbsp;&nbsp;Untuk
                                             diketahui/perhatian
                                         </label>
                                     </td>
@@ -319,14 +349,18 @@
                                     <td>
                                         <label>
                                             <input type="checkbox"
-                                                style="transform: scale(1.3);">&nbsp;&nbsp;Hadiri/wakili
+                                                style="transform: scale(1.3);" @if ($item->tindak_lanjut == 'Hadiri/wakili')
+                                            checked
+                                        @endif>&nbsp;&nbsp;Hadiri/wakili
                                         </label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <label>
-                                            <input type="checkbox" style="transform: scale(1.3);">&nbsp;&nbsp;File/Arsip
+                                            <input type="checkbox" style="transform: scale(1.3);" @if ($item->tindak_lanjut == 'File/Arsip')
+                                            checked
+                                        @endif>&nbsp;&nbsp;File/Arsip
                                         </label>
                                     </td>
                                 </tr>
@@ -334,7 +368,9 @@
                                     <td>
                                         <label>
                                             <input type="checkbox"
-                                                style="transform: scale(1.3);">&nbsp;&nbsp;..............................................................
+                                                style="transform: scale(1.3);" @if ($item->tindak_lanjut == 'Lainnya')
+                                            checked
+                                        @endif>&nbsp;&nbsp;..............................................................
                                         </label>
                                     </td>
                                 </tr>
@@ -349,7 +385,7 @@
                                 <tr>
                                     <td style="width: 6%;">Catatan</td>
                                     <td style="width: 1%;">:</td>
-                                    <td>Undangan dan mohon karangan bunga</td>
+                                    <td>{{ $item->catatan }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -367,8 +403,13 @@
                                     <td>Kepala BAPPEDA Provinsi Bengkulu</td>
                                 </tr>
                                 <tr>
+                                    <td>
+                                        {!! QrCode::size(150)->generate(route('detail', $item->surat_masuk->kode_unik)); !!}
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td class="font-weight-bold"
-                                        style="text-decoration: underline; padding-top: 100px !important;">ISNAN FAJRI.
+                                        style="text-decoration: underline;">ISNAN FAJRI.
                                         S.Sos. M.Kes.</td>
                                 </tr>
                                 <tr>

@@ -50,7 +50,7 @@ class DisposisiController extends Controller
             'catatan' => $request->catatan,
         ]);
 
-        return redirect()->route('surat-masuk.show', $request->surat_masuk_id);
+        return redirect()->route('surat-masuk.index');
     }
 
     /**
@@ -97,7 +97,7 @@ class DisposisiController extends Controller
         $item->catatan = $request->catatan;
         $item->save();
 
-        return redirect()->route('surat-masuk.show', $item->surat_masuk_id);
+        return redirect()->route('surat-masuk.index');
     }
 
     /**
