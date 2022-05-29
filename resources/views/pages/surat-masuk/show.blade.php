@@ -34,7 +34,7 @@
                     </div>
                     <div class="form-group mt-2">
                         <label for="tanggal_surat">Tanggal Surat</label>
-                        <input type="date" name="tanggal_surat" id="tanggal_surat"
+                        <input type="text" name="tanggal_surat" id="tanggal_surat"
                             value="{{ old('tanggal_surat', $item->tanggal_surat) }}"
                             placeholder="Masukkan Tanggal Surat"
                             class="form-control @error('tanggal_surat') is-invalid @enderror" readonly>
@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group mt-2">
                         <label for="softcopy">Softcopy</label><br>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_softcopy"
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal_softcopy"
                         > Lihat File
                         </button>
                     </div>

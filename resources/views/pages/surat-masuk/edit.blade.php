@@ -42,11 +42,11 @@
                         </div>
                         <div class="form-group mt-2">
                             <label for="softcopy">Softcopy</label>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_softcopy">
+                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal_softcopy">
                                 Lihat File
                             </button>
                             <br>
-                            <input type="file" name="softcopy" id="softcopy" value="{{ old('softcopy') }}" placeholder="Masukkan Softcopy" class="form-control-file @error('softcopy') is-invalid @enderror">
+                            <input type="file" name="softcopy" id="softcopy" value="{{ old('softcopy') }}" placeholder="Masukkan Softcopy" class="form-control-file mt-2 @error('softcopy') is-invalid @enderror">
                             @error('softcopy')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

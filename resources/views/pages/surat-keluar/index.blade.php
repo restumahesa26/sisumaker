@@ -31,7 +31,7 @@
                                             {{ $item->no_agenda }}
                                         </td>
                                         <td>{{ $item->nomor_surat }}</td>
-                                        <td>{{ $item->tanggal_surat }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') }}</td>
                                         <td>{{ $item->perihal }}</td>
                                         <td>{{ $item->pengirim }}</td>
                                         <td>{{ $item->penerima }}</td>

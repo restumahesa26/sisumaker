@@ -19,7 +19,6 @@ class CreateSuratMasuksTable extends Migration
             $table->integer('no_agenda');
             $table->string('kode_unik')->nullable();
             $table->string('nomor_surat');
-            $table->string('asal_surat');
             $table->date('tanggal_surat');
             $table->string('perihal');
             $table->string('pengirim');

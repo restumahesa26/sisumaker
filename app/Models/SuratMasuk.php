@@ -10,7 +10,7 @@ class SuratMasuk extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'no_agenda', 'kode_unik', 'nomor_surat', 'tanggal_surat', 'perihal', 'pengirim', 'penerima', 'keterangan', 'softcopy', 'tanggal_sekretariat', 'tanggal_kasubbag', 'tanggal_sekretaris', 'tanggal_pimpinan', 'asal_surat'
+        'user_id', 'no_agenda', 'kode_unik', 'nomor_surat', 'tanggal_surat', 'perihal', 'pengirim', 'penerima', 'keterangan', 'softcopy', 'tanggal_sekretariat', 'tanggal_kasubbag', 'tanggal_sekretaris', 'tanggal_pimpinan'
     ];
 
     public function user()
