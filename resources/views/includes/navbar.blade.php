@@ -37,6 +37,12 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
+                        <a class="dropdown-item" href="{{ route('home') }}">
+                            <i class="bx bx-home me-2"></i>
+                            <span class="align-middle">Home</span>
+                        </a>
+                    </li>
+                    <li>
                         <a class="dropdown-item" href="{{ route('profile.edit') }}">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>

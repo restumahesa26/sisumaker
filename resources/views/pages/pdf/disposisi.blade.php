@@ -405,7 +405,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            {!! QrCode::size(150)->generate(route('detail', $item->surat_masuk->kode_unik)); !!}
+                                            {!! QrCode::size(150)->generate($item->surat_masuk->kode_unik); !!}
                                         </td>
                                     </tr>
                                     <tr>

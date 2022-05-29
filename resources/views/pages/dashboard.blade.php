@@ -35,7 +35,7 @@
                         <div class="card-body">
                             <div class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
-                                    <img src="{{ url('backend/assets/img/icons/unicons/chart-success.png') }}" alt="chart success"
+                                    <img src="{{ url('backend/assets/img/icons/unicons/wallet.png') }}" alt="chart success"
                                         class="rounded" />
                                 </div>
                                 <div class="dropdown">
@@ -44,13 +44,12 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                        <a class="dropdown-item" href="{{ route('surat-masuk.index') }}">View More</a>
                                     </div>
                                 </div>
                             </div>
                             <span class="fw-semibold d-block mb-1">Total Surat Masuk</span>
-                            <h3 class="card-title mb-2">100</h3>
+                            <h3 class="card-title mb-2">{{ $suratMasuk }}</h3>
                         </div>
                     </div>
                 </div>
@@ -68,13 +67,12 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
-                                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                        <a class="dropdown-item" href="{{ route('surat-keluar.index') }}">View More</a>
                                     </div>
                                 </div>
                             </div>
                             <span class="fw-semibold d-block mb-1">Total Surat Keluar</span>
-                            <h3 class="card-title mb-2">100</h3>
+                            <h3 class="card-title mb-2">{{ $suratKeluar }}</h3>
                         </div>
                     </div>
                 </div>
@@ -87,7 +85,7 @@
                         <div class="card-body">
                             <div class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
-                                    <img src="{{ url('backend/assets/img/icons/unicons/paypal.png') }}" alt="Credit Card"
+                                    <img src="{{ url('backend/assets/img/icons/unicons/cc-warning.png') }}" alt="Credit Card"
                                         class="rounded" />
                                 </div>
                                 <div class="dropdown">
@@ -96,13 +94,12 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
-                                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                        <a class="dropdown-item" href="{{ route('surat-masuk.index') }}">View More</a>
                                     </div>
                                 </div>
                             </div>
-                            <span class="fw-semibold d-block mb-1">Payments</span>
-                            <h3 class="card-title mb-2">100</h3>
+                            <span class="fw-semibold d-block mb-1">Surat Masuk Belum Diverifikasi Oleh Sekretaris</span>
+                            <h3 class="card-title mb-2">{{ $suratMasukSekretaris }}</h3>
                         </div>
                     </div>
                 </div>
@@ -111,7 +108,7 @@
                         <div class="card-body">
                             <div class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
-                                    <img src="{{ url('backend/assets/img/icons/unicons/cc-primary.png') }}" alt="Credit Card"
+                                    <img src="{{ url('backend/assets/img/icons/unicons/cc-success.png') }}" alt="Credit Card"
                                         class="rounded" />
                                 </div>
                                 <div class="dropdown">
@@ -120,13 +117,12 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="cardOpt1">
-                                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                        <a class="dropdown-item" href="{{ route('surat-masuk.index') }}">View More</a>
                                     </div>
                                 </div>
                             </div>
-                            <span class="fw-semibold d-block mb-1">Transactions</span>
-                            <h3 class="card-title mb-2">100</h3>
+                            <span class="fw-semibold d-block mb-1">Surat Masuk Belum Diverifikasi Oleh Pimpinan</span>
+                            <h3 class="card-title mb-2">{{ $suratMasukPimpinan }}</h3>
                         </div>
                     </div>
                 </div>

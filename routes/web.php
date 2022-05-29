@@ -24,6 +24,8 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::get('/detail-surat/{kode_unik}', [HomeController::class, 'detail'])->name('detail');
 
+Route::get('/scanning', [HomeController::class, 'scanning'])->name('scanning');
+
 Route::prefix('dashboard')
     ->middleware(['auth'])
     ->group(function() {

@@ -20,4 +20,15 @@ class HomeController extends Controller
             'item' => $item
         ]);
     }
+
+    public function scanning(Request $request)
+    {
+        $item = SuratMasuk::where('kode_unik', $request->qr_code)->first();
+
+        if ($item) {
+            return response()->json(['hasil' => 'ada', 'route' => route('detail', $request->qr_code)]);
+        }else {
+            return response()->json(['hasil' => 'tidak']);
+        }
+    }
 }
