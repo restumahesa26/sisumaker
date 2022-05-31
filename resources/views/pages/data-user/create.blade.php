@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
+    <a href="{{ route('data-user.index') }}" class="btn btn-warning btn-sm mr-3 mb-2">Kembali</a>
     <div class="d-flex justify-content-between mb-4">
         <h4 class="fw-bold">Tambah User</h4>
     </div>

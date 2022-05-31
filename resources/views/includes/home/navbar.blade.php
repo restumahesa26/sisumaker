@@ -21,6 +21,9 @@
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="{{ route('home') }}">HOME <span class="sr-only">(current)</span></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="{{ route('scan') }}">SCAN <span class="sr-only">(current)</span></a>
+                </li>
                 @if (Auth::user())
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="{{ route('dashboard') }}">DASHBOARD <span class="sr-only">(current)</span></a>

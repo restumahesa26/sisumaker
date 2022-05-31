@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SuratKeluarExport;
+use App\Exports\SuratKeluarTanggalExport;
 use App\Models\SuratKeluar;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SuratKeluarController extends Controller
 {
@@ -179,5 +182,26 @@ class SuratKeluarController extends Controller
 
         // kembalikan ke halaman index surat masuk
         return redirect()->route('surat-keluar.index');
+    }
+
+    public function cetak_semua()
+    {
+        return Excel::download(new SuratKeluarExport, 'semua-surat-keluar.xlsx');
+    }
+
+    public function cari_surat(Request $request)
+    {
+        $query = $request->search;
+
+        $items = SuratKeluar::where('nomor_surat','LIKE','%'.$query.'%')->get();
+
+        return view('pages.surat-keluar.index', [
+            'items' => $items
+        ]);
+    }
+
+    public function cetak_tanggal(Request $request)
+    {
+        return Excel::download(new SuratKeluarTanggalExport($request->awal, $request->akhir), 'surat-keluar-berdasarkan-tanggal.xlsx');
     }
 }

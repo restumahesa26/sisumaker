@@ -12,6 +12,11 @@ class HomeController extends Controller
         return view('pages.home');
     }
 
+    public function scan()
+    {
+        return view('pages.scan');
+    }
+
     public function detail($kode_unik)
     {
         $item = SuratMasuk::where('kode_unik', $kode_unik)->first();

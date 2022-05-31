@@ -46,7 +46,10 @@
                                 Lihat File
                             </button>
                             <br>
-                            <input type="file" name="softcopy" id="softcopy" value="{{ old('softcopy') }}" placeholder="Masukkan Softcopy" class="form-control-file mt-2 @error('softcopy') is-invalid @enderror">
+                            <div class="input-group mt-2">
+                                <input type="file" class="form-control @error('softcopy') is-invalid @enderror" id="softcopy" name="softcopy" />
+                                <label class="input-group-text" for="softcopy">Upload</label>
+                            </div>
                             @error('softcopy')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

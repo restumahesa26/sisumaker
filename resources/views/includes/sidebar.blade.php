@@ -37,6 +37,12 @@
                 <div data-i18n="Analytics">Surat Keluar</div>
             </a>
         </li>
+        <li class="menu-item @if(Route::is('laporan.*')) active @endif">
+            <a href="{{ route('laporan.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-file-doc"></i>
+                <div data-i18n="Analytics">Laporan</div>
+            </a>
+        </li>
         @if (Auth::user()->role == 'Sekretariat')
         <li class="menu-item @if(Route::is('data-user.*')) active @endif">
             <a href="{{ route('data-user.index') }}" class="menu-link">

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SuratMasukExport;
+use App\Exports\SuratMasukTanggalExport;
 use App\Models\Disposisi;
 use App\Models\SuratMasuk;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class SuratMasukController extends Controller
@@ -230,5 +233,26 @@ class SuratMasukController extends Controller
         return view('pages.pdf.disposisi', [
             'item' => $item
         ]);
+    }
+
+    public function cetak_semua()
+    {
+        return Excel::download(new SuratMasukExport, 'semua-surat-masuk.xlsx');
+    }
+
+    public function cari_surat(Request $request)
+    {
+        $query = $request->search;
+
+        $items = SuratMasuk::where('nomor_surat','LIKE','%'.$query.'%')->get();
+
+        return view('pages.surat-masuk.index', [
+            'items' => $items
+        ]);
+    }
+
+    public function cetak_tanggal(Request $request)
+    {
+        return Excel::download(new SuratMasukTanggalExport($request->awal, $request->akhir), 'surat-masuk-berdasarkan-tanggal.xlsx');
     }
 }

@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <span class="fw-semibold d-block mb-1">Total Surat Masuk</span>
+                            <span class="fw-semibold d-block mb-1">Surat Masuk Selesai Diverifikasi</span>
                             <h3 class="card-title mb-2">{{ $suratMasuk }}</h3>
                         </div>
                     </div>
