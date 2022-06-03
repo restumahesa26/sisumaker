@@ -78,7 +78,7 @@ class SuratKeluarController extends Controller
         ]);
 
         // mengembalikan ke halaman index surat keluar
-        return redirect()->route('surat-keluar.index');
+        return redirect()->route('surat-keluar.index')->with('success', 'Berhasil Menambah Surat Keluar');
     }
 
     /**
@@ -163,7 +163,7 @@ class SuratKeluarController extends Controller
         ]);
 
         // kembalikan ke halaman index surat keluar
-        return redirect()->route('surat-keluar.index');
+        return redirect()->route('surat-keluar.index')->with('success', 'Berhasil Mengubah Surat Keluar');
     }
 
     /**
@@ -181,7 +181,7 @@ class SuratKeluarController extends Controller
         $item->delete();
 
         // kembalikan ke halaman index surat masuk
-        return redirect()->route('surat-keluar.index');
+        return redirect()->route('surat-keluar.index')->with('success', 'Berhasil Menghapus Surat Keluar');
     }
 
     public function cetak_semua()

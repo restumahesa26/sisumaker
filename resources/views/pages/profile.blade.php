@@ -98,3 +98,21 @@
     </form>
 </div>
 @endsection
+
+@push('addon-style')
+    <link rel="stylesheet" href="{{ url('css/sweetalert2.min.css') }}">
+@endpush
+
+@push('addon-script')
+    <script src="{{ url('js/sweetalert2.all.min.js') }}"></script>
+
+    @if(session()->has('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil',
+            text: '{{ session()->get("success") }}'
+        })
+    </script>
+    @endif
+@endpush

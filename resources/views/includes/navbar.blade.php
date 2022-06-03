@@ -22,7 +22,7 @@
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
-                                        <img src="{{ (Auth::user()->avatar != NULL) ? url('storage/assets/user-avatar/' . Auth::user()->avatar) : url('backend/assets/img/avatars/1.png') }}" alt
+                                        <img src="{{ (Auth::user()->avatar != NULL) ? url('storage/assets/user-avatar/' . Auth::user()->avatar) : url('backend/assets/img/avatars/avatar-1.png') }}" alt
                                             class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </div>

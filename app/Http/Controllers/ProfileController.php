@@ -52,13 +52,17 @@ class ProfileController extends Controller
             ]);
         }
 
-        $value = $request->file('avatar');
-        $extension = $value->extension();
-        $imageNames = uniqid('img_', microtime()) . '.' . $extension;
-        Storage::putFileAs('public/assets/user-avatar', $value, $imageNames);
-
         // memanggil data user berdasarkan id user yang sedang login
         $item = User::where('id', Auth::user()->id)->first();
+
+        if ($request->avatar) {
+            $value = $request->file('avatar');
+            $extension = $value->extension();
+            $imageNames = uniqid('img_', microtime()) . '.' . $extension;
+            Storage::putFileAs('public/assets/user-avatar', $value, $imageNames);
+        }else {
+            $imageNames = $item->avatar;
+        }
 
         // lakukan update data satu persatu
         $item->nama = $request->nama;
@@ -74,6 +78,6 @@ class ProfileController extends Controller
         $item->save();
 
         // kembalikan ke halaman profile
-        return redirect()->route('profile.edit');
+        return redirect()->route('profile.edit')->with('success', 'Berhasil Mengupdate Profile');
     }
 }

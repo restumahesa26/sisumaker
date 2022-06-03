@@ -6,7 +6,8 @@
         <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Tivo</a> -->
 
         <!-- Image Logo -->
-        <a class="navbar-brand logo-image" href="{{ route('home') }}" style="text-decoration: none">BADAN PERENCANAAN, PENELITIAN DAN
+        <img src="{{ url('logo.png') }}" alt="" srcset="" class="logo-image mr-2" style="width: 50px;">
+        <a class="navbar-brand d-none d-md-block" href="{{ route('home') }}" style="text-decoration: none"> BADAN PERENCANAAN, PENELITIAN DAN
             PENGEMBANGAN DAERAH</a>
 
         <!-- Mobile Menu Toggle Button -->

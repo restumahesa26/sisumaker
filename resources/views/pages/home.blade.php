@@ -10,7 +10,7 @@
                     <div class="text-container">
                         <h1>SISUMAKER</h1>
                         <p class="p-large">Sistem Informasi Surat Masuk & Surat Keluar</p>
-                        <a class="btn-solid-lg page-scroll" href="#fitur">Pindai Surat</a>
+                        <a class="btn-solid-lg page-scroll" href="{{ route('scan') }}">Pindai Surat</a>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
                 <div class="col-lg-6 col-xl-7">

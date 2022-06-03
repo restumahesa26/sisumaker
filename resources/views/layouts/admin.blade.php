@@ -87,5 +87,5 @@
 
     @stack('addon-script')
 
-  </body>
+</body>
 </html>

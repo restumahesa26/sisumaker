@@ -23,15 +23,7 @@ class SuratMasukController extends Controller
     public function index()
     {
         // ambil semua data surat masuk
-        if (Auth::user()->role == 'Sekretariat') {
-            $items = SuratMasuk::latest()->get();
-        } elseif (Auth::user()->role == 'Sekretaris') {
-            $items = SuratMasuk::latest()->get();
-        } elseif (Auth::user()->role == 'Pimpinan') {
-            $items = SuratMasuk::latest()->where('tanggal_sekretaris', '!=', NULL)->get();
-        }
-
-
+        $items = SuratMasuk::latest()->get();
 
         // tampilkan ke halaman index surat masuk
         return view('pages.surat-masuk.index', [
@@ -89,7 +81,7 @@ class SuratMasukController extends Controller
         ]);
 
         // mengembalikan ke halaman index surat masuk
-        return redirect()->route('surat-masuk.index');
+        return redirect()->route('surat-masuk.index')->with('success', 'Berhasil Menambah Surat Masuk');
     }
 
     /**
@@ -183,7 +175,7 @@ class SuratMasukController extends Controller
         ]);
 
         // kembalikan ke halaman index surat masuk
-        return redirect()->route('surat-masuk.index');
+        return redirect()->route('surat-masuk.index')->with('success', 'Berhasil Mengubah Surat Masuk');
     }
 
     /**
@@ -201,7 +193,7 @@ class SuratMasukController extends Controller
         $item->delete();
 
         // kembalikan ke halaman index surat masuk
-        return redirect()->route('surat-masuk.index');
+        return redirect()->route('surat-masuk.index')->with('success', 'Berhasil Menghapus Surat Masuk');
     }
 
     public function verifikasi($id)
