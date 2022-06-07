@@ -7,6 +7,7 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SuratKeluarController;
 use App\Http\Controllers\SuratMasukController;
+use App\Http\Controllers\UndanganController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -58,6 +59,8 @@ Route::prefix('dashboard')
         Route::get('/surat-keluar/cetak-laporan-berdasarkan-tanggal', [SuratKeluarController::class, 'cetak_tanggal'])->name('surat-keluar.cetak-tanggal');
 
         Route::resource('surat-keluar', SuratKeluarController::class);
+
+        Route::resource('undangan', UndanganController::class);
 
         Route::resource('data-user', UserController::class);
 

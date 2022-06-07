@@ -37,8 +37,8 @@
                 <div data-i18n="Analytics">Surat Keluar</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item @if(Route::is('undangan.*')) active @endif">
+            <a href="{{ route('undangan.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Analytics">Undangan</div>
             </a>
