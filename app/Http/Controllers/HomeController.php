@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\SuratMasuk;
+use App\Models\VisiMisi;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function home()
     {
-        return view('pages.home');
+        $visiMisi = VisiMisi::first();
+
+        return view('pages.home', [
+            'visiMisi' => $visiMisi
+        ]);
     }
 
     public function scan()

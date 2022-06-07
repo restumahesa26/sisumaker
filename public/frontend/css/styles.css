@@ -47,7 +47,7 @@ html {
 }
 
 body, p {
-	color: #555; 
+	color: #555;
 	font: 400 1rem/1.625rem "Open Sans", sans-serif;;
 }
 
@@ -263,7 +263,7 @@ a.white {
 }
 
 /* IE10+ hack to solve lower label text position compared to the rest of the browsers */
-@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {  
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
 	.label-control {
 		top: 0.9375rem;
 	}
@@ -302,7 +302,7 @@ a.white {
 }
 
 /* IE10+ hack to solve lower label text position compared to the rest of the browsers */
-@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {  
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
 	.form-control-input {
 		padding-top: 1.25rem;
 		padding-bottom: 0.75rem;
@@ -371,7 +371,7 @@ input[type='checkbox'] {
 }
 
 /* IE10+ hack to raise checkbox field position compared to the rest of the browsers */
-@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {  
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
 	input[type='checkbox'] {
 		vertical-align: -9%;
 	}
@@ -506,17 +506,17 @@ input[type='checkbox'] {
 /* animate in */
 .my-mfp-slide-bottom.mfp-ready .zoom-anim-dialog {
 	opacity: 1;
-	-webkit-transform: translateY(0) perspective(37.5rem) rotateX(0); 
-	-ms-transform: translateY(0) perspective(37.5rem) rotateX(0); 
-	transform: translateY(0) perspective(37.5rem) rotateX(0); 
+	-webkit-transform: translateY(0) perspective(37.5rem) rotateX(0);
+	-ms-transform: translateY(0) perspective(37.5rem) rotateX(0);
+	transform: translateY(0) perspective(37.5rem) rotateX(0);
 }
 
 /* animate out */
 .my-mfp-slide-bottom.mfp-removing .zoom-anim-dialog {
 	opacity: 0;
-	-webkit-transform: translateY(-0.625rem) perspective(37.5rem) rotateX(10deg); 
-	-ms-transform: translateY(-0.625rem) perspective(37.5rem) rotateX(10deg); 
-	transform: translateY(-0.625rem) perspective(37.5rem) rotateX(10deg); 
+	-webkit-transform: translateY(-0.625rem) perspective(37.5rem) rotateX(10deg);
+	-ms-transform: translateY(-0.625rem) perspective(37.5rem) rotateX(10deg);
+	transform: translateY(-0.625rem) perspective(37.5rem) rotateX(10deg);
 }
 
 /* dark overlay, start state */
@@ -603,7 +603,7 @@ input[type='checkbox'] {
 	left: 50%; /* centers the loading animation horizontally one the screen */
 	width: 3.75rem;
 	height: 1.25rem;
-	margin: -0.625rem 0 0 -1.875rem; /* is width and height divided by two */ 
+	margin: -0.625rem 0 0 -1.875rem; /* is width and height divided by two */
 	text-align: center;
 }
 
@@ -633,11 +633,11 @@ input[type='checkbox'] {
 }
 
 @keyframes sk-bouncedelay {
-	0%, 80%, 100% { 
+	0%, 80%, 100% {
 		-webkit-transform: scale(0);
 		-ms-transform: scale(0);
 		transform: scale(0);
-	} 40% { 
+	} 40% {
 		-webkit-transform: scale(1.0);
 		-ms-transform: scale(1.0);
 		transform: scale(1.0);
@@ -857,7 +857,6 @@ input[type='checkbox'] {
 .cards-1 {
 	padding-top: 3.25rem;
 	padding-bottom: 3rem;
-	text-align: center;
 }
 
 .cards-1 .h2-heading {
@@ -1131,7 +1130,7 @@ input[type='checkbox'] {
 	-ms-transform: translateX(-50%) translateY(-50%);
 	transform: translateX(-50%) translateY(-50%);
 }
-  
+
 .basic-2 .video-play-button:before {
 	content: "";
 	position: absolute;
@@ -1148,7 +1147,7 @@ input[type='checkbox'] {
 	-ms-transform: translateX(-50%) translateY(-50%);
 	transform: translateX(-50%) translateY(-50%);
 }
-  
+
 .basic-2 .video-play-button:after {
 	content: "";
 	position: absolute;
@@ -1165,7 +1164,7 @@ input[type='checkbox'] {
 	-ms-transform: translateX(-50%) translateY(-50%);
 	transform: translateX(-50%) translateY(-50%);
 }
-  
+
 .basic-2 .video-play-button span {
 	position: relative;
 	display: block;
@@ -1178,7 +1177,7 @@ input[type='checkbox'] {
 	border-top: 1rem solid transparent;
 	border-bottom: 1rem solid transparent;
 }
-  
+
 @keyframes pulse-border {
 	0% {
 		transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
@@ -1189,7 +1188,7 @@ input[type='checkbox'] {
 		opacity: 0;
 	}
 }
-/* end of video play button */  
+/* end of video play button */
 
 .basic-2 .p-heading {
 	margin-bottom: 1rem;
@@ -1487,7 +1486,7 @@ a.back-to-top {
 }
 
 a:hover.back-to-top {
-	background-color: #4332c5; 
+	background-color: #4332c5;
 }
 
 
@@ -1617,10 +1616,10 @@ a:hover.back-to-top {
 
 /*****************************/
 /*     19. Media Queries     */
-/*****************************/	
+/*****************************/
 /* Min-width width 768px */
 @media (min-width: 768px) {
-	
+
 	/* General Styles */
 	.p-heading {
 		width: 85%;
@@ -1662,7 +1661,7 @@ a:hover.back-to-top {
 		width: 1.375rem;
 		background-size: 1.375rem 2.125rem;
 	}
-	
+
 	.slider-2 .swiper-button-next {
 		width: 1.375rem;
 		background-size: 1.375rem 2.125rem;
@@ -1720,7 +1719,7 @@ a:hover.back-to-top {
 
 /* Min-width width 992px */
 @media (min-width: 992px) {
-	
+
 	/* Navigation */
 	.navbar-custom {
 		padding: 2.125rem 1.5rem 2.125rem 2rem;
@@ -1736,7 +1735,7 @@ a:hover.back-to-top {
 	.navbar-custom .nav-item .nav-link {
 		padding: 0.25rem 0.75rem 0.25rem 0.75rem;
 	}
-	
+
 	.navbar-custom .nav-item .nav-link:hover,
 	.navbar-custom .nav-item .nav-link.active {
 		opacity: 1;
@@ -1807,11 +1806,11 @@ a:hover.back-to-top {
 		position: relative;
 		margin-top: 3rem;
 	}
-	
+
 	.header .image-container .img-wrapper {
 		position: absolute;
 		display: block;
-		width: 470px;
+		width: 600px;
 	}
 
 	.header-frame {
@@ -1841,14 +1840,14 @@ a:hover.back-to-top {
 		display: flex;
 		justify-content: center;
 		margin-bottom: 2.75rem;
-	} 
+	}
 
 	.tabs .nav-link {
 		padding-right: 1.25rem;
 		padding-left: 1.25rem;
 		border-bottom: 2px solid rgb(202, 202, 202);
 	}
-	
+
 	.tabs .nav-link:hover,
 	.tabs .nav-link.active {
 		border-bottom: 2px solid #5f4dee;
@@ -1872,7 +1871,7 @@ a:hover.back-to-top {
 		margin-bottom: 0;
 		margin-left: 0.5rem;
 	}
-	
+
 	.lightbox-basic h3 {
 		margin-top: 0.5rem;
 	}
@@ -1936,7 +1935,7 @@ a:hover.back-to-top {
 	.slider-2 .swiper-button-prev {
 		left: -0.75rem;
 	}
-	
+
 	.slider-2 .swiper-button-next {
 		right: -0.75rem;
 	}
@@ -1981,7 +1980,7 @@ a:hover.back-to-top {
 
 /* Min-width width 1200px */
 @media (min-width: 1200px) {
-	
+
 	/* General Styles */
 	.h2-heading {
 		width: 50%;
@@ -2006,14 +2005,14 @@ a:hover.back-to-top {
 	}
 
 	.header .image-container .img-wrapper {
-		width: 630px;
+		width: 700px;
 	}
 
 	.header-frame {
 		height: 9.375rem;
 	}
 	/* end of header */
-	
+
 
 	/* Customer */
 	.slider-1 .slider-container {
@@ -2041,7 +2040,7 @@ a:hover.back-to-top {
 		margin-right: 1.5rem;
 		margin-left: 1rem;
 	}
-	
+
 	.tabs .text-container {
 		margin-top: 1.5rem;
 		margin-right: 1rem;
@@ -2055,7 +2054,7 @@ a:hover.back-to-top {
 		margin-right: 1rem;
 		margin-left: 1.5rem;
 	}
-	
+
 	.basic-1 .text-container {
 		margin-top: 1rem;
 		margin-right: 1.5rem;

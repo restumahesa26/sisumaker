@@ -61,7 +61,7 @@ class SuratKeluarController extends Controller
 
         $value = $request->file('softcopy');
         $extension = $value->extension();
-        $fileNames = uniqid('surat_keluar_', microtime()) . '.' . $extension;
+        $fileNames = 'Surat-Keluar-' . $request->no_agenda . '.' . $extension;
         Storage::putFileAs('public/file-surat/surat-keluar', $value, $fileNames);
 
         // menambah data baru
@@ -73,6 +73,7 @@ class SuratKeluarController extends Controller
             'perihal' => $request->perihal,
             'pengirim' => $request->pengirim,
             'penerima' => $request->penerima,
+            'keterangan' => $request->keterangan,
             'softcopy' => $fileNames,
             'tanggal_sekretariat' => Carbon::now()
         ]);
@@ -145,7 +146,7 @@ class SuratKeluarController extends Controller
         if ($request->softcopy) {
             $value = $request->file('softcopy');
             $extension = $value->extension();
-            $fileNames = uniqid('surat_keluar_', microtime()) . '.' . $extension;
+            $fileNames = 'Surat-Keluar-' . $request->no_agenda . '.' . $extension;
             Storage::putFileAs('public/file-surat/surat-keluar', $value, $fileNames);
         }else {
             $fileNames = $item->softcopy;
@@ -159,6 +160,7 @@ class SuratKeluarController extends Controller
             'perihal' => $request->perihal,
             'pengirim' => $request->pengirim,
             'penerima' => $request->penerima,
+            'keterangan' => $request->keterangan,
             'softcopy' => $fileNames
         ]);
 

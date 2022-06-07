@@ -9,6 +9,7 @@ use App\Http\Controllers\SuratKeluarController;
 use App\Http\Controllers\SuratMasukController;
 use App\Http\Controllers\UndanganController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VisiMisiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,13 +61,19 @@ Route::prefix('dashboard')
 
         Route::resource('surat-keluar', SuratKeluarController::class);
 
+        Route::get('/undangan/cari-surat', [UndanganController::class, 'cari_surat'])->name('undangan.cari-surat');
+
         Route::resource('undangan', UndanganController::class);
+
+        Route::resource('visi-misi', VisiMisiController::class);
 
         Route::resource('data-user', UserController::class);
 
         Route::resource('disposisi', DisposisiController::class);
 
         Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
+
+        Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
 
     });
 

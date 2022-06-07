@@ -75,6 +75,7 @@ class SuratMasukController extends Controller
             'perihal' => $request->perihal,
             'pengirim' => $request->pengirim,
             'penerima' => $request->penerima,
+            'keterangan' => $request->keterangan,
             'softcopy' => $fileNames,
             'tanggal_sekretariat' => Carbon::now(),
             'kode_unik' => uniqid('surat-', microtime())
@@ -171,6 +172,7 @@ class SuratMasukController extends Controller
             'perihal' => $request->perihal,
             'pengirim' => $request->pengirim,
             'penerima' => $request->penerima,
+            'keterangan' => $request->keterangan,
             'softcopy' => $fileNames
         ]);
 

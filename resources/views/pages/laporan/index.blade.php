@@ -19,6 +19,12 @@
                     Surat Keluar
                 </button>
             </li>
+            <li class="nav-item">
+                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#undangan"
+                    aria-controls="undangan" aria-selected="false">
+                    Undangan
+                </button>
+            </li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane fade show active" id="surat_masuk" role="tabpanel">
@@ -159,6 +165,75 @@
                     </div>
                 </div>
             </div>
+            <div class="tab-pane fade" id="undangan" role="tabpanel">
+                <a href="#" class="btn btn-primary px-5 mb-3"
+                    target="_blank">Cetak Semua Laporan</a>
+                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
+                    data-bs-target="#undangan_tanggal" style="margin-left: 14px !important;">
+                    Cetak Berdasarkan Tanggal
+                </button>
+                <div class="table-responsive text-nowrap">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nomor Urut</th>
+                                <th>Nomor Surat</th>
+                                <th>Tanggal</th>
+                                <th>Perihal</th>
+                                <th>Pengirim</th>
+                                <th>Penerima</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                            @forelse ($undangan as $item)
+                            <tr>
+                                <td>
+                                    {{ $item->no_urut }}
+                                </td>
+                                <td>{{ $item->nomor_surat }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</td>
+                                <td>{{ $item->perihal }}</td>
+                                <td>{{ $item->pengirim }}</td>
+                                <td>{{ $item->penerima }}</td>
+                            </tr>
+                            @empty
+                            <tr class="text-center">
+                                <td colspan="7"> -- Data Kosong --</td>
+                            </tr>
+                            @endforelse
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal fade" id="undangan_tanggal" data-bs-backdrop="static" tabindex="-1">
+                    <div class="modal-dialog">
+                        <form class="modal-content" action="#" method="GET">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="backDropModalTitle">Cetak Laporan Surat Keluar Berdasarkan Tanggal</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row g-2">
+                                    <div class="col mb-0">
+                                        <label for="undangan_tanggal_awal" class="form-label">Tanggal Awal</label>
+                                        <input type="text" id="undangan_tanggal_awal" class="form-control" name="awal"
+                                            placeholder="Masukkan Tanggal Awal" required />
+                                    </div>
+                                    <div class="col mb-0">
+                                        <label for="undangan_tanggal_akhir" class="form-label">Tanggal Akhir</label>
+                                        <input type="text" id="undangan_tanggal_akhir" class="form-control" name="akhir"
+                                            placeholder="Masukkan Tanggal Akhir" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Cetak</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -172,7 +247,7 @@
     <script src="{{ url('backend/assets/vendor/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 
     <script>
-        $('#surat_masuk_tanggal_awal, #surat_masuk_tanggal_akhir, #surat_keluar_tanggal_awal, #surat_keluar_tanggal_akhir').keypress(function(e) {
+        $('#surat_masuk_tanggal_awal, #surat_masuk_tanggal_akhir, #surat_keluar_tanggal_awal, #surat_keluar_tanggal_akhir, #undangan_tanggal_awal, #undangan_tanggal_akhir').keypress(function(e) {
             e.preventDefault();
         });
     </script>
@@ -197,6 +272,18 @@
             autoclose: true,
         });
         $('#surat_keluar_tanggal_akhir').datepicker({
+            format: 'yyyy/mm/dd',
+            todayBtn: 'linked',
+            todayHighlight: true,
+            autoclose: true,
+        });
+        $('#undangan_tanggal_awal').datepicker({
+            format: 'yyyy/mm/dd',
+            todayBtn: 'linked',
+            todayHighlight: true,
+            autoclose: true,
+        });
+        $('#undangan_tanggal_akhir').datepicker({
             format: 'yyyy/mm/dd',
             todayBtn: 'linked',
             todayHighlight: true,

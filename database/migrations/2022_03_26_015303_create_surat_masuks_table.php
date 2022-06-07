@@ -24,6 +24,7 @@ class CreateSuratMasuksTable extends Migration
             $table->string('pengirim');
             $table->string('penerima');
             $table->string('softcopy')->nullable();
+            $table->string('keterangan')->nullable();
             $table->dateTime('tanggal_sekretariat');
             $table->dateTime('tanggal_sekretaris')->nullable();
             $table->dateTime('tanggal_pimpinan')->nullable();

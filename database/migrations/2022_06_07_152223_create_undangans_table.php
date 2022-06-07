@@ -21,7 +21,7 @@ class CreateUndangansTable extends Migration
             $table->date('tanggal');
             $table->string('nomor_surat');
             $table->string('perihal');
-            $table->string('keterangan');
+            $table->string('keterangan')->nullable();
             $table->string('softcopy')->nullable();
             $table->timestamps();
         });

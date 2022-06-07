@@ -18,7 +18,7 @@
 	<meta property="og:type" content="article" />
 
     <!-- Website Title -->
-    <title>SISUMAKER</title>
+    <title>BAPPEDA BENGKULU</title>
 
     @include('includes.home.style')
 

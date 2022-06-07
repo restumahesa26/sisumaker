@@ -165,6 +165,18 @@
         </div>
     </div>
 </div>
+@if(session()->has('success'))
+    <div class="bs-toast toast toast-placement-ex m-2 fade show bg-primary top-0 end-0 hide" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header top-0 end-0">
+            <i class="bx bx-bell me-2"></i>
+            <div class="me-auto fw-semibold">Berhasil</div>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            {{ session()->get('success') }}
+        </div>
+    </div>
+@endif
 @endsection
 
 @push('addon-style')
@@ -238,14 +250,4 @@
             });
         });
     </script>
-
-    @if(session()->has('success'))
-    <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Berhasil',
-            text: '{{ session()->get("success") }}'
-        })
-    </script>
-    @endif
 @endpush

@@ -10,6 +10,6 @@ class Undangan extends Model
     use HasFactory;
 
     protected $fillable = [
-        'no_urut', 'pengirim', 'penerima', 'tanggal', 'nomor_surat', 'perihal', 'keterangan'
+        'no_urut', 'pengirim', 'penerima', 'tanggal', 'nomor_surat', 'perihal', 'keterangan', 'softcopy'
     ];
 }

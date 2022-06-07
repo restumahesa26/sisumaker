@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
     <a href="{{ route('surat-keluar.index') }}" class="btn btn-warning btn-sm mr-3 mb-2">Kembali</a>
-    <div class="d-flex justify-content-between mb-2">
+    <div class="d-flex justify-content-between mb-2 mt-1">
         <h4 class="fw-bold">Tambah Surat Keluar</h4>
     </div>
     <form action="{{ route('surat-keluar.store') }}" method="POST" enctype="multipart/form-data">
@@ -84,6 +84,15 @@
                                 </span>
                             @enderror
                         </div>
+                        <div class="form-group mt-2">
+                            <label for="keterangan">Keterangan</label>
+                            <input type="text" name="keterangan" id="keterangan" value="{{ old('keterangan') }}" placeholder="Masukkan Keterangan" class="form-control @error('keterangan') is-invalid @enderror">
+                            @error('keterangan')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary mt-3">Simpan</button>
@@ -91,6 +100,22 @@
         </div>
     </form>
 </div>
+@if ($errors->any())
+<div class="bs-toast toast toast-placement-ex m-2 fade show bg-danger top-0 end-0 hide" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header top-0 end-0">
+        <i class="bx bx-bell me-2"></i>
+        <div class="me-auto fw-semibold">Kesalahan</div>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+</div>
+@endif
 @endsection
 
 @push('addon-style')

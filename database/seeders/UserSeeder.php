@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'nama' => 'Muhammad Farel',
-            'email' => 'farela@gmail.com',
+            'email' => 'farel@gmail.com',
             'username' => 'farel',
             'nip' => '12345678910111213',
             'password' => Hash::make('password'),
@@ -35,8 +35,35 @@ class UserSeeder extends Seeder
 
         User::create([
             'nama' => 'Danurifa Mubarik Imam',
-            'email' => 'danurifaa@gmail.com',
+            'email' => 'danurifa@gmail.com',
             'username' => 'danurifa',
+            'nip' => '12345678910111214',
+            'password' => Hash::make('password'),
+            'role' => 'Pimpinan'
+        ]);
+
+        User::create([
+            'nama' => 'Balqis Nabila Aulia Putri',
+            'email' => 'balqisnabila48@gmail.com',
+            'username' => 'balqisnabila',
+            'nip' => '123456789101112',
+            'password' => Hash::make('password'),
+            'role' => 'Sekretariat'
+        ]);
+
+        User::create([
+            'nama' => 'Muhammad Raihan',
+            'email' => 'raihan@gmail.com',
+            'username' => 'raihan',
+            'nip' => '12345678910111213',
+            'password' => Hash::make('password'),
+            'role' => 'Sekretaris'
+        ]);
+
+        User::create([
+            'nama' => 'Wahyu Dwi Prasetio',
+            'email' => 'wahyudwiprasetio@gmail.com',
+            'username' => 'wahyudwi',
             'nip' => '12345678910111214',
             'password' => Hash::make('password'),
             'role' => 'Pimpinan'

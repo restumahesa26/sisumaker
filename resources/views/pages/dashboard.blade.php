@@ -10,12 +10,8 @@
                         <div class="card-body">
                             <h5 class="card-title text-primary">Selamat Datang {{ Auth::user()->nama }}!!</h5>
                             <p class="mb-4">
-                                You have done <span class="fw-bold">72%</span> more sales today. Check your new
-                                badge in
-                                your profile.
+                                Pada Sistem Informasi Manajemen Surat Masuk, Surat Keluar, Undangan, dan Proposal pada Kantor BAPPEDA PROV. Bengkulu
                             </p>
-
-                            <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
                         </div>
                     </div>
                     <div class="col-sm-5 text-center text-sm-left">
