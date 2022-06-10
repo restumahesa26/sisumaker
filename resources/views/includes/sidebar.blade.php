@@ -43,12 +43,6 @@
                 <div data-i18n="Analytics">Undangan</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-folder-open"></i>
-                <div data-i18n="Analytics">Proposal</div>
-            </a>
-        </li>
         <li class="menu-item @if(Route::is('laporan.*')) active @endif">
             <a href="{{ route('laporan.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-file-doc"></i>

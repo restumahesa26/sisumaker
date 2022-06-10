@@ -10,7 +10,7 @@
                         <div class="card-body">
                             <h5 class="card-title text-primary">Selamat Datang {{ Auth::user()->nama }}!!</h5>
                             <p class="mb-4">
-                                Pada Sistem Informasi Manajemen Surat Masuk, Surat Keluar, Undangan, dan Proposal pada Kantor BAPPEDA PROV. Bengkulu
+                                Pada Sistem Informasi Manajemen Surat Masuk, Surat Keluar, dan Undangan pada Kantor BAPPEDA PROV. Bengkulu
                             </p>
                         </div>
                     </div>
