@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Disposisi;
+use App\Models\UndanganDisposisi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class DisposisiController extends Controller
+class UndanganDisposisiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,24 +41,23 @@ class DisposisiController extends Controller
             'catatan' => ['required', 'string', 'max:255'],
         ]);
 
-        Disposisi::create([
-            'user_id' => Auth::user()->id,
-            'surat_masuk_id' => $request->surat_masuk_id,
+        UndanganDisposisi::create([
+            'undangan_id' => $request->undangan_id,
             'tujuan' => $request->tujuan,
             'tindak_lanjut' => $request->tindak_lanjut,
             'catatan' => $request->catatan,
         ]);
 
-        return redirect()->route('surat-masuk.index');
+        return redirect()->route('undangan.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Disposisi  $disposisi
+     * @param  \App\Models\UndanganDisposisi  $undanganDisposisi
      * @return \Illuminate\Http\Response
      */
-    public function show(Disposisi $disposisi)
+    public function show(UndanganDisposisi $undanganDisposisi)
     {
         //
     }
@@ -67,10 +65,10 @@ class DisposisiController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Disposisi  $disposisi
+     * @param  \App\Models\UndanganDisposisi  $undanganDisposisi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Disposisi $disposisi)
+    public function edit(UndanganDisposisi $undanganDisposisi)
     {
         //
     }
@@ -79,7 +77,7 @@ class DisposisiController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Disposisi  $disposisi
+     * @param  \App\Models\UndanganDisposisi  $undanganDisposisi
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -90,23 +88,23 @@ class DisposisiController extends Controller
             'catatan' => ['required', 'string', 'max:255'],
         ]);
 
-        $item = Disposisi::findOrFail($id);
+        $item = UndanganDisposisi::findOrFail($id);
 
         $item->tujuan = $request->tujuan;
         $item->tindak_lanjut = $request->tindak_lanjut;
         $item->catatan = $request->catatan;
         $item->save();
 
-        return redirect()->route('surat-masuk.index');
+        return redirect()->route('undangan.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Disposisi  $disposisi
+     * @param  \App\Models\UndanganDisposisi  $undanganDisposisi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Disposisi $disposisi)
+    public function destroy(UndanganDisposisi $undanganDisposisi)
     {
         //
     }

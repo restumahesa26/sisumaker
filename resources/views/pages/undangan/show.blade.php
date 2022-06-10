@@ -2,20 +2,20 @@
 
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
-    <a href="{{ route('surat-masuk.index') }}" class="btn btn-warning btn-sm mr-3 mb-2">Kembali</a>
+    <a href="{{ route('undangan.index') }}" class="btn btn-warning btn-sm mr-3 mb-2">Kembali</a>
     <div class="d-flex justify-content-start mb-2">
-        <h4 class="fw-bold">Data Surat Masuk - {{ $item->no_agenda }}</h4>
+        <h4 class="fw-bold">Data Undangan - {{ $item->no_urut }}</h4>
     </div>
     <div class="row">
         <div class="col-lg-6 mb-4 order-0">
             <div class="card">
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="no_agenda">Nomor Agenda</label>
-                        <input type="number" name="no_agenda" id="no_agenda"
-                            value="{{ old('no_agenda', $item->no_agenda) }}" placeholder="Masukkan Nomor Agenda"
-                            class="form-control @error('no_agenda') is-invalid @enderror" readonly>
-                        @error('no_agenda')
+                        <label for="no_urut">Nomor Urut</label>
+                        <input type="number" name="no_urut" id="no_urut"
+                            value="{{ old('no_urut', $item->no_urut) }}" placeholder="Masukkan Nomor Urut"
+                            class="form-control @error('no_urut') is-invalid @enderror" readonly>
+                        @error('no_urut')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -33,12 +33,12 @@
                         @enderror
                     </div>
                     <div class="form-group mt-2">
-                        <label for="tanggal_surat">Tanggal Surat</label>
-                        <input type="text" name="tanggal_surat" id="tanggal_surat"
-                            value="{{ old('tanggal_surat', $item->tanggal_surat) }}"
+                        <label for="tanggal">Tanggal Surat</label>
+                        <input type="text" name="tanggal" id="tanggal"
+                            value="{{ old('tanggal', $item->tanggal) }}"
                             placeholder="Masukkan Tanggal Surat"
-                            class="form-control @error('tanggal_surat') is-invalid @enderror" readonly>
-                        @error('tanggal_surat')
+                            class="form-control @error('tanggal') is-invalid @enderror" readonly>
+                        @error('tanggal')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -92,15 +92,15 @@
                 </div>
             </div>
             @if (Auth::user()->role == 'Sekretaris')
-            <a href="{{ route('surat-masuk.verifikasi', $item->id) }}" class="btn btn-primary mt-3 btn-verifikasi">Verifikasi Surat</a>
+            <a href="{{ route('undangan.verifikasi', $item->id) }}" class="btn btn-primary mt-3 btn-verifikasi">Verifikasi Surat</a>
             @endif
             @if (Auth::user()->role == 'Pimpinan' && $item->tanggal_sekretaris != NULL)
-            <a href="{{ route('surat-masuk.verifikasi', $item->id) }}" class="btn btn-primary mt-3 btn-verifikasi">Verifikasi Surat</a>
+            <a href="{{ route('undangan.verifikasi', $item->id) }}" class="btn btn-primary mt-3 btn-verifikasi">Verifikasi Surat</a>
             @endif
         </div>
     </div>
     @if ($item2)
-    <form action="{{ route('surat-masuk-disposisi.update', $item2->id) }}" method="post">
+    <form action="{{ route('undangan-disposisi.update', $item2->id) }}" method="post">
         @csrf
         @method('PUT')
         <div class="row">
@@ -200,7 +200,7 @@
         </div>
     </form>
     @elseif ($item->tanggal_pimpinan != NULL)
-    <form action="{{ route('surat-masuk-disposisi.store') }}" method="post">
+    <form action="{{ route('undangan-disposisi.store') }}" method="post">
         @csrf
         <div class="row">
             <div class="col-6">
@@ -292,7 +292,7 @@
                             </span>
                             @enderror
                         </div>
-                        <input type="hidden" name="surat_masuk_id" value="{{ $item->id }}">
+                        <input type="hidden" name="undangan_id" value="{{ $item->id }}">
                         <button type="submit" class="btn btn-primary mt-3">Buat Disposisi Surat</button>
                     </div>
                 </div>
@@ -309,7 +309,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <embed src="{{ asset('storage/file-surat/surat-masuk/'.$item->softcopy) }}" width="100%" height="550px">
+                <embed src="{{ asset('storage/file-undangan/'.$item->softcopy) }}" width="100%" height="550px">
                 </embed>
             </div>
         </div>
@@ -341,7 +341,7 @@
             var form = $(this).attr('href');
             Swal.fire({
                 title: 'Verifikasi',
-                text: "Verifikasi Surat Masuk?",
+                text: "Verifikasi Undangan?",
                 icon: 'info',
                 allowOutsideClick: false,
                 showCancelButton: true,

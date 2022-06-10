@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SuratKeluarController;
 use App\Http\Controllers\SuratMasukController;
 use App\Http\Controllers\UndanganController;
+use App\Http\Controllers\UndanganDisposisiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisiMisiController;
 use Illuminate\Support\Facades\Route;
@@ -63,13 +64,19 @@ Route::prefix('dashboard')
 
         Route::get('/undangan/cari-surat', [UndanganController::class, 'cari_surat'])->name('undangan.cari-surat');
 
+        Route::get('/undangan/verifikasi-undangan/{id}', [UndanganController::class, 'verifikasi'])->name('undangan.verifikasi');
+
+        Route::get('/undangan/cetak-disposisi-undangan/{id}', [UndanganController::class, 'cetak_disposisi'])->name('undangan.cetak-disposisi');
+
         Route::resource('undangan', UndanganController::class);
 
         Route::resource('visi-misi', VisiMisiController::class);
 
         Route::resource('data-user', UserController::class);
 
-        Route::resource('disposisi', DisposisiController::class);
+        Route::resource('surat-masuk-disposisi', SuratMasukDisposisiController::class);
+
+        Route::resource('undangan-disposisi', UndanganDisposisiController::class);
 
         Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
 

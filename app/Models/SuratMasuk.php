@@ -10,16 +10,11 @@ class SuratMasuk extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'no_agenda', 'kode_unik', 'nomor_surat', 'tanggal_surat', 'perihal', 'pengirim', 'penerima', 'keterangan', 'softcopy', 'tanggal_sekretariat', 'tanggal_kasubbag', 'tanggal_sekretaris', 'tanggal_pimpinan'
+        'user_id', 'no_agenda', 'kode_unik', 'nomor_surat', 'tanggal_surat', 'perihal', 'pengirim', 'penerima', 'keterangan', 'softcopy', 'tanggal_sekretariat', 'tanggal_sekretaris', 'tanggal_pimpinan'
     ];
-
-    public function user()
-    {
-        return $this->hasOne(User::class, 'id', 'user_id');
-    }
 
     public function disposisi()
     {
-        return $this->hasOne(Disposisi::class, 'surat_masuk_id', 'id');
+        return $this->hasOne(SuratMasukDisposisi::class, 'surat_masuk_id', 'id');
     }
 }

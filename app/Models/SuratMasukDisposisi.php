@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Disposisi extends Model
+class SuratMasukDisposisi extends Model
 {
     use HasFactory;
 

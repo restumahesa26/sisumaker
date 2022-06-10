@@ -15,9 +15,7 @@ class CreateSuratKeluarsTable extends Migration
     {
         Schema::create('surat_keluars', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users');
             $table->integer('no_agenda');
-            $table->string('kode_unik')->nullable();
             $table->string('nomor_surat');
             $table->date('tanggal_surat');
             $table->string('perihal');

@@ -23,6 +23,10 @@ class CreateUndangansTable extends Migration
             $table->string('perihal');
             $table->string('keterangan')->nullable();
             $table->string('softcopy')->nullable();
+            $table->dateTime('tanggal_sekretariat');
+            $table->dateTime('tanggal_sekretaris')->nullable();
+            $table->dateTime('tanggal_pimpinan')->nullable();
+            $table->string('kode_unik')->nullable();
             $table->timestamps();
         });
     }

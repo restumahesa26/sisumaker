@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Undangan;
+use App\Models\UndanganDisposisi;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class UndanganController extends Controller
@@ -52,7 +55,7 @@ class UndanganController extends Controller
 
         $value = $request->file('softcopy');
         $extension = $value->extension();
-        $fileNames = 'Undangan-' . $request->no_urut . '.' . $extension;
+        $fileNames = 'Undangan-' . $request->nomor_surat . '.' . $extension;
         Storage::putFileAs('public/file-undangan', $value, $fileNames);
 
         Undangan::create([
@@ -64,6 +67,8 @@ class UndanganController extends Controller
             'penerima' => $request->penerima,
             'keterangan' => $request->keterangan,
             'softcopy' => $fileNames,
+            'tanggal_sekretariat' => Carbon::now(),
+            'kode_unik' => uniqid('undangan-', microtime())
         ]);
 
         return redirect()->route('undangan.index')->with('success', 'Berhasil Menambah Undangan');
@@ -75,9 +80,18 @@ class UndanganController extends Controller
      * @param  \App\Models\Undangan  $undangan
      * @return \Illuminate\Http\Response
      */
-    public function show(Undangan $undangan)
+    public function show($id)
     {
-        //
+        // ambil data surat masuk berdasarkan id
+        $item = Undangan::findOrFail($id);
+
+        // lempar data disposisi
+        $item2 = UndanganDisposisi::where('undangan_id', $id)->first();
+
+        // lempar ke halaman show surat
+        return view('pages.undangan.show', [
+            'item' => $item, 'item2' => $item2
+        ]);
     }
 
     /**
@@ -129,7 +143,7 @@ class UndanganController extends Controller
         if ($request->softcopy) {
             $value = $request->file('softcopy');
             $extension = $value->extension();
-            $fileNames = 'Undangan-' . $request->no_urut . '.' . $extension;
+            $fileNames = 'Undangan-' . $request->nomor_surat . '.' . $extension;
             Storage::putFileAs('public/file-undangan', $value, $fileNames);
         }else {
             $fileNames = $item->softcopy;
@@ -172,6 +186,37 @@ class UndanganController extends Controller
 
         return view('pages.undangan.index', [
             'items' => $items
+        ]);
+    }
+
+    public function verifikasi($id)
+    {
+        // ambil data surat masuk berdasarkan id
+        $item = Undangan::findOrFail($id);
+
+        // buat perkondisian untuk user sekretaris dan pimpinan
+        if (Auth::user()->role == 'Sekretaris') {
+            $item->tanggal_sekretaris = Carbon::now();
+        }elseif (Auth::user()->role == 'Pimpinan') {
+            $item->tanggal_pimpinan = Carbon::now();
+        }
+
+        $item->save();
+
+        if (Auth::user()->role == 'Sekretaris') {
+            return redirect()->route('undangan.index')->with('success', 'Berhasil Verifikasi Undangan');
+        }elseif (Auth::user()->role == 'Pimpinan') {
+            return redirect()->route('undangan.show', $id)->with('success', 'Berhasil Verifikasi Undangan');
+        }
+
+    }
+
+    public function cetak_disposisi($id)
+    {
+        $item = UndanganDisposisi::where('undangan_id', $id)->first();
+
+        return view('pages.pdf.disposisi-2', [
+            'item' => $item
         ]);
     }
 }

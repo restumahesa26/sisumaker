@@ -61,12 +61,11 @@ class SuratKeluarController extends Controller
 
         $value = $request->file('softcopy');
         $extension = $value->extension();
-        $fileNames = 'Surat-Keluar-' . $request->no_agenda . '.' . $extension;
+        $fileNames = 'Surat-Keluar-' . $request->nomor_surat . '.' . $extension;
         Storage::putFileAs('public/file-surat/surat-keluar', $value, $fileNames);
 
         // menambah data baru
         SuratKeluar::create([
-            'user_id' => Auth::user()->id,
             'no_agenda' => $request->no_agenda,
             'nomor_surat' => $request->nomor_surat,
             'tanggal_surat' => $request->tanggal_surat,
@@ -146,7 +145,7 @@ class SuratKeluarController extends Controller
         if ($request->softcopy) {
             $value = $request->file('softcopy');
             $extension = $value->extension();
-            $fileNames = 'Surat-Keluar-' . $request->no_agenda . '.' . $extension;
+            $fileNames = 'Surat-Keluar-' . $request->nomor_surat . '.' . $extension;
             Storage::putFileAs('public/file-surat/surat-keluar', $value, $fileNames);
         }else {
             $fileNames = $item->softcopy;

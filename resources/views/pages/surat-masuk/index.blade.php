@@ -184,7 +184,7 @@
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            @forelse ($items->where('tanggal_pimpinan', '=', NULL) as $item)
+                            @forelse ($items->where('tanggal_pimpinan', '=', NULL)->where('tanggal_sekretaris', '!=', NULL) as $item)
                             <tr>
                                 <td>
                                     {{ $item->no_agenda }}
@@ -319,7 +319,7 @@
     @endif
 @endif
 @if (Auth::user()->role == 'Pimpinan')
-    @if ($items->where('tanggal_pimpinan', '=', NULL)->count() > 0)
+    @if ($items->where('tanggal_pimpinan', '=', NULL)->where('tanggal_sekretaris', '!=', NULL)->count() > 0)
     <div class="bs-toast toast toast-placement-ex m-2 fade show bg-primary bottom-0 end-0 hide" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header top-0 end-0">
             <i class="bx bx-bell me-2"></i>

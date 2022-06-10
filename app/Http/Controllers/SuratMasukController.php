@@ -6,6 +6,7 @@ use App\Exports\SuratMasukExport;
 use App\Exports\SuratMasukTanggalExport;
 use App\Models\Disposisi;
 use App\Models\SuratMasuk;
+use App\Models\SuratMasukDisposisi;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -63,12 +64,11 @@ class SuratMasukController extends Controller
 
         $value = $request->file('softcopy');
         $extension = $value->extension();
-        $fileNames = 'Surat-Masuk-' . $request->no_agenda . '.' . $extension;
+        $fileNames = 'Surat-Masuk-' . $request->nomor_surat . '.' . $extension;
         Storage::putFileAs('public/file-surat/surat-masuk', $value, $fileNames);
 
         // menambah data baru
         SuratMasuk::create([
-            'user_id' => Auth::user()->id,
             'no_agenda' => $request->no_agenda,
             'nomor_surat' => $request->nomor_surat,
             'tanggal_surat' => $request->tanggal_surat,
@@ -97,7 +97,7 @@ class SuratMasukController extends Controller
         $item = SuratMasuk::findOrFail($id);
 
         // lempar data disposisi
-        $item2 = Disposisi::where('surat_masuk_id', $id)->first();
+        $item2 = SuratMasukDisposisi::where('surat_masuk_id', $id)->first();
 
         // lempar ke halaman show surat
         return view('pages.surat-masuk.show', [
@@ -158,7 +158,7 @@ class SuratMasukController extends Controller
         if ($request->softcopy) {
             $value = $request->file('softcopy');
             $extension = $value->extension();
-            $fileNames = 'Surat-Masuk-' . $request->no_agenda . '.' . $extension;
+            $fileNames = 'Surat-Masuk-' . $request->nomor_surat . '.' . $extension;
             Storage::putFileAs('public/file-surat/surat-masuk', $value, $fileNames);
         }else {
             $fileNames = $item->softcopy;
@@ -213,16 +213,16 @@ class SuratMasukController extends Controller
         $item->save();
 
         if (Auth::user()->role == 'Sekretaris') {
-            return redirect()->route('surat-masuk.index');
+            return redirect()->route('surat-masuk.index')->with('success', 'Berhasil Verifikasi Surat Masuk');
         }elseif (Auth::user()->role == 'Pimpinan') {
-            return redirect()->route('surat-masuk.show', $id);
+            return redirect()->route('surat-masuk.show', $id)->with('success', 'Berhasil Verifikasi Surat Masuk');
         }
 
     }
 
     public function cetak_disposisi($id)
     {
-        $item = Disposisi::where('surat_masuk_id', $id)->first();
+        $item = SuratMasukDisposisi::where('surat_masuk_id', $id)->first();
 
         return view('pages.pdf.disposisi', [
             'item' => $item
