@@ -239,6 +239,7 @@ class SuratMasukController extends Controller
         $query = $request->search;
 
         $items = SuratMasuk::where('nomor_surat','LIKE','%'.$query.'%')->orWhere('perihal','LIKE','%'.$query.'%')->orWhere('pengirim','LIKE','%'.$query.'%')->orWhere('penerima','LIKE','%'.$query.'%')->get();
+        $items->appends(['search' => $query]);
 
         return view('pages.surat-masuk.index', [
             'items' => $items

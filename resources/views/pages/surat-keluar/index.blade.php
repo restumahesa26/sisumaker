@@ -22,7 +22,7 @@
                             </div>
                         </div>
                         <div class="table-responsive text-nowrap">
-                            <table class="table">
+                            <table class="table" id="table1">
                                 <thead>
                                     <tr>
                                         <th>Nomor Agenda</th>
@@ -89,10 +89,18 @@
 
 @push('addon-style')
     <link rel="stylesheet" href="{{ url('css/sweetalert2.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
 @endpush
 
 @push('addon-script')
     <script src="{{ url('js/sweetalert2.all.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#table1').DataTable();
+        });
+    </script>
+
     <script>
         $('.btn-hapus').on('click', function (e) {
             e.preventDefault(); // prevent form submit
@@ -116,4 +124,7 @@
             });
         });
     </script>
+
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
 @endpush

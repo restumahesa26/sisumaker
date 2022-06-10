@@ -51,7 +51,7 @@
         <div class="tab-content">
             <div class="tab-pane fade show active" id="semua" role="tabpanel">
                 <div class="table-responsive text-nowrap">
-                    <table class="table" id="dataTable">
+                    <table class="table" id="table1">
                         <thead>
                             <tr>
                                 <th>Nomor Agenda</th>
@@ -111,7 +111,7 @@
             </div>
             <div class="tab-pane fade" id="sekretaris" role="tabpanel">
                 <div class="table-responsive text-nowrap">
-                    <table class="table" id="dataTable">
+                    <table class="table" id="table2">
                         <thead>
                             <tr>
                                 <th>Nomor Agenda</th>
@@ -171,7 +171,7 @@
             </div>
             <div class="tab-pane fade" id="pimpinan" role="tabpanel">
                 <div class="table-responsive text-nowrap">
-                    <table class="table" id="dataTable">
+                    <table class="table" id="table3">
                         <thead>
                             <tr>
                                 <th>Nomor Agenda</th>
@@ -231,7 +231,7 @@
             </div>
             <div class="tab-pane fade" id="selesai" role="tabpanel">
                 <div class="table-responsive text-nowrap">
-                    <table class="table" id="dataTable">
+                    <table class="table" id="table4">
                         <thead>
                             <tr>
                                 <th>Nomor Agenda</th>
@@ -336,10 +336,27 @@
 
 @push('addon-style')
     <link rel="stylesheet" href="{{ url('css/sweetalert2.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
 @endpush
 
 @push('addon-script')
     <script src="{{ url('js/sweetalert2.all.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#table1').DataTable();
+        });
+        $(document).ready(function () {
+            $('#table2').DataTable();
+        });
+        $(document).ready(function () {
+            $('#table3').DataTable();
+        });
+        $(document).ready(function () {
+            $('#table4').DataTable();
+        });
+    </script>
+
     <script>
         $('.btn-hapus').on('click', function (e) {
             e.preventDefault(); // prevent form submit
@@ -426,4 +443,7 @@
             });
         });
     </script>
+
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
 @endpush

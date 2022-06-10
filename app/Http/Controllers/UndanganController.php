@@ -186,6 +186,7 @@ class UndanganController extends Controller
         $query = $request->search;
 
         $items = Undangan::where('nomor_surat','LIKE','%'.$query.'%')->orWhere('perihal','LIKE','%'.$query.'%')->orWhere('pengirim','LIKE','%'.$query.'%')->orWhere('penerima','LIKE','%'.$query.'%')->get();
+        $items->appends(['search' => $query]);
 
         return view('pages.undangan.index', [
             'items' => $items
