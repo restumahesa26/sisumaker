@@ -14,7 +14,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="no_agenda">Nomor Agenda</label>
+                            <label for="no_agenda">Nomor Agenda<sup class="text-sm text-danger" id="pesan-error"></sup></label>
                             <input type="number" name="no_agenda" id="no_agenda" value="{{ old('no_agenda', $item->no_agenda) }}" placeholder="Masukkan Nomor Agenda" class="form-control @error('no_agenda') is-invalid @enderror" min="1">
                             @error('no_agenda')
                                 <span class="invalid-feedback" role="alert">
@@ -33,7 +33,7 @@
                         </div>
                         <div class="form-group mt-2">
                             <label for="tanggal_surat">Tanggal Surat</label>
-                            <input type="text" name="tanggal_surat" id="tanggal_surat" value="{{ old('tanggal_surat', $item->tanggal_surat) }}" placeholder="Masukkan Tanggal Surat" class="form-control @error('tanggal_surat') is-invalid @enderror">
+                            <input type="text" name="tanggal_surat" id="tanggal_surat" value="{{ old('tanggal_surat', $item->tanggal_surat) }}" placeholder="Masukkan Tanggal Surat" class="form-control @error('tanggal_surat') is-invalid @enderror" autocomplete="off">
                             @error('tanggal_surat')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -91,7 +91,8 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                <input type="hidden" id="no_agenda_value" value="{{ $item->no_agenda }}">
+                <button type="submit" class="btn btn-primary mt-3" id="simpan">Simpan</button>
             </div>
         </div>
     </form>
@@ -134,6 +135,32 @@
 
 @push('addon-script')
     <script src="{{ url('backend/assets/vendor/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+
+    <script>
+        $("#no_agenda").on("change keyup", function() {
+            var no = $('#no_agenda').val();
+            var no2 = $('#no_agenda_value').val();
+            $.ajax({
+                url: `{{ route('cek-api.no-agenda-surat-masuk') }}`,
+                type: 'get',
+                data: {
+                    'no_agenda' : no,
+                    'no_agenda_2' : no2,
+                },
+                dataType: 'json',
+                success: function (response) {
+                    if (response != null) {
+                        document.getElementById('pesan-error').innerHTML = response.pesan;
+                        if (response.pesan == '') {
+                            document.getElementById('simpan').disabled = false;
+                        } else {
+                            document.getElementById('simpan').disabled = true;
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 
     <script>
         $('#tanggal_surat').keypress(function(e) {

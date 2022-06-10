@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-8">
             <form action="{{ route('undangan.cari-surat') }}" method="get">
-                <input type="search" name="search" id="search" placeholder="Cari surat berdasarkan nomor surat" class="form-control mb-3 w-100">
+                <input type="search" name="search" id="search" placeholder="Cari surat berdasarkan nomor surat, perihal, pengirim, atau penerima" class="form-control mb-3 w-100">
             </form>
         </div>
         <div class="col-2">
@@ -30,14 +30,14 @@
                 <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
                     data-bs-target="#sekretaris" aria-controls="sekretaris"
                     aria-selected="false">
-                    Belum Diverifikasi Sekretaris
+                    Belum Diverifikasi Sekretaris&nbsp;<span class="badge rounded-pill badge-center h-px-20 w-px-20 bg-label-danger fw-bold">{{ $items->where('tanggal_sekretaris', '=', NULL)->count() }}</span>
                 </button>
             </li>
             <li class="nav-item">
                 <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
                     data-bs-target="#pimpinan" aria-controls="pimpinan"
                     aria-selected="false">
-                    Belum Diverifikasi Pimpinan
+                    Belum Diverifikasi Pimpinan&nbsp;<span class="badge rounded-pill badge-center h-px-20 w-px-20 bg-label-danger fw-bold">{{ $items->where('tanggal_pimpinan', '=', NULL)->where('tanggal_sekretaris', '!=', NULL)->count() }}</span>
                 </button>
             </li>
             <li class="nav-item">
@@ -70,7 +70,7 @@
                                     {{ $item->no_urut }}
                                 </td>
                                 <td>{{ $item->nomor_surat }}</td>
-                                <td>{{ \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal_sekretariat)->translatedFormat('d F Y H:i') }}</td>
                                 <td>{{ ($item->tanggal_sekretaris != NULL) ? \Carbon\Carbon::parse($item->tanggal_sekretaris)->translatedFormat('d F Y H:i') : '-' }}</td>
                                 <td>{{ ($item->tanggal_pimpinan != NULL) ? \Carbon\Carbon::parse($item->tanggal_pimpinan)->translatedFormat('d F Y H:i') : '-' }}</td>
@@ -130,7 +130,7 @@
                                     {{ $item->no_urut }}
                                 </td>
                                 <td>{{ $item->nomor_surat }}</td>
-                                <td>{{ \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal_sekretariat)->translatedFormat('d F Y H:i') }}</td>
                                 <td>{{ ($item->tanggal_sekretaris != NULL) ? \Carbon\Carbon::parse($item->tanggal_sekretaris)->translatedFormat('d F Y H:i') : '-' }}</td>
                                 <td>{{ ($item->tanggal_pimpinan != NULL) ? \Carbon\Carbon::parse($item->tanggal_pimpinan)->translatedFormat('d F Y H:i') : '-' }}</td>
@@ -190,7 +190,7 @@
                                     {{ $item->no_urut }}
                                 </td>
                                 <td>{{ $item->nomor_surat }}</td>
-                                <td>{{ \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal_sekretariat)->translatedFormat('d F Y H:i') }}</td>
                                 <td>{{ ($item->tanggal_sekretaris != NULL) ? \Carbon\Carbon::parse($item->tanggal_sekretaris)->translatedFormat('d F Y H:i') : '-' }}</td>
                                 <td>{{ ($item->tanggal_pimpinan != NULL) ? \Carbon\Carbon::parse($item->tanggal_pimpinan)->translatedFormat('d F Y H:i') : '-' }}</td>
@@ -250,7 +250,7 @@
                                     {{ $item->no_urut }}
                                 </td>
                                 <td>{{ $item->nomor_surat }}</td>
-                                <td>{{ \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal_sekretariat)->translatedFormat('d F Y H:i') }}</td>
                                 <td>{{ ($item->tanggal_sekretaris != NULL) ? \Carbon\Carbon::parse($item->tanggal_sekretaris)->translatedFormat('d F Y H:i') : '-' }}</td>
                                 <td>{{ ($item->tanggal_pimpinan != NULL) ? \Carbon\Carbon::parse($item->tanggal_pimpinan)->translatedFormat('d F Y H:i') : '-' }}</td>

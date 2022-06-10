@@ -28,7 +28,7 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane fade show active" id="surat_masuk" role="tabpanel">
-                <a href="{{ route('surat-masuk.cetak-semua') }}" class="btn btn-primary px-5 mb-3">Cetak
+                <a href="{{ route('surat-masuk.cetak-semua') }}" class="btn btn-primary px-5 mb-3" target="_blank">Cetak
                     Semua Laporan</a>
                 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
                     data-bs-target="#surat_masuk_tanggal" style="margin-left: 14px !important;">
@@ -71,7 +71,7 @@
                 </div>
                 <div class="modal fade" id="surat_masuk_tanggal" data-bs-backdrop="static" tabindex="-1">
                     <div class="modal-dialog">
-                        <form class="modal-content" action="{{ route('surat-masuk.cetak-tanggal') }}" method="GET">
+                        <form class="modal-content" action="{{ route('surat-masuk.cetak-tanggal') }}" method="GET" target="_blank">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="backDropModalTitle">Cetak Laporan Surat Masuk Berdasarkan Tanggal</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -81,11 +81,11 @@
                                 <div class="row g-2">
                                     <div class="col mb-0">
                                         <label for="surat_masuk_tanggal_awal" class="form-label">Tanggal Awal</label>
-                                        <input type="text" name="awal" id="surat_masuk_tanggal_awal" class="form-control" placeholder="Masukkan Tanggal Awal" required />
+                                        <input type="text" name="awal" id="surat_masuk_tanggal_awal" class="form-control" placeholder="Masukkan Tanggal Awal" required autocomplete="off" />
                                     </div>
                                     <div class="col mb-0">
                                         <label for="surat_masuk_tanggal_akhir" class="form-label">Tanggal Akhir</label>
-                                        <input type="text" name="akhir" id="surat_masuk_tanggal_akhir" class="form-control" placeholder="Masukkan Tanggal Akhir" required />
+                                        <input type="text" name="akhir" id="surat_masuk_tanggal_akhir" class="form-control" placeholder="Masukkan Tanggal Akhir" required autocomplete="off" />
                                     </div>
                                 </div>
                             </div>
@@ -138,7 +138,7 @@
                 </div>
                 <div class="modal fade" id="surat_keluar_tanggal" data-bs-backdrop="static" tabindex="-1">
                     <div class="modal-dialog">
-                        <form class="modal-content" action="{{ route('surat-keluar.cetak-tanggal') }}" method="GET">
+                        <form class="modal-content" action="{{ route('surat-keluar.cetak-tanggal') }}" method="GET" target="_blank">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="backDropModalTitle">Cetak Laporan Surat Keluar Berdasarkan Tanggal</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -149,12 +149,12 @@
                                     <div class="col mb-0">
                                         <label for="surat_keluar_tanggal_awal" class="form-label">Tanggal Awal</label>
                                         <input type="text" id="surat_keluar_tanggal_awal" class="form-control" name="awal"
-                                            placeholder="Masukkan Tanggal Awal" required />
+                                            placeholder="Masukkan Tanggal Awal" required autocomplete="off" />
                                     </div>
                                     <div class="col mb-0">
                                         <label for="surat_keluar_tanggal_akhir" class="form-label">Tanggal Akhir</label>
                                         <input type="text" id="surat_keluar_tanggal_akhir" class="form-control" name="akhir"
-                                            placeholder="Masukkan Tanggal Akhir" required />
+                                            placeholder="Masukkan Tanggal Akhir" required autocomplete="off" />
                                     </div>
                                 </div>
                             </div>
@@ -166,7 +166,7 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="undangan" role="tabpanel">
-                <a href="#" class="btn btn-primary px-5 mb-3"
+                <a href="{{ route('undangan.cetak-semua') }}" class="btn btn-primary px-5 mb-3"
                     target="_blank">Cetak Semua Laporan</a>
                 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
                     data-bs-target="#undangan_tanggal" style="margin-left: 14px !important;">
@@ -207,7 +207,7 @@
                 </div>
                 <div class="modal fade" id="undangan_tanggal" data-bs-backdrop="static" tabindex="-1">
                     <div class="modal-dialog">
-                        <form class="modal-content" action="#" method="GET">
+                        <form class="modal-content" action="{{ route('undangan.cetak-tanggal') }}" method="GET" target="_blank">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="backDropModalTitle">Cetak Laporan Surat Keluar Berdasarkan Tanggal</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -218,12 +218,12 @@
                                     <div class="col mb-0">
                                         <label for="undangan_tanggal_awal" class="form-label">Tanggal Awal</label>
                                         <input type="text" id="undangan_tanggal_awal" class="form-control" name="awal"
-                                            placeholder="Masukkan Tanggal Awal" required />
+                                            placeholder="Masukkan Tanggal Awal" required autocomplete="off" />
                                     </div>
                                     <div class="col mb-0">
                                         <label for="undangan_tanggal_akhir" class="form-label">Tanggal Akhir</label>
                                         <input type="text" id="undangan_tanggal_akhir" class="form-control" name="akhir"
-                                            placeholder="Masukkan Tanggal Akhir" required />
+                                            placeholder="Masukkan Tanggal Akhir" required autocomplete="off" />
                                     </div>
                                 </div>
                             </div>

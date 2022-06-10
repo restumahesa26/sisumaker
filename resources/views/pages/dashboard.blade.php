@@ -8,7 +8,7 @@
                 <div class="d-flex align-items-end row">
                     <div class="col-sm-7">
                         <div class="card-body">
-                            <h5 class="card-title text-primary">Selamat Datang {{ Auth::user()->nama }}!!</h5>
+                            <h5 class="card-title text-primary fw-bold">Selamat Datang {{ Auth::user()->nama }}!!</h5>
                             <p class="mb-4">
                                 Pada Sistem Informasi Manajemen Surat Masuk, Surat Keluar, dan Undangan pada Kantor BAPPEDA PROV. Bengkulu
                             </p>
@@ -24,101 +24,77 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 col-md-6 order-1">
+        <div class="col-lg-12 col-md-12 order-1">
             <div class="row">
-                <div class="col-lg-6 col-md-12 col-6 mb-4">
+                <div class="col-lg-12 col-md-12 col-12 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title d-flex align-items-start justify-content-between">
-                                <div class="avatar flex-shrink-0">
-                                    <img src="{{ url('backend/assets/img/icons/unicons/wallet.png') }}" alt="chart success"
-                                        class="rounded" />
-                                </div>
-                                <div class="dropdown">
-                                    <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                                        <a class="dropdown-item" href="{{ route('surat-masuk.index') }}">View More</a>
-                                    </div>
-                                </div>
+                            <h5 class="fw-semibold">Monitoring Surat Masuk</h5>
+                            <div class="demo-inline-spacing mt-3">
+                                <ul class="list-group">
+                                    @forelse ($suratMasuk as $item)
+                                    <a href="{{ Auth::user()->role == 'Sekretariat' ? route('surat-masuk.edit', $item->id) : route('surat-masuk.show', $item->id) }}">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center fw-bold">
+                                            Surat dari {{ $item->pengirim }} dengan Nomor Surat : {{ $item->nomor_surat }}
+                                            @if ($item->tanggal_sekretaris == NULL)
+                                                <span class="badge bg-primary">Sedang Diverifikasi oleh Sekretaris</span>
+                                            @elseif ($item->tanggal_pimpinan == NULL && $item->sekretaris != NULL)
+                                                <span class="badge bg-warning">Sedang Diverifikasi oleh Pimpinan</span>
+                                            @endif
+                                        </li>
+                                    </a>
+                                    @empty
+
+                                    @endforelse
+                                </ul>
                             </div>
-                            <span class="fw-semibold d-block mb-1">Surat Masuk Selesai Diverifikasi</span>
-                            <h3 class="card-title mb-2">{{ $suratMasuk }}</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12 col-6 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-title d-flex align-items-start justify-content-between">
-                                <div class="avatar flex-shrink-0">
-                                    <img src="{{ url('backend/assets/img/icons/unicons/wallet-info.png') }}" alt="Credit Card"
-                                        class="rounded" />
-                                </div>
-                                <div class="dropdown">
-                                    <button class="btn p-0" type="button" id="cardOpt6" data-bs-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
-                                        <a class="dropdown-item" href="{{ route('surat-keluar.index') }}">View More</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <span class="fw-semibold d-block mb-1">Total Surat Keluar</span>
-                            <h3 class="card-title mb-2">{{ $suratKeluar }}</h3>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-6 order-3 order-md-2">
+        <div class="col-lg-12 col-md-12 order-1">
             <div class="row">
-                <div class="col-6 mb-4">
+                <div class="col-lg-12 col-md-12 col-12 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title d-flex align-items-start justify-content-between">
-                                <div class="avatar flex-shrink-0">
-                                    <img src="{{ url('backend/assets/img/icons/unicons/cc-warning.png') }}" alt="Credit Card"
-                                        class="rounded" />
-                                </div>
-                                <div class="dropdown">
-                                    <button class="btn p-0" type="button" id="cardOpt4" data-bs-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
-                                        <a class="dropdown-item" href="{{ route('surat-masuk.index') }}">View More</a>
-                                    </div>
-                                </div>
+                            <h5 class="fw-semibold">Monitoring Undangan</h5>
+                            <div class="demo-inline-spacing mt-3">
+                                <ul class="list-group">
+                                    @forelse ($undangan as $item)
+                                    <a href="{{ Auth::user()->role == 'Sekretariat' ? route('undangan.edit', $item->id) : route('undangan.show', $item->id) }}">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center fw-bold">
+                                            Surat dari {{ $item->pengirim }} dengan Nomor Surat : {{ $item->nomor_surat }}
+                                            @if ($item->tanggal_sekretaris == NULL)
+                                                <span class="badge bg-primary">Sedang Diverifikasi oleh Sekretaris</span>
+                                            @elseif ($item->tanggal_sekretaris != NULL && $item->tanggal_pimpinan == NULL)
+                                                <span class="badge bg-warning">Sedang Diverifikasi oleh Pimpinan</span>
+                                            @endif
+
+                                        </li>
+                                    </a>
+                                    @empty
+
+                                    @endforelse
+
+                                </ul>
                             </div>
-                            <span class="fw-semibold d-block mb-1">Surat Masuk Belum Diverifikasi Oleh Sekretaris</span>
-                            <h3 class="card-title mb-2">{{ $suratMasukSekretaris }}</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-6 mb-4">
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 order-1">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-12 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title d-flex align-items-start justify-content-between">
-                                <div class="avatar flex-shrink-0">
-                                    <img src="{{ url('backend/assets/img/icons/unicons/cc-success.png') }}" alt="Credit Card"
-                                        class="rounded" />
-                                </div>
-                                <div class="dropdown">
-                                    <button class="btn p-0" type="button" id="cardOpt1" data-bs-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="cardOpt1">
-                                        <a class="dropdown-item" href="{{ route('surat-masuk.index') }}">View More</a>
-                                    </div>
+                            <div class="text-primary">
+                                <div class="panel-heading"><b>Grafik Surat Masuk, Surat Keluar dan Undangan Hari Ini</b></div>
+                                <div class="panel-body">
+                                    <canvas id="canvas" height="280" width="600"></canvas>
                                 </div>
                             </div>
-                            <span class="fw-semibold d-block mb-1">Surat Masuk Belum Diverifikasi Oleh Pimpinan</span>
-                            <h3 class="card-title mb-2">{{ $suratMasukPimpinan }}</h3>
                         </div>
                     </div>
                 </div>
@@ -127,3 +103,40 @@
     </div>
 </div>
 @endsection
+
+@push('addon-script')
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js" charset="utf-8"></script>
+    <script>
+        var Years = ['Surat Masuk','Surat Keluar','Undangan'];
+        var Labels = ['Surat Masuk','Surat Keluar','Undangan'];
+        var Prices = [{{ $surat_masuk }},{{ $surat_keluar }}, {{ $undangan_count }}];
+        $(document).ready(function(){
+            var ctx = document.getElementById("canvas").getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels:Years,
+                        datasets: [{
+                            label: "Jumlah",
+                            data: Prices,
+                            borderWidth: 1,
+                            backgroundColor : [
+                            "#1363DF", "#EC9B3B", "#00FFAB"
+                        ],
+                    }]
+                },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero:true,
+                                    stepSize: 1
+                                }
+                            }]
+                        }
+                    }
+                });
+        });
+        </script>
+@endpush

@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Models\SuratMasuk;
+use App\Models\Undangan;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 
-class SuratMasukTanggalExport implements FromQuery, WithHeadings, ShouldAutoSize, WithMapping
+class UndanganTanggalExport implements FromQuery, WithHeadings, ShouldAutoSize, WithMapping
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -28,13 +28,13 @@ class SuratMasukTanggalExport implements FromQuery, WithHeadings, ShouldAutoSize
 
     public function query()
     {
-        return SuratMasuk::whereDate('tanggal_surat', '>=', $this->awal)->whereDate('tanggal_surat', '<=', $this->akhir);
+        return Undangan::whereDate('tanggal', '>=', $this->awal)->whereDate('tanggal', '<=', $this->akhir);
     }
 
     public function map($item): array
     {
         return [
-            $item->no_agenda,
+            $item->no_urut,
             $item->nomor_surat,
             Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y'),
             $item->perihal,
@@ -49,7 +49,7 @@ class SuratMasukTanggalExport implements FromQuery, WithHeadings, ShouldAutoSize
     public function headings(): array
     {
         return [
-            'No Agenda',
+            'No Urut',
             'No Surat',
             'Tanggal Surat',
             'Perihal',

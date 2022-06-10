@@ -29,8 +29,8 @@ class SuratMasukExport implements FromCollection, WithHeadings, ShouldAutoSize, 
             $item->pengirim,
             $item->penerima,
             Carbon::parse($item->tanggal_sekretariat)->translatedFormat('d F Y H:i'),
-            $item->tanggal_sekretaris != NULL ? Carbon::parse($item->tanggal_sekretaris)->translatedFormat('d F Y H:i') : '',
-            $item->tanggal_pimpinan != NULL ? Carbon::parse($item->tanggal_pimpinan)->translatedFormat('d F Y H:i') : '',
+            $item->tanggal_sekretaris != NULL ? Carbon::parse($item->tanggal_sekretaris)->translatedFormat('d F Y H:i') : '-',
+            $item->tanggal_pimpinan != NULL ? Carbon::parse($item->tanggal_pimpinan)->translatedFormat('d F Y H:i') : '-',
         ];
     }
 

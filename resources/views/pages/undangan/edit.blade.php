@@ -14,7 +14,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="no_urut">Nomor Urut</label>
+                            <label for="no_urut">Nomor Urut<sup class="text-sm text-danger" id="pesan-error"></sup></label>
                             <input type="number" name="no_urut" id="no_urut" value="{{ old('no_urut', $item->no_urut) }}" placeholder="Masukkan Nomor Urut" class="form-control @error('no_urut') is-invalid @enderror" min="1">
                             @error('no_urut')
                                 <span class="invalid-feedback" role="alert">
@@ -33,7 +33,7 @@
                         </div>
                         <div class="form-group mt-2">
                             <label for="tanggal">Tanggal</label>
-                            <input type="text" name="tanggal" id="tanggal" value="{{ old('tanggal', $item->tanggal) }}" placeholder="Masukkan Tanggal" class="form-control @error('tanggal') is-invalid @enderror">
+                            <input type="text" name="tanggal" id="tanggal" value="{{ old('tanggal', $item->tanggal) }}" placeholder="Masukkan Tanggal" class="form-control @error('tanggal') is-invalid @enderror" autocomplete="off">
                             @error('tanggal')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -93,7 +93,8 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                <input type="hidden" id="no_urut_value" value="{{ $item->no_urut }}">
+                <button type="submit" class="btn btn-primary mt-3" id="simpan">Simpan</button>
             </div>
         </div>
     </form>
@@ -136,6 +137,32 @@
 
 @push('addon-script')
     <script src="{{ url('backend/assets/vendor/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+
+    <script>
+        $("#no_urut").on("change keyup", function() {
+            var no = $('#no_urut').val();
+            var no2 = $('#no_urut_value').val();
+            $.ajax({
+                url: `{{ route('cek-api.no-urut-undangan') }}`,
+                type: 'get',
+                data: {
+                    'no_urut' : no,
+                    'no_urut_2' : no2,
+                },
+                dataType: 'json',
+                success: function (response) {
+                    if (response != null) {
+                        document.getElementById('pesan-error').innerHTML = response.pesan;
+                        if (response.pesan == '') {
+                            document.getElementById('simpan').disabled = false;
+                        } else {
+                            document.getElementById('simpan').disabled = true;
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 
     <script>
         $('#tanggal').keypress(function(e) {

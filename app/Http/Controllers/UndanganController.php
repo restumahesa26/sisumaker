@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UndanganExport;
+use App\Exports\UndanganTanggalExport;
 use App\Models\Undangan;
 use App\Models\UndanganDisposisi;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UndanganController extends Controller
 {
@@ -182,7 +185,7 @@ class UndanganController extends Controller
     {
         $query = $request->search;
 
-        $items = Undangan::where('nomor_surat','LIKE','%'.$query.'%')->get();
+        $items = Undangan::where('nomor_surat','LIKE','%'.$query.'%')->orWhere('perihal','LIKE','%'.$query.'%')->orWhere('pengirim','LIKE','%'.$query.'%')->orWhere('penerima','LIKE','%'.$query.'%')->get();
 
         return view('pages.undangan.index', [
             'items' => $items
@@ -218,5 +221,15 @@ class UndanganController extends Controller
         return view('pages.pdf.disposisi-2', [
             'item' => $item
         ]);
+    }
+
+    public function cetak_semua()
+    {
+        return Excel::download(new UndanganExport, 'semua-undangan.xlsx');
+    }
+
+    public function cetak_tanggal(Request $request)
+    {
+        return Excel::download(new UndanganTanggalExport($request->awal, $request->akhir), 'undangan-berdasarkan-tanggal.xlsx');
     }
 }

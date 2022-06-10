@@ -14,7 +14,7 @@
                         <div class="row">
                             <div class="col">
                                 <form action="{{ route('surat-keluar.cari-surat') }}" method="get">
-                                    <input type="search" name="search" id="search" placeholder="Cari surat berdasarkan nomor surat" class="form-control mb-3 w-100">
+                                    <input type="search" name="search" id="search" placeholder="Cari surat berdasarkan nomor surat, perihal, pengirim, atau penerima" class="form-control mb-3 w-100">
                                 </form>
                             </div>
                             <div class="col">

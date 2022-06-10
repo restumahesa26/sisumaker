@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\APIController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DisposisiController;
 use App\Http\Controllers\HomeController;
@@ -68,6 +69,10 @@ Route::prefix('dashboard')
 
         Route::get('/undangan/cetak-disposisi-undangan/{id}', [UndanganController::class, 'cetak_disposisi'])->name('undangan.cetak-disposisi');
 
+        Route::get('/undangan/cetak-semua-laporan', [UndanganController::class, 'cetak_semua'])->name('undangan.cetak-semua');
+
+        Route::get('/undangan/cetak-laporan-berdasarkan-tanggal', [UndanganController::class, 'cetak_tanggal'])->name('undangan.cetak-tanggal');
+
         Route::resource('undangan', UndanganController::class);
 
         Route::resource('visi-misi', VisiMisiController::class);
@@ -81,6 +86,12 @@ Route::prefix('dashboard')
         Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
 
         Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
+
+        Route::get('/cek-api-no-agenda-surat-masuk', [APIController::class, 'cek_no_agenda_surat_masuk'])->name('cek-api.no-agenda-surat-masuk');
+
+        Route::get('/cek-api-no-agenda-surat-keluar', [APIController::class, 'cek_no_agenda_surat_keluar'])->name('cek-api.no-agenda-surat-keluar');
+
+        Route::get('/cek-api-no-urut-undangan', [APIController::class, 'cek_no_urut_undangan'])->name('cek-api.no-urut-undangan');
 
     });
 
