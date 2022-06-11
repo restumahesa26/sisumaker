@@ -58,7 +58,7 @@ class UndanganController extends Controller
 
         $value = $request->file('softcopy');
         $extension = $value->extension();
-        $fileNames = 'Undangan-' . $request->nomor_surat . '.' . $extension;
+        $fileNames = uniqid('undangan_', microtime()) . '.' . $extension;
         Storage::putFileAs('public/file-undangan', $value, $fileNames);
 
         Undangan::create([
@@ -146,7 +146,7 @@ class UndanganController extends Controller
         if ($request->softcopy) {
             $value = $request->file('softcopy');
             $extension = $value->extension();
-            $fileNames = 'Undangan-' . $request->nomor_surat . '.' . $extension;
+            $fileNames = uniqid('undangan_', microtime()) . '.' . $extension;
             Storage::putFileAs('public/file-undangan', $value, $fileNames);
         }else {
             $fileNames = $item->softcopy;

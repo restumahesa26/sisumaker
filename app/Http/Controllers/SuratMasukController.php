@@ -64,7 +64,7 @@ class SuratMasukController extends Controller
 
         $value = $request->file('softcopy');
         $extension = $value->extension();
-        $fileNames = 'Surat-Masuk-' . $request->nomor_surat . '.' . $extension;
+        $fileNames = uniqid('surat_masuk_', microtime()) . '.' . $extension;
         Storage::putFileAs('public/file-surat/surat-masuk', $value, $fileNames);
 
         // menambah data baru
@@ -158,7 +158,7 @@ class SuratMasukController extends Controller
         if ($request->softcopy) {
             $value = $request->file('softcopy');
             $extension = $value->extension();
-            $fileNames = 'Surat-Masuk-' . $request->nomor_surat . '.' . $extension;
+            $fileNames = uniqid('surat_masuk_', microtime()) . '.' . $extension;
             Storage::putFileAs('public/file-surat/surat-masuk', $value, $fileNames);
         }else {
             $fileNames = $item->softcopy;

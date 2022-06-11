@@ -30,7 +30,7 @@
                                         <th>Tanggal Surat</th>
                                         <th>Perihal</th>
                                         <th>Pengirim</th>
-                                        <th>Penerima</th>
+                                        <th>Softcopy</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -44,7 +44,11 @@
                                         <td>{{ \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') }}</td>
                                         <td>{{ $item->perihal }}</td>
                                         <td>{{ $item->pengirim }}</td>
-                                        <td>{{ $item->penerima }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#softcopy-{{ $item->id }}">
+                                                Lihat File
+                                            </button>
+                                        </td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="{{ route('surat-keluar.edit', $item->id) }}">
                                                 <i class="bx bx-edit-alt me-1"></i> Edit
@@ -85,6 +89,22 @@
         </div>
     </div>
 @endif
+@foreach ($items as $item)
+<div class="modal fade" id="softcopy-{{ $item->id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel4">File Softcopy</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <embed src="{{ asset('storage/file-surat/surat-keluar/'.$item->softcopy) }}" width="100%" height="550px">
+                </embed>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
 @endsection
 
 @push('addon-style')

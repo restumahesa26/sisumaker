@@ -57,9 +57,9 @@
                                 <th>Nomor Agenda</th>
                                 <th>Nomor Surat</th>
                                 <th>Tanggal Surat</th>
-                                <th>Tanggal Sekretariat</th>
-                                <th>Tanggal Sekretaris</th>
-                                <th>Tanggal Pimpinan</th>
+                                <th>Perihal</th>
+                                <th>Pengirim</th>
+                                <th>Softcopy</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -71,9 +71,13 @@
                                 </td>
                                 <td>{{ $item->nomor_surat }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</td>
-                                <td>{{ \Carbon\Carbon::parse($item->tanggal_sekretariat)->translatedFormat('d F Y H:i') }}</td>
-                                <td>{{ ($item->tanggal_sekretaris != NULL) ? \Carbon\Carbon::parse($item->tanggal_sekretaris)->translatedFormat('d F Y H:i') : '-' }}</td>
-                                <td>{{ ($item->tanggal_pimpinan != NULL) ? \Carbon\Carbon::parse($item->tanggal_pimpinan)->translatedFormat('d F Y H:i') : '-' }}</td>
+                                <td>{{ $item->perihal }}</td>
+                                <td>{{ $item->pengirim }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#softcopy-1{{ $item->id }}">
+                                        Lihat File
+                                    </button>
+                                </td>
                                 <td>
                                     @if (Auth::user()->role == 'Sekretariat')
                                         <a class="btn btn-info btn-sm" href="{{ route('undangan.edit', $item->id) }}">
@@ -116,9 +120,9 @@
                                 <th>Nomor Agenda</th>
                                 <th>Nomor Surat</th>
                                 <th>Tanggal Surat</th>
-                                <th>Tanggal Sekretariat</th>
-                                <th>Tanggal Sekretaris</th>
-                                <th>Tanggal Pimpinan</th>
+                                <th>Perihal</th>
+                                <th>Pengirim</th>
+                                <th>Softcopy</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -130,9 +134,13 @@
                                 </td>
                                 <td>{{ $item->nomor_surat }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</td>
-                                <td>{{ \Carbon\Carbon::parse($item->tanggal_sekretariat)->translatedFormat('d F Y H:i') }}</td>
-                                <td>{{ ($item->tanggal_sekretaris != NULL) ? \Carbon\Carbon::parse($item->tanggal_sekretaris)->translatedFormat('d F Y H:i') : '-' }}</td>
-                                <td>{{ ($item->tanggal_pimpinan != NULL) ? \Carbon\Carbon::parse($item->tanggal_pimpinan)->translatedFormat('d F Y H:i') : '-' }}</td>
+                                <td>{{ $item->perihal }}</td>
+                                <td>{{ $item->pengirim }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#softcopy-2{{ $item->id }}">
+                                        Lihat File
+                                    </button>
+                                </td>
                                 <td>
                                     @if (Auth::user()->role == 'Sekretariat')
                                         <a class="btn btn-info btn-sm" href="{{ route('undangan.edit', $item->id) }}">
@@ -175,9 +183,9 @@
                                 <th>Nomor Agenda</th>
                                 <th>Nomor Surat</th>
                                 <th>Tanggal Surat</th>
-                                <th>Tanggal Sekretariat</th>
-                                <th>Tanggal Sekretaris</th>
-                                <th>Tanggal Pimpinan</th>
+                                <th>Perihal</th>
+                                <th>Pengirim</th>
+                                <th>Softcopy</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -189,9 +197,13 @@
                                 </td>
                                 <td>{{ $item->nomor_surat }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</td>
-                                <td>{{ \Carbon\Carbon::parse($item->tanggal_sekretariat)->translatedFormat('d F Y H:i') }}</td>
-                                <td>{{ ($item->tanggal_sekretaris != NULL) ? \Carbon\Carbon::parse($item->tanggal_sekretaris)->translatedFormat('d F Y H:i') : '-' }}</td>
-                                <td>{{ ($item->tanggal_pimpinan != NULL) ? \Carbon\Carbon::parse($item->tanggal_pimpinan)->translatedFormat('d F Y H:i') : '-' }}</td>
+                                <td>{{ $item->perihal }}</td>
+                                <td>{{ $item->pengirim }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#softcopy-3{{ $item->id }}">
+                                        Lihat File
+                                    </button>
+                                </td>
                                 <td>
                                     @if (Auth::user()->role == 'Sekretariat')
                                         <a class="btn btn-info btn-sm" href="{{ route('undangan.edit', $item->id) }}">
@@ -235,9 +247,9 @@
                                 <th>Nomor Agenda</th>
                                 <th>Nomor Surat</th>
                                 <th>Tanggal Surat</th>
-                                <th>Tanggal Sekretariat</th>
-                                <th>Tanggal Sekretaris</th>
-                                <th>Tanggal Pimpinan</th>
+                                <th>Perihal</th>
+                                <th>Pengirim</th>
+                                <th>Softcopy</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -249,9 +261,13 @@
                                 </td>
                                 <td>{{ $item->nomor_surat }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</td>
-                                <td>{{ \Carbon\Carbon::parse($item->tanggal_sekretariat)->translatedFormat('d F Y H:i') }}</td>
-                                <td>{{ ($item->tanggal_sekretaris != NULL) ? \Carbon\Carbon::parse($item->tanggal_sekretaris)->translatedFormat('d F Y H:i') : '-' }}</td>
-                                <td>{{ ($item->tanggal_pimpinan != NULL) ? \Carbon\Carbon::parse($item->tanggal_pimpinan)->translatedFormat('d F Y H:i') : '-' }}</td>
+                                <td>{{ $item->perihal }}</td>
+                                <td>{{ $item->pengirim }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#softcopy-4{{ $item->id }}">
+                                        Lihat File
+                                    </button>
+                                </td>
                                 <td>
                                     @if (Auth::user()->role == 'Sekretariat')
                                         <a class="btn btn-info btn-sm" href="{{ route('undangan.edit', $item->id) }}">
@@ -330,6 +346,67 @@
     </div>
     @endif
 @endif
+@foreach ($items as $item)
+<div class="modal fade" id="softcopy-1{{ $item->id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel4">File Softcopy</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <embed src="{{ asset('storage/file-undangan/'.$item->softcopy) }}" width="100%" height="550px">
+                </embed>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+@foreach ($items->where('tanggal_sekretaris', '=', NULL) as $item)
+<div class="modal fade" id="softcopy-2{{ $item->id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel4">File Softcopy</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <embed src="{{ asset('storage/file-undangan/'.$item->softcopy) }}" width="100%" height="550px">
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+@foreach ($items->where('tanggal_pimpinan', '=', NULL)->where('tanggal_sekretaris', '!=', NULL) as $item)
+<div class="modal fade" id="softcopy-3{{ $item->id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel4">File Softcopy</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <embed src="{{ asset('storage/file-undangan/'.$item->softcopy) }}" width="100%" height="550px">
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+@foreach ($items->where('tanggal_sekretaris', '!=', NULL)->where('tanggal_pimpinan', '!=', NULL) as $item)
+<div class="modal fade" id="softcopy-4{{ $item->id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel4">File Softcopy</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <embed src="{{ asset('storage/file-undangan/'.$item->softcopy) }}" width="100%" height="550px">
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
 @endsection
 
 @push('addon-style')
