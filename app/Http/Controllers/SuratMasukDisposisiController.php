@@ -40,7 +40,6 @@ class SuratMasukDisposisiController extends Controller
         $request->validate([
             'tujuan' => ['required', 'string', 'max:255'],
             'tindak_lanjut' => ['required', 'string', 'max:255'],
-            'catatan' => ['required', 'string', 'max:255'],
         ]);
 
         SuratMasukDisposisi::create([
@@ -50,7 +49,7 @@ class SuratMasukDisposisiController extends Controller
             'catatan' => $request->catatan,
         ]);
 
-        return redirect()->route('surat-masuk.index');
+        return redirect()->route('surat-masuk.index')->with('success', 'Berhasil Membuat Disposisi Surat Masuk');
     }
 
     /**
@@ -87,7 +86,6 @@ class SuratMasukDisposisiController extends Controller
         $request->validate([
             'tujuan' => ['required', 'string', 'max:255'],
             'tindak_lanjut' => ['required', 'string', 'max:255'],
-            'catatan' => ['required', 'string', 'max:255'],
         ]);
 
         $item = SuratMasukDisposisi::findOrFail($id);
@@ -97,7 +95,7 @@ class SuratMasukDisposisiController extends Controller
         $item->catatan = $request->catatan;
         $item->save();
 
-        return redirect()->route('surat-masuk.index');
+        return redirect()->route('surat-masuk.index')->with('success', 'Berhasil Mengubah Disposisi Surat Masuk');
     }
 
     /**

@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\APIController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DisposisiController;
+use App\Http\Controllers\SuratMasukDisposisiController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfileController;

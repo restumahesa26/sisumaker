@@ -18,7 +18,7 @@ class CreateUndanganDisposisisTable extends Migration
             $table->foreignId('undangan_id')->references('id')->on('undangans')->onDelete('cascade')->onUpdate('cascade');
             $table->string('tujuan');
             $table->string('tindak_lanjut');
-            $table->string('catatan');
+            $table->string('catatan')->nullable();
             $table->timestamps();
         });
     }

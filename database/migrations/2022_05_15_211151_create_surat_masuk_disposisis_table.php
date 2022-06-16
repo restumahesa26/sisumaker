@@ -18,7 +18,7 @@ class CreateSuratMasukDisposisisTable extends Migration
             $table->foreignId('surat_masuk_id')->references('id')->on('surat_masuks')->onDelete('cascade')->onUpdate('cascade');
             $table->string('tujuan');
             $table->string('tindak_lanjut');
-            $table->string('catatan');
+            $table->string('catatan')->nullable();
             $table->timestamps();
         });
     }

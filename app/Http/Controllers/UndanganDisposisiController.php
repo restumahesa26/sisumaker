@@ -38,7 +38,6 @@ class UndanganDisposisiController extends Controller
         $request->validate([
             'tujuan' => ['required', 'string', 'max:255'],
             'tindak_lanjut' => ['required', 'string', 'max:255'],
-            'catatan' => ['required', 'string', 'max:255'],
         ]);
 
         UndanganDisposisi::create([
@@ -48,7 +47,7 @@ class UndanganDisposisiController extends Controller
             'catatan' => $request->catatan,
         ]);
 
-        return redirect()->route('undangan.index');
+        return redirect()->route('undangan.index')->with('success', 'Berhasil Membuat Disposisi Undangan');
     }
 
     /**
@@ -85,7 +84,6 @@ class UndanganDisposisiController extends Controller
         $request->validate([
             'tujuan' => ['required', 'string', 'max:255'],
             'tindak_lanjut' => ['required', 'string', 'max:255'],
-            'catatan' => ['required', 'string', 'max:255'],
         ]);
 
         $item = UndanganDisposisi::findOrFail($id);
@@ -95,7 +93,7 @@ class UndanganDisposisiController extends Controller
         $item->catatan = $request->catatan;
         $item->save();
 
-        return redirect()->route('undangan.index');
+        return redirect()->route('undangan.index')->with('success', 'Berhasil Mengubah Disposisi Undangan');
     }
 
     /**

@@ -50,7 +50,7 @@ class SuratKeluarController extends Controller
     {
         // membuat validasi
         $request->validate([
-            'no_agenda' => ['required', 'integer', 'unique:surat_keluars'],
+            'no_agenda' => ['required', 'unique:surat_keluars'],
             'nomor_surat' => ['required', 'string', 'max:255'],
             'tanggal_surat' => ['required', 'date'],
             'perihal' => ['required', 'string', 'max:255'],
@@ -138,7 +138,7 @@ class SuratKeluarController extends Controller
 
         if ($id != $item->id) {
             $request->validate([
-                'no_agenda' => ['required', 'integer', 'unique:surat_keluars'],
+                'no_agenda' => ['required', 'unique:surat_keluars'],
             ]);
         }
 
