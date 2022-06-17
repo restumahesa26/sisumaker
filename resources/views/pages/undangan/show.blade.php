@@ -92,10 +92,10 @@
                 </div>
             </div>
             @if (Auth::user()->role == 'Sekretaris')
-            <a href="{{ route('undangan.verifikasi', $item->id) }}" class="btn btn-primary mt-3 btn-verifikasi">Verifikasi Surat</a>
+            <a href="{{ route('undangan.verifikasi', $item->id) }}" class="btn btn-primary mt-3 btn-verifikasi">Verifikasi Undangan</a>
             @endif
             @if (Auth::user()->role == 'Pimpinan' && $item->tanggal_sekretaris != NULL)
-            <a href="{{ route('undangan.verifikasi', $item->id) }}" class="btn btn-primary mt-3 btn-verifikasi">Verifikasi Surat</a>
+            <a href="{{ route('undangan.verifikasi', $item->id) }}" class="btn btn-primary mt-3 btn-verifikasi">Verifikasi Undangan</a>
             @endif
         </div>
     </div>
@@ -193,7 +193,7 @@
                             </span>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary mt-3">Ubah Disposisi Surat</button>
+                        <button type="submit" class="btn btn-primary mt-3">Ubah Disposisi Undangan</button>
                     </div>
                 </div>
             </div>
@@ -293,7 +293,7 @@
                             @enderror
                         </div>
                         <input type="hidden" name="undangan_id" value="{{ $item->id }}">
-                        <button type="submit" class="btn btn-primary mt-3">Buat Disposisi Surat</button>
+                        <button type="submit" class="btn btn-primary mt-3">Buat Disposisi Undangan</button>
                     </div>
                 </div>
             </div>

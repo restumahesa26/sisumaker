@@ -47,9 +47,9 @@
                             <label for="role">Role</label>
                             <select name="role" id="role" class="form-control">
                                 <option hidden>-- Pilih Role User --</option>
-                                <option value="Operator">Operator</option>
-                                <option value="Pimpinan">Pimpinan</option>
-                                <option value="Admin">Admin</option>
+                                <option value="Sekretariat" @if(old('role') == 'Sekretariat') selected @endif>Sekretariat</option>
+                                <option value="Sekretaris" @if(old('role') == 'Sekretaris') selected @endif>Sekretaris</option>
+                                <option value="Pimpinan" @if(old('role') == 'Pimpinan') selected @endif>Pimpinan</option>
                             </select>
                             @error('role')
                             <span class="invalid-feedback" role="alert">
