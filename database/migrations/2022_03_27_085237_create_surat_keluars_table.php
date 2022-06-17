@@ -16,6 +16,8 @@ class CreateSuratKeluarsTable extends Migration
         Schema::create('surat_keluars', function (Blueprint $table) {
             $table->id();
             $table->string('no_agenda');
+            $table->string('nomor_halaman');
+            $table->string('klasifikasi');
             $table->string('nomor_surat');
             $table->date('tanggal_surat');
             $table->string('perihal');
@@ -23,9 +25,6 @@ class CreateSuratKeluarsTable extends Migration
             $table->string('penerima');
             $table->string('keterangan')->nullable();
             $table->string('softcopy')->nullable();
-            $table->dateTime('tanggal_sekretariat');
-            $table->dateTime('tanggal_sekretaris')->nullable();
-            $table->dateTime('tanggal_pimpinan')->nullable();
             $table->timestamps();
         });
     }

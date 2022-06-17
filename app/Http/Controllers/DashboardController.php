@@ -15,9 +15,9 @@ class DashboardController extends Controller
         $suratMasuk = SuratMasuk::where('tanggal_sekretaris', NULL)->orWhere('tanggal_pimpinan', NULL)->get();
         $undangan = Undangan::where('tanggal_sekretaris', NULL)->orWhere('tanggal_pimpinan', NULL)->get();
 
-        $surat_masuk = SuratMasuk::whereDate('tanggal_surat', Carbon::now())->count();
-        $surat_keluar = SuratKeluar::whereDate('tanggal_surat', Carbon::now())->count();
-        $undangan_count = Undangan::whereDate('tanggal', Carbon::now())->count();
+        $surat_masuk = SuratMasuk::whereBetween('tanggal_surat', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
+        $surat_keluar = SuratKeluar::whereBetween('tanggal_surat', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
+        $undangan_count = Undangan::whereBetween('tanggal', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
 
         return view('pages.dashboard')->with(compact('suratMasuk', 'undangan', 'surat_masuk', 'surat_keluar', 'undangan_count'));
     }

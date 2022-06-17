@@ -66,9 +66,9 @@
                         <tbody class="table-border-bottom-0">
                             @forelse ($items as $item)
                             <tr>
-                                <td>
+                                <th>
                                     {{ $item->no_urut }}
-                                </td>
+                                </th>
                                 <td>{{ $item->nomor_surat }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</td>
                                 <td>{{ $item->perihal }}</td>
@@ -129,9 +129,9 @@
                         <tbody class="table-border-bottom-0">
                             @forelse ($items->where('tanggal_sekretaris', '=', NULL) as $item)
                             <tr>
-                                <td>
+                                <th>
                                     {{ $item->no_urut }}
-                                </td>
+                                </th>
                                 <td>{{ $item->nomor_surat }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</td>
                                 <td>{{ $item->perihal }}</td>
@@ -192,9 +192,9 @@
                         <tbody class="table-border-bottom-0">
                             @forelse ($items->where('tanggal_pimpinan', '=', NULL)->where('tanggal_sekretaris', '!=', NULL) as $item)
                             <tr>
-                                <td>
+                                <th>
                                     {{ $item->no_urut }}
-                                </td>
+                                </th>
                                 <td>{{ $item->nomor_surat }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</td>
                                 <td>{{ $item->perihal }}</td>
@@ -256,9 +256,9 @@
                         <tbody class="table-border-bottom-0">
                             @forelse ($items->where('tanggal_sekretaris', '!=', NULL)->where('tanggal_pimpinan', '!=', NULL) as $item)
                             <tr>
-                                <td>
+                                <th>
                                     {{ $item->no_urut }}
-                                </td>
+                                </th>
                                 <td>{{ $item->nomor_surat }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</td>
                                 <td>{{ $item->perihal }}</td>

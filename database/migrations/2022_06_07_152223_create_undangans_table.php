@@ -15,7 +15,7 @@ class CreateUndangansTable extends Migration
     {
         Schema::create('undangans', function (Blueprint $table) {
             $table->id();
-            $table->integer('no_urut')->unique();
+            $table->string('no_urut');
             $table->string('pengirim');
             $table->string('penerima');
             $table->date('tanggal');

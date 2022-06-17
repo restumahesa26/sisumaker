@@ -66,8 +66,8 @@
                 <div data-i18n="Analytics">Visi Misi</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item @if(Route::is('struktur.*')) active @endif">
+            <a href="{{ route('struktur.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-network-chart"></i>
                 <div data-i18n="Analytics">Struktur</div>
             </a>

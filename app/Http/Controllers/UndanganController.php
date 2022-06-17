@@ -47,7 +47,7 @@ class UndanganController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'no_urut' => ['required', 'integer', 'unique:undangans'],
+            'no_urut' => ['required'],
             'nomor_surat' => ['required', 'string', 'max:255'],
             'tanggal' => ['required', 'date'],
             'perihal' => ['required', 'string', 'max:255'],
@@ -127,6 +127,7 @@ class UndanganController extends Controller
             'perihal' => ['required', 'string', 'max:255'],
             'pengirim' => ['required', 'string', 'max:255'],
             'penerima' => ['required', 'string', 'max:255'],
+            'no_urut' => ['required'],
         ]);
 
         $item = Undangan::findOrFail($id);
@@ -134,12 +135,6 @@ class UndanganController extends Controller
         if ($request->softcopy) {
             $request->validate([
                 'softcopy' => 'required|mimes:jpeg,png,jpg,pdf',
-            ]);
-        }
-
-        if ($id != $item->id) {
-            $request->validate([
-                'no_urut' => ['required', 'integer', 'unique:undangans'],
             ]);
         }
 

@@ -14,8 +14,26 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="no_agenda">Nomor Agenda<sup class="text-sm text-danger" id="pesan-error"></sup></label>
-                            <input type="number" name="no_agenda" id="no_agenda" value="{{ old('no_agenda') }}" placeholder="Masukkan Nomor Agenda" class="form-control @error('no_agenda') is-invalid @enderror" min="1">
+                            <input type="text" name="no_agenda" id="no_agenda" value="{{ old('no_agenda') }}" placeholder="Masukkan Nomor Agenda" class="form-control @error('no_agenda') is-invalid @enderror" min="1">
                             @error('no_agenda')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="nomor_halaman">Nomor Halaman<sup class="text-sm text-danger" id="pesan-error"></sup></label>
+                            <input type="text" name="nomor_halaman" id="nomor_halaman" value="{{ old('nomor_halaman') }}" placeholder="Masukkan Nomor Halaman" class="form-control @error('nomor_halaman') is-invalid @enderror">
+                            @error('nomor_halaman')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="klasifikasi">Klasifikasi<sup class="text-sm text-danger" id="pesan-error"></sup></label>
+                            <input type="text" name="klasifikasi" id="klasifikasi" value="{{ old('klasifikasi') }}" placeholder="Masukkan Klasifikasi" class="form-control @error('klasifikasi') is-invalid @enderror" min="1">
+                            @error('klasifikasi')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -126,13 +144,15 @@
     <script src="{{ url('backend/assets/vendor/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 
     <script>
-        $("#no_agenda").on("change keyup", function() {
+        $("#no_agenda, #nomor_halaman").on("change keyup", function() {
             var no = $('#no_agenda').val();
+            var noHalaman = $('#nomor_halaman').val();
             $.ajax({
                 url: `{{ route('cek-api.no-agenda-surat-keluar') }}`,
                 type: 'get',
                 data: {
                     'no_agenda' : no,
+                    'nomor_halaman' : noHalaman,
                 },
                 dataType: 'json',
                 success: function (response) {

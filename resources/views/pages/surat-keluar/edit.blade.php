@@ -15,8 +15,26 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="no_agenda">Nomor Agenda<sup class="text-sm text-danger" id="pesan-error"></sup></label>
-                            <input type="number" name="no_agenda" id="no_agenda" value="{{ old('no_agenda', $item->no_agenda) }}" placeholder="Masukkan Nomor Agenda" class="form-control @error('no_agenda') is-invalid @enderror" min="1">
+                            <input type="text" name="no_agenda" id="no_agenda" value="{{ old('no_agenda', $item->no_agenda) }}" placeholder="Masukkan Nomor Agenda" class="form-control @error('no_agenda') is-invalid @enderror" min="1">
                             @error('no_agenda')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="nomor_halaman">Nomor Halaman<sup class="text-sm text-danger" id="pesan-error"></sup></label>
+                            <input type="text" name="nomor_halaman" id="nomor_halaman" value="{{ old('nomor_halaman', $item->nomor_halaman) }}" placeholder="Masukkan Nomor Halaman" class="form-control @error('nomor_halaman') is-invalid @enderror">
+                            @error('nomor_halaman')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="klasifikasi">Klasifikasi<sup class="text-sm text-danger" id="pesan-error"></sup></label>
+                            <input type="text" name="klasifikasi" id="klasifikasi" value="{{ old('klasifikasi', $item->klasifikasi) }}" placeholder="Masukkan Klasifikasi" class="form-control @error('klasifikasi') is-invalid @enderror" min="1">
+                            @error('klasifikasi')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -92,6 +110,7 @@
                     </div>
                 </div>
                 <input type="hidden" id="no_agenda_value" value="{{ $item->no_agenda }}">
+                <input type="hidden" id="nomor_halaman_value" value="{{ $item->nomor_halaman }}">
                 <button type="submit" class="btn btn-primary mt-3" id="simpan">Simpan</button>
             </div>
         </div>
@@ -140,12 +159,16 @@
         $("#no_agenda").on("change keyup", function() {
             var no = $('#no_agenda').val();
             var no2 = $('#no_agenda_value').val();
+            var noHalaman = $('#nomor_halaman').val();
+            var noHalaman2 = $('#nomor_halaman_value').val();
             $.ajax({
                 url: `{{ route('cek-api.no-agenda-surat-keluar') }}`,
                 type: 'get',
                 data: {
                     'no_agenda' : no,
                     'no_agenda_2' : no2,
+                    'nomor_halaman' : noHalaman,
+                    'nomor_halaman2' : noHalaman2,
                 },
                 dataType: 'json',
                 success: function (response) {

@@ -50,7 +50,9 @@ class SuratKeluarController extends Controller
     {
         // membuat validasi
         $request->validate([
-            'no_agenda' => ['required', 'unique:surat_keluars'],
+            'no_agenda' => ['required'],
+            'nomor_halaman' => ['required'],
+            'klasifikasi' => ['required'],
             'nomor_surat' => ['required', 'string', 'max:255'],
             'tanggal_surat' => ['required', 'date'],
             'perihal' => ['required', 'string', 'max:255'],
@@ -67,6 +69,8 @@ class SuratKeluarController extends Controller
         // menambah data baru
         SuratKeluar::create([
             'no_agenda' => $request->no_agenda,
+            'nomor_halaman' => $request->nomor_halaman,
+            'klasifikasi' => $request->klasifikasi,
             'nomor_surat' => $request->nomor_surat,
             'tanggal_surat' => $request->tanggal_surat,
             'perihal' => $request->perihal,
@@ -74,7 +78,6 @@ class SuratKeluarController extends Controller
             'penerima' => $request->penerima,
             'keterangan' => $request->keterangan,
             'softcopy' => $fileNames,
-            'tanggal_sekretariat' => Carbon::now()
         ]);
 
         // mengembalikan ke halaman index surat keluar
@@ -89,7 +92,13 @@ class SuratKeluarController extends Controller
      */
     public function show($id)
     {
-        //
+        // ambil data surat masuk berdasarkan id
+        $item = SuratKeluar::findOrFail($id);
+
+        // lempar ke halaman show surat
+        return view('pages.surat-keluar.show', [
+            'item' => $item
+        ]);
     }
 
     /**
@@ -125,6 +134,9 @@ class SuratKeluarController extends Controller
             'perihal' => ['required', 'string', 'max:255'],
             'pengirim' => ['required', 'string', 'max:255'],
             'penerima' => ['required', 'string', 'max:255'],
+            'no_agenda' => ['required'],
+            'nomor_halaman' => ['required'],
+            'klasifikasi' => ['required'],
         ]);
 
         // ambil data surat masuk berdasarkan id
@@ -133,12 +145,6 @@ class SuratKeluarController extends Controller
         if ($request->softcopy) {
             $request->validate([
                 'softcopy' => 'required|mimes:jpeg,png,jpg,pdf',
-            ]);
-        }
-
-        if ($id != $item->id) {
-            $request->validate([
-                'no_agenda' => ['required', 'unique:surat_keluars'],
             ]);
         }
 
@@ -154,6 +160,8 @@ class SuratKeluarController extends Controller
         // lakukan update pada setiap data
         $item->update([
             'no_agenda' => $request->no_agenda,
+            'nomor_halaman' => $request->nomor_halaman,
+            'klasifikasi' => $request->klasifikasi,
             'nomor_surat' => $request->nomor_surat,
             'tanggal_surat' => $request->tanggal_surat,
             'perihal' => $request->perihal,

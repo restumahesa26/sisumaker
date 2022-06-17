@@ -4,7 +4,9 @@
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="d-flex justify-content-between mb-4">
         <h4 class="fw-bold">Data Surat Keluar</h4>
+        @if (Auth::user()->role == 'Sekretariat')
         <a href="{{ route('surat-keluar.create') }}" class="btn btn-primary"><i class="bx bx-plus-circle me-1"></i>Tambah Data</a>
+        @endif
     </div>
     <div class="row">
         <div class="col-lg-12 mb-4 order-0">
@@ -37,9 +39,9 @@
                                 <tbody class="table-border-bottom-0">
                                     @forelse ($items as $item)
                                     <tr>
-                                        <td>
-                                            {{ $item->no_agenda }}
-                                        </td>
+                                        <th>
+                                            {{ $item->nomor_halaman }}.{{ $item->no_agenda }}
+                                        </th>
                                         <td>{{ $item->nomor_surat }}</td>
                                         <td>{{ \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') }}</td>
                                         <td>{{ $item->perihal }}</td>
@@ -50,6 +52,7 @@
                                             </button>
                                         </td>
                                         <td>
+                                            @if (Auth::user()->role == 'Sekretariat')
                                             <a class="btn btn-info btn-sm" href="{{ route('surat-keluar.edit', $item->id) }}">
                                                 <i class="bx bx-edit-alt me-1"></i> Edit
                                             </a>
@@ -60,6 +63,11 @@
                                                     <i class="bx bx-trash me-1"></i>Delete
                                                 </button>
                                             </form>
+                                            @else
+                                            <a class="btn btn-info btn-sm" href="{{ route('surat-keluar.show', $item->id) }}">
+                                                <i class="bx bx-edit-alt me-1"></i> Lihat
+                                            </a>
+                                            @endif
                                         </td>
                                     </tr>
                                     @empty

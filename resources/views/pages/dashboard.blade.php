@@ -90,7 +90,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="text-primary">
-                                <div class="panel-heading"><b>Grafik Surat Masuk, Surat Keluar dan Undangan Hari Ini</b></div>
+                                <div class="panel-heading"><b>Grafik Surat Masuk, Surat Keluar dan Undangan Minggu Ini</b></div>
                                 <div class="panel-body">
                                     <canvas id="canvas" height="280" width="600"></canvas>
                                 </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\SuratMasukDisposisiController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StrukturController;
 use App\Http\Controllers\SuratKeluarController;
 use App\Http\Controllers\SuratMasukController;
 use App\Http\Controllers\UndanganController;
@@ -82,6 +83,8 @@ Route::prefix('dashboard')
         Route::resource('surat-masuk-disposisi', SuratMasukDisposisiController::class);
 
         Route::resource('undangan-disposisi', UndanganDisposisiController::class);
+
+        Route::resource('struktur', StrukturController::class);
 
         Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
 
