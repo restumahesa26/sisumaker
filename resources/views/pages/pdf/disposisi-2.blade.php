@@ -95,7 +95,7 @@
                                     <tr>
                                         <td>Tgl. Surat</td>
                                         <td>:</td>
-                                        <td>{{ \Carbon\Carbon::parse($item->undangan->tanggal_surat)->translatedFormat('d F Y') }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($item->undangan->tanggal)->translatedFormat('d F Y') }}</td>
                                     </tr>
                                 </tbody>
                             </table>
