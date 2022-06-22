@@ -47,12 +47,12 @@ class UndanganController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'no_urut' => ['required'],
-            'nomor_surat' => ['required', 'string', 'max:255'],
+            'no_urut' => ['required', 'numeric'],
+            'nomor_surat' => ['required', 'string', 'max:50'],
             'tanggal' => ['required', 'date'],
-            'perihal' => ['required', 'string', 'max:255'],
-            'pengirim' => ['required', 'string', 'max:255'],
-            'penerima' => ['required', 'string', 'max:255'],
+            'perihal' => ['required', 'string', 'max:100'],
+            'pengirim' => ['required', 'string', 'max:50'],
+            'penerima' => ['required', 'string', 'max:50'],
             'softcopy' => 'required|mimes:jpeg,png,jpg,pdf',
         ]);
 
@@ -122,11 +122,11 @@ class UndanganController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nomor_surat' => ['required', 'string', 'max:255'],
+            'nomor_surat' => ['required', 'string', 'max:50'],
             'tanggal' => ['required', 'date'],
-            'perihal' => ['required', 'string', 'max:255'],
-            'pengirim' => ['required', 'string', 'max:255'],
-            'penerima' => ['required', 'string', 'max:255'],
+            'perihal' => ['required', 'string', 'max:100'],
+            'pengirim' => ['required', 'string', 'max:50'],
+            'penerima' => ['required', 'string', 'max:50'],
             'no_urut' => ['required'],
         ]);
 
@@ -181,7 +181,6 @@ class UndanganController extends Controller
         $query = $request->search;
 
         $items = Undangan::where('nomor_surat','LIKE','%'.$query.'%')->orWhere('perihal','LIKE','%'.$query.'%')->orWhere('pengirim','LIKE','%'.$query.'%')->orWhere('penerima','LIKE','%'.$query.'%')->get();
-        $items->appends(['search' => $query]);
 
         return view('pages.undangan.index', [
             'items' => $items
@@ -226,6 +225,12 @@ class UndanganController extends Controller
 
     public function cetak_tanggal(Request $request)
     {
-        return Excel::download(new UndanganTanggalExport($request->awal, $request->akhir), 'undangan-berdasarkan-tanggal.xlsx');
+        $check = Undangan::whereDate('tanggal', '>=', $request->awal)->whereDate('tanggal', '<=', $request->akhir)->first();
+
+        if ($check != NULL) {
+            return Excel::download(new UndanganTanggalExport($request->awal, $request->akhir), 'undangan-berdasarkan-tanggal.xlsx');
+        }else {
+            return redirect()->back()->with('error', 'Data Kosong');
+        }
     }
 }

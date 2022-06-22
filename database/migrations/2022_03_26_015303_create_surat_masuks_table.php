@@ -15,15 +15,15 @@ class CreateSuratMasuksTable extends Migration
     {
         Schema::create('surat_masuks', function (Blueprint $table) {
             $table->id();
-            $table->string('no_agenda');
-            $table->string('kode_unik')->nullable();
-            $table->string('nomor_surat');
+            $table->string('no_agenda', 20);
+            $table->string('kode_unik', 50)->nullable();
+            $table->string('nomor_surat', 50)->unique();
             $table->date('tanggal_surat');
-            $table->string('perihal');
-            $table->string('pengirim');
-            $table->string('penerima');
-            $table->string('softcopy')->nullable();
-            $table->string('keterangan')->nullable();
+            $table->string('perihal', 100);
+            $table->string('pengirim', 50);
+            $table->string('penerima', 50);
+            $table->string('softcopy', 50)->nullable();
+            $table->string('keterangan', 100)->nullable();
             $table->dateTime('tanggal_sekretariat');
             $table->dateTime('tanggal_sekretaris')->nullable();
             $table->dateTime('tanggal_pimpinan')->nullable();

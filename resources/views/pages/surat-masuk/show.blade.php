@@ -91,10 +91,10 @@
                     </div>
                 </div>
             </div>
-            @if (Auth::user()->role == 'Sekretaris')
+            @if (Auth::user()->role == 'Sekretaris' && $item->tanggal_pimpinan == NULL && $item->tanggal_sekretaris == NULL)
             <a href="{{ route('surat-masuk.verifikasi', $item->id) }}" class="btn btn-primary mt-3 btn-verifikasi">Verifikasi Surat</a>
             @endif
-            @if (Auth::user()->role == 'Pimpinan' && $item->tanggal_sekretaris != NULL)
+            @if (Auth::user()->role == 'Pimpinan' && $item->tanggal_sekretaris != NULL && $item->tanggal_pimpinan == NULL)
             <a href="{{ route('surat-masuk.verifikasi', $item->id) }}" class="btn btn-primary mt-3 btn-verifikasi">Verifikasi Surat</a>
             @endif
         </div>

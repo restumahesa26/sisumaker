@@ -3,23 +3,19 @@
 <div class="footer">
     <div class="container">
         <div class="row justify-content-between">
-            <div class="col-md-4">
+            <div class="col-md-">
                 <div class="footer-col first">
-                    <h4>About Tivo</h4>
-                    <p class="p-small">We're passionate about designing and developing one of the best marketing apps in the market</p>
+                    <h4>ABOUT BAPPEDA PROV. BENGKULU</h4>
+                    <p class="p-small">Sebuah lembaga teknis daerah dibidang penelitian dan perencanaan pembangunan daerah yang dipimpin oleh seorang kepala badan yang berada dibawah dan bertanggung jawab kepada Gubernur melalui Sekretaris Daerah.</p>
                 </div>
             </div> <!-- end of col -->
             <div class="col-md-4">
                 <div class="footer-col last">
-                    <h4>Contact</h4>
+                    <h4>Address</h4>
                     <ul class="list-unstyled li-space-lg p-small">
                         <li class="media">
                             <i class="fas fa-map-marker-alt"></i>
                             <div class="media-body">Jl. Basuki Rachmat No.3, Padang Jati, Ratu Samban, Kota Bengkulu, Bengkulu 38222, Indonesia</div>
-                        </li>
-                        <li class="media">
-                            <i class="fas fa-envelope"></i>
-                            <div class="media-body"><a class="white" href="mailto:contact@tivo.com">contact@tivo.com</a> <i class="fas fa-globe"></i><a class="white" href="#your-link">www.tivo.com</a></div>
                         </li>
                     </ul>
                 </div>

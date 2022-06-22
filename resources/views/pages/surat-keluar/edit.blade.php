@@ -15,7 +15,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="no_agenda">Nomor Agenda<sup class="text-sm text-danger" id="pesan-error"></sup></label>
-                            <input type="text" name="no_agenda" id="no_agenda" value="{{ old('no_agenda', $item->no_agenda) }}" placeholder="Masukkan Nomor Agenda" class="form-control @error('no_agenda') is-invalid @enderror" min="1">
+                            <input type="number" name="no_agenda" id="no_agenda" value="{{ old('no_agenda', $item->no_agenda) }}" placeholder="Masukkan Nomor Agenda" class="form-control @error('no_agenda') is-invalid @enderror" min="1">
                             @error('no_agenda')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -24,7 +24,7 @@
                         </div>
                         <div class="form-group mt-2">
                             <label for="nomor_halaman">Nomor Halaman<sup class="text-sm text-danger" id="pesan-error"></sup></label>
-                            <input type="text" name="nomor_halaman" id="nomor_halaman" value="{{ old('nomor_halaman', $item->nomor_halaman) }}" placeholder="Masukkan Nomor Halaman" class="form-control @error('nomor_halaman') is-invalid @enderror">
+                            <input type="number" name="nomor_halaman" id="nomor_halaman" value="{{ old('nomor_halaman', $item->nomor_halaman) }}" placeholder="Masukkan Nomor Halaman" class="form-control @error('nomor_halaman') is-invalid @enderror">
                             @error('nomor_halaman')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -33,7 +33,7 @@
                         </div>
                         <div class="form-group mt-2">
                             <label for="klasifikasi">Klasifikasi<sup class="text-sm text-danger" id="pesan-error"></sup></label>
-                            <input type="text" name="klasifikasi" id="klasifikasi" value="{{ old('klasifikasi', $item->klasifikasi) }}" placeholder="Masukkan Klasifikasi" class="form-control @error('klasifikasi') is-invalid @enderror" min="1">
+                            <input type="number" name="klasifikasi" id="klasifikasi" value="{{ old('klasifikasi', $item->klasifikasi) }}" placeholder="Masukkan Klasifikasi" class="form-control @error('klasifikasi') is-invalid @enderror" min="1">
                             @error('klasifikasi')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -102,6 +102,15 @@
                             <label for="penerima">Penerima</label>
                             <input type="text" name="penerima" id="penerima" value="{{ old('penerima', $item->penerima) }}" placeholder="Masukkan Penerima" class="form-control @error('penerima') is-invalid @enderror">
                             @error('penerima')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="keterangan">Keterangan</label>
+                            <input type="text" name="keterangan" id="keterangan" value="{{ old('keterangan', $item->keterangan) }}" placeholder="Masukkan Keterangan" class="form-control @error('keterangan') is-invalid @enderror">
+                            @error('keterangan')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

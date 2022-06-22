@@ -38,7 +38,7 @@
                                             Surat dari {{ $item->pengirim }} dengan Nomor Surat : {{ $item->nomor_surat }}
                                             @if ($item->tanggal_sekretaris == NULL)
                                                 <span class="badge bg-primary">Sedang Diverifikasi oleh Sekretaris</span>
-                                            @elseif ($item->tanggal_pimpinan == NULL && $item->sekretaris != NULL)
+                                            @elseif ($item->tanggal_pimpinan == NULL && $item->tanggal_sekretaris != NULL)
                                                 <span class="badge bg-warning">Sedang Diverifikasi oleh Pimpinan</span>
                                             @endif
                                         </li>

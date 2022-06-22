@@ -1,0 +1,911 @@
+[
+    {
+        "id": "1",
+        "text": "Chairman & CEO",
+        "title": "Mufti Restu Mahesa",
+        "img": "https://snippet.dhtmlx.com/codebase/data/diagram/01/img/avatar-01.png",
+        "type": "img-card",
+        "width": 210,
+        "height": 90,
+        "headerColor": "#FF9800",
+        "fixed": false,
+        "editable": true,
+        "x": 400,
+        "y": 0,
+        "stroke": "#FF9800"
+    },
+    {
+        "id": "2",
+        "text": "QA Lead",
+        "title": "Emma Lynch",
+        "img": "https://snippet.dhtmlx.com/codebase/data/diagram/01/img/avatar-02.png",
+        "parent": 1,
+        "dir": "vertical",
+        "type": "img-card",
+        "width": 210,
+        "height": 90,
+        "headerColor": "#607D8B",
+        "fixed": false,
+        "editable": true,
+        "x": 0,
+        "y": 130,
+        "stroke": "#607D8B"
+    },
+    {
+        "id": "2.1",
+        "text": "QA",
+        "title": "Charles Little",
+        "img": "https://snippet.dhtmlx.com/codebase/data/diagram/01/img/avatar-03.png",
+        "parent": 2,
+        "type": "img-card",
+        "width": 210,
+        "height": 90,
+        "headerColor": "#00C7B5",
+        "fixed": false,
+        "editable": true,
+        "x": 20,
+        "y": 260,
+        "stroke": "#00C7B5"
+    },
+    {
+        "id": "2.2",
+        "text": "QA",
+        "title": "Douglas Riley",
+        "img": "https://snippet.dhtmlx.com/codebase/data/diagram/01/img/avatar-04.png",
+        "parent": 2,
+        "type": "img-card",
+        "width": 210,
+        "height": 90,
+        "headerColor": "#00C7B5",
+        "fixed": false,
+        "editable": true,
+        "x": 20,
+        "y": 390,
+        "stroke": "#00C7B5"
+    },
+    {
+        "id": "2.3",
+        "text": "QA",
+        "title": "Eugene Foster",
+        "img": "https://snippet.dhtmlx.com/codebase/data/diagram/01/img/avatar-05.png",
+        "parent": 2,
+        "type": "img-card",
+        "width": 210,
+        "height": 90,
+        "headerColor": "#00C7B5",
+        "fixed": false,
+        "editable": true,
+        "x": 20,
+        "y": 520,
+        "stroke": "#00C7B5"
+    },
+    {
+        "id": "3",
+        "text": "Technical Director",
+        "title": "Jerry Wagner",
+        "img": "https://snippet.dhtmlx.com/codebase/data/diagram/01/img/avatar-06.png",
+        "parent": 1,
+        "type": "img-card",
+        "width": 210,
+        "height": 90,
+        "headerColor": "#607D8B",
+        "fixed": false,
+        "editable": true,
+        "x": 400,
+        "y": 130,
+        "stroke": "#607D8B"
+    },
+    {
+        "id": "3.1",
+        "text": "Team Lead",
+        "title": "Mark Nichols",
+        "img": "https://snippet.dhtmlx.com/codebase/data/diagram/01/img/avatar-07.png",
+        "parent": 3,
+        "type": "img-card",
+        "width": 210,
+        "height": 90,
+        "headerColor": "#00C7B5",
+        "fixed": false,
+        "editable": true,
+        "x": 270,
+        "y": 260,
+        "stroke": "#00C7B5"
+    },
+    {
+        "id": "3.1.1",
+        "text": "Programmer",
+        "title": "Sean Parker",
+        "img": "https://snippet.dhtmlx.com/codebase/data/diagram/01/img/avatar-08.png",
+        "parent": 3.1,
+        "open": false,
+        "type": "img-card",
+        "width": 210,
+        "height": 90,
+        "headerColor": "#03A9F4",
+        "fixed": false,
+        "editable": true,
+        "x": 270,
+        "y": 390,
+        "stroke": "#03A9F4"
+    },
+    {
+        "id": "3.1.1.1",
+        "text": "Junior",
+        "title": "Laura Alvarez",
+        "img": "https://snippet.dhtmlx.com/codebase/data/diagram/01/img/avatar-09.png",
+        "parent": "3.1.1",
+        "type": "img-card",
+        "width": 210,
+        "height": 90,
+        "headerColor": "#9575CD",
+        "fixed": false,
+        "editable": true,
+        "stroke": "#9575CD"
+    },
+    {
+        "id": "4",
+        "text": "Manager",
+        "title": "Jonathan Lane",
+        "img": "https://snippet.dhtmlx.com/codebase/data/diagram/01/img/avatar-10.png",
+        "parent": "1",
+        "dir": "vertical",
+        "type": "img-card",
+        "width": 210,
+        "height": 90,
+        "headerColor": "#607D8B",
+        "fixed": false,
+        "editable": true,
+        "x": 770,
+        "y": 130,
+        "stroke": "#607D8B"
+    },
+    {
+        "id": "4.1",
+        "text": "Marketer",
+        "title": "Sandra Butler",
+        "img": "https://snippet.dhtmlx.com/codebase/data/diagram/01/img/avatar-11.png",
+        "parent": "4",
+        "type": "img-card",
+        "width": 210,
+        "height": 90,
+        "headerColor": "#00C7B5",
+        "fixed": false,
+        "editable": true,
+        "x": 790,
+        "y": 260,
+        "stroke": "#00C7B5"
+    },
+    {
+        "id": "4.2",
+        "text": "Designer",
+        "title": "Julie Green",
+        "img": "https://snippet.dhtmlx.com/codebase/data/diagram/01/img/avatar-12.png",
+        "parent": "4",
+        "type": "img-card",
+        "width": 210,
+        "height": 90,
+        "headerColor": "#00C7B5",
+        "fixed": false,
+        "editable": true,
+        "x": 790,
+        "y": 390,
+        "stroke": "#00C7B5"
+    },
+    {
+        "id": "4.3",
+        "text": "Sales Manager",
+        "title": "Richard Hicks",
+        "img": "https://snippet.dhtmlx.com/codebase/data/diagram/01/img/avatar-13.png",
+        "parent": "4",
+        "type": "img-card",
+        "width": 210,
+        "height": 90,
+        "headerColor": "#00C7B5",
+        "fixed": false,
+        "editable": true,
+        "x": 790,
+        "y": 520,
+        "stroke": "#00C7B5"
+    },
+    {
+        "id": "3.2",
+        "text": "Team Lead",
+        "title": "Nicholas Cruz",
+        "img": "https://snippet.dhtmlx.com/codebase/data/diagram/01/img/avatar-14.png",
+        "parent": 3,
+        "type": "img-card",
+        "width": 210,
+        "height": 90,
+        "headerColor": "#00C7B5",
+        "fixed": false,
+        "editable": true,
+        "x": 520,
+        "y": 260,
+        "stroke": "#00C7B5"
+    },
+    {
+        "id": "3.2.1",
+        "text": "Programmer",
+        "title": "Michael Shaw",
+        "img": "https://snippet.dhtmlx.com/codebase/data/diagram/01/img/avatar-15.png",
+        "parent": "3.2",
+        "type": "img-card",
+        "width": 210,
+        "height": 90,
+        "headerColor": "#03A9F4",
+        "fixed": false,
+        "editable": true,
+        "x": 520,
+        "y": 390,
+        "stroke": "#03A9F4"
+    },
+    {
+        "id": "3.2.1.1",
+        "text": "Junior",
+        "title": "John Flores",
+        "img": "https://snippet.dhtmlx.com/codebase/data/diagram/01/img/avatar-16.png",
+        "parent": "3.2.1",
+        "type": "img-card",
+        "width": 210,
+        "height": 90,
+        "headerColor": "#9575CD",
+        "fixed": false,
+        "editable": true,
+        "x": 520,
+        "y": 520,
+        "stroke": "#9575CD"
+    },
+    {
+        "from": 1,
+        "to": "2",
+        "id": "u1655603087786",
+        "type": "line",
+        "connectType": "elbow",
+        "stroke": "#CCC",
+        "strokeWidth": 2,
+        "cornersRadius": 0,
+        "title": {
+            "fontSize": 14,
+            "lineHeight": 14,
+            "textAlign": "center",
+            "textVerticalAlign": "center",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+            "fontColor": "#4C4C4C",
+            "fill": "#FFF",
+            "draggable": true,
+            "editable": true,
+            "hidden": false
+        },
+        "points": [
+            {
+                "x": 505,
+                "y": 90
+            },
+            {
+                "x": 505,
+                "y": 110
+            },
+            {
+                "x": 105,
+                "y": 110
+            },
+            {
+                "x": 105,
+                "y": 130
+            }
+        ],
+        "width": 400,
+        "height": 40,
+        "x": 505,
+        "y": 90
+    },
+    {
+        "from": 2,
+        "to": "2.1",
+        "id": "u1655603087787",
+        "type": "line",
+        "connectType": "elbow",
+        "stroke": "#CCC",
+        "strokeWidth": 2,
+        "cornersRadius": 0,
+        "title": {
+            "fontSize": 14,
+            "lineHeight": 14,
+            "textAlign": "center",
+            "textVerticalAlign": "center",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+            "fontColor": "#4C4C4C",
+            "fill": "#FFF",
+            "draggable": true,
+            "editable": true,
+            "hidden": false
+        },
+        "points": [
+            {
+                "x": 0,
+                "y": 175
+            },
+            {
+                "x": -19.5,
+                "y": 175
+            },
+            {
+                "x": -19.5,
+                "y": 305
+            },
+            {
+                "x": 20,
+                "y": 305
+            }
+        ],
+        "width": 20,
+        "height": 130,
+        "x": 0,
+        "y": 175
+    },
+    {
+        "from": 2,
+        "to": "2.2",
+        "id": "u1655603087788",
+        "type": "line",
+        "connectType": "elbow",
+        "stroke": "#CCC",
+        "strokeWidth": 2,
+        "cornersRadius": 0,
+        "title": {
+            "fontSize": 14,
+            "lineHeight": 14,
+            "textAlign": "center",
+            "textVerticalAlign": "center",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+            "fontColor": "#4C4C4C",
+            "fill": "#FFF",
+            "draggable": true,
+            "editable": true,
+            "hidden": false
+        },
+        "points": [
+            {
+                "x": 0,
+                "y": 175
+            },
+            {
+                "x": -19.5,
+                "y": 175
+            },
+            {
+                "x": -19.5,
+                "y": 435
+            },
+            {
+                "x": 20,
+                "y": 435
+            }
+        ],
+        "width": 20,
+        "height": 260,
+        "x": 0,
+        "y": 175
+    },
+    {
+        "from": 2,
+        "to": "2.3",
+        "id": "u1655603087789",
+        "type": "line",
+        "connectType": "elbow",
+        "stroke": "#CCC",
+        "strokeWidth": 2,
+        "cornersRadius": 0,
+        "title": {
+            "fontSize": 14,
+            "lineHeight": 14,
+            "textAlign": "center",
+            "textVerticalAlign": "center",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+            "fontColor": "#4C4C4C",
+            "fill": "#FFF",
+            "draggable": true,
+            "editable": true,
+            "hidden": false
+        },
+        "points": [
+            {
+                "x": 0,
+                "y": 175
+            },
+            {
+                "x": -19.5,
+                "y": 175
+            },
+            {
+                "x": -19.5,
+                "y": 565
+            },
+            {
+                "x": 20,
+                "y": 565
+            }
+        ],
+        "width": 20,
+        "height": 390,
+        "x": 0,
+        "y": 175
+    },
+    {
+        "from": 1,
+        "to": "3",
+        "id": "u1655603087790",
+        "type": "line",
+        "connectType": "elbow",
+        "stroke": "#CCC",
+        "strokeWidth": 2,
+        "cornersRadius": 0,
+        "title": {
+            "fontSize": 14,
+            "lineHeight": 14,
+            "textAlign": "center",
+            "textVerticalAlign": "center",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+            "fontColor": "#4C4C4C",
+            "fill": "#FFF",
+            "draggable": true,
+            "editable": true,
+            "hidden": false
+        },
+        "points": [
+            {
+                "x": 505,
+                "y": 90
+            },
+            {
+                "x": 505,
+                "y": 110
+            },
+            {
+                "x": 505,
+                "y": 110
+            },
+            {
+                "x": 505,
+                "y": 130
+            }
+        ],
+        "width": 0,
+        "height": 40,
+        "x": 505,
+        "y": 90
+    },
+    {
+        "from": 3,
+        "to": "3.1",
+        "id": "u1655603087791",
+        "type": "line",
+        "connectType": "elbow",
+        "stroke": "#CCC",
+        "strokeWidth": 2,
+        "cornersRadius": 0,
+        "title": {
+            "fontSize": 14,
+            "lineHeight": 14,
+            "textAlign": "center",
+            "textVerticalAlign": "center",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+            "fontColor": "#4C4C4C",
+            "fill": "#FFF",
+            "draggable": true,
+            "editable": true,
+            "hidden": false
+        },
+        "points": [
+            {
+                "x": 505,
+                "y": 220
+            },
+            {
+                "x": 505,
+                "y": 240
+            },
+            {
+                "x": 375,
+                "y": 240
+            },
+            {
+                "x": 375,
+                "y": 260
+            }
+        ],
+        "width": 130,
+        "height": 40,
+        "x": 505,
+        "y": 220
+    },
+    {
+        "from": 3.1,
+        "to": "3.1.1",
+        "id": "u1655603087792",
+        "type": "line",
+        "connectType": "elbow",
+        "stroke": "#CCC",
+        "strokeWidth": 2,
+        "cornersRadius": 0,
+        "title": {
+            "fontSize": 14,
+            "lineHeight": 14,
+            "textAlign": "center",
+            "textVerticalAlign": "center",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+            "fontColor": "#4C4C4C",
+            "fill": "#FFF",
+            "draggable": true,
+            "editable": true,
+            "hidden": false
+        },
+        "points": [
+            {
+                "x": 375,
+                "y": 350
+            },
+            {
+                "x": 375,
+                "y": 370
+            },
+            {
+                "x": 375,
+                "y": 370
+            },
+            {
+                "x": 375,
+                "y": 390
+            }
+        ],
+        "width": 0,
+        "height": 40,
+        "x": 375,
+        "y": 350
+    },
+    {
+        "from": "3.1.1",
+        "to": "3.1.1.1",
+        "id": "u1655603087793",
+        "type": "line",
+        "connectType": "elbow",
+        "stroke": "#CCC",
+        "strokeWidth": 2,
+        "cornersRadius": 0,
+        "title": {
+            "fontSize": 14,
+            "lineHeight": 14,
+            "textAlign": "center",
+            "textVerticalAlign": "center",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+            "fontColor": "#4C4C4C",
+            "fill": "#FFF",
+            "draggable": true,
+            "editable": true,
+            "hidden": false
+        }
+    },
+    {
+        "from": "1",
+        "to": "4",
+        "id": "u1655603087794",
+        "type": "line",
+        "connectType": "elbow",
+        "stroke": "#CCC",
+        "strokeWidth": 2,
+        "cornersRadius": 0,
+        "title": {
+            "fontSize": 14,
+            "lineHeight": 14,
+            "textAlign": "center",
+            "textVerticalAlign": "center",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+            "fontColor": "#4C4C4C",
+            "fill": "#FFF",
+            "draggable": true,
+            "editable": true,
+            "hidden": false
+        },
+        "points": [
+            {
+                "x": 505,
+                "y": 90
+            },
+            {
+                "x": 505,
+                "y": 110
+            },
+            {
+                "x": 875,
+                "y": 110
+            },
+            {
+                "x": 875,
+                "y": 130
+            }
+        ],
+        "width": 370,
+        "height": 40,
+        "x": 505,
+        "y": 90
+    },
+    {
+        "from": "4",
+        "to": "4.1",
+        "id": "u1655603087795",
+        "type": "line",
+        "connectType": "elbow",
+        "stroke": "#CCC",
+        "strokeWidth": 2,
+        "cornersRadius": 0,
+        "title": {
+            "fontSize": 14,
+            "lineHeight": 14,
+            "textAlign": "center",
+            "textVerticalAlign": "center",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+            "fontColor": "#4C4C4C",
+            "fill": "#FFF",
+            "draggable": true,
+            "editable": true,
+            "hidden": false
+        },
+        "points": [
+            {
+                "x": 770,
+                "y": 175
+            },
+            {
+                "x": 750.5,
+                "y": 175
+            },
+            {
+                "x": 750.5,
+                "y": 305
+            },
+            {
+                "x": 790,
+                "y": 305
+            }
+        ],
+        "width": 20,
+        "height": 130,
+        "x": 770,
+        "y": 175
+    },
+    {
+        "from": "4",
+        "to": "4.2",
+        "id": "u1655603087796",
+        "type": "line",
+        "connectType": "elbow",
+        "stroke": "#CCC",
+        "strokeWidth": 2,
+        "cornersRadius": 0,
+        "title": {
+            "fontSize": 14,
+            "lineHeight": 14,
+            "textAlign": "center",
+            "textVerticalAlign": "center",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+            "fontColor": "#4C4C4C",
+            "fill": "#FFF",
+            "draggable": true,
+            "editable": true,
+            "hidden": false
+        },
+        "points": [
+            {
+                "x": 770,
+                "y": 175
+            },
+            {
+                "x": 750.5,
+                "y": 175
+            },
+            {
+                "x": 750.5,
+                "y": 435
+            },
+            {
+                "x": 790,
+                "y": 435
+            }
+        ],
+        "width": 20,
+        "height": 260,
+        "x": 770,
+        "y": 175
+    },
+    {
+        "from": "4",
+        "to": "4.3",
+        "id": "u1655603087797",
+        "type": "line",
+        "connectType": "elbow",
+        "stroke": "#CCC",
+        "strokeWidth": 2,
+        "cornersRadius": 0,
+        "title": {
+            "fontSize": 14,
+            "lineHeight": 14,
+            "textAlign": "center",
+            "textVerticalAlign": "center",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+            "fontColor": "#4C4C4C",
+            "fill": "#FFF",
+            "draggable": true,
+            "editable": true,
+            "hidden": false
+        },
+        "points": [
+            {
+                "x": 770,
+                "y": 175
+            },
+            {
+                "x": 750.5,
+                "y": 175
+            },
+            {
+                "x": 750.5,
+                "y": 565
+            },
+            {
+                "x": 790,
+                "y": 565
+            }
+        ],
+        "width": 20,
+        "height": 390,
+        "x": 770,
+        "y": 175
+    },
+    {
+        "from": 3,
+        "to": "3.2",
+        "id": "u1655603087798",
+        "type": "line",
+        "connectType": "elbow",
+        "stroke": "#CCC",
+        "strokeWidth": 2,
+        "cornersRadius": 0,
+        "title": {
+            "fontSize": 14,
+            "lineHeight": 14,
+            "textAlign": "center",
+            "textVerticalAlign": "center",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+            "fontColor": "#4C4C4C",
+            "fill": "#FFF",
+            "draggable": true,
+            "editable": true,
+            "hidden": false
+        },
+        "points": [
+            {
+                "x": 505,
+                "y": 220
+            },
+            {
+                "x": 505,
+                "y": 240
+            },
+            {
+                "x": 625,
+                "y": 240
+            },
+            {
+                "x": 625,
+                "y": 260
+            }
+        ],
+        "width": 120,
+        "height": 40,
+        "x": 505,
+        "y": 220
+    },
+    {
+        "from": "3.2",
+        "to": "3.2.1",
+        "id": "u1655603087799",
+        "type": "line",
+        "connectType": "elbow",
+        "stroke": "#CCC",
+        "strokeWidth": 2,
+        "cornersRadius": 0,
+        "title": {
+            "fontSize": 14,
+            "lineHeight": 14,
+            "textAlign": "center",
+            "textVerticalAlign": "center",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+            "fontColor": "#4C4C4C",
+            "fill": "#FFF",
+            "draggable": true,
+            "editable": true,
+            "hidden": false
+        },
+        "points": [
+            {
+                "x": 625,
+                "y": 350
+            },
+            {
+                "x": 625,
+                "y": 370
+            },
+            {
+                "x": 625,
+                "y": 370
+            },
+            {
+                "x": 625,
+                "y": 390
+            }
+        ],
+        "width": 0,
+        "height": 40,
+        "x": 625,
+        "y": 350
+    },
+    {
+        "from": "3.2.1",
+        "to": "3.2.1.1",
+        "id": "u1655603087800",
+        "type": "line",
+        "connectType": "elbow",
+        "stroke": "#CCC",
+        "strokeWidth": 2,
+        "cornersRadius": 0,
+        "title": {
+            "fontSize": 14,
+            "lineHeight": 14,
+            "textAlign": "center",
+            "textVerticalAlign": "center",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+            "fontColor": "#4C4C4C",
+            "fill": "#FFF",
+            "draggable": true,
+            "editable": true,
+            "hidden": false
+        },
+        "points": [
+            {
+                "x": 625,
+                "y": 480
+            },
+            {
+                "x": 625,
+                "y": 500
+            },
+            {
+                "x": 625,
+                "y": 500
+            },
+            {
+                "x": 625,
+                "y": 520
+            }
+        ],
+        "width": 0,
+        "height": 40,
+        "x": 625,
+        "y": 480
+    }
+]

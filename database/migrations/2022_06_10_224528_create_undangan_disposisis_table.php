@@ -16,9 +16,9 @@ class CreateUndanganDisposisisTable extends Migration
         Schema::create('undangan_disposisis', function (Blueprint $table) {
             $table->id();
             $table->foreignId('undangan_id')->references('id')->on('undangans')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('tujuan');
-            $table->string('tindak_lanjut');
-            $table->string('catatan')->nullable();
+            $table->string('tujuan', 100);
+            $table->string('tindak_lanjut', 50);
+            $table->string('catatan', 100)->nullable();
             $table->timestamps();
         });
     }

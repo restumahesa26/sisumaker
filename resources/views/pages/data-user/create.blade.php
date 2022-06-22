@@ -37,7 +37,7 @@
                             <label for="nip">NIP</label>
                             <input type="text" name="nip" id="nip" value="{{ old('nip') }}" placeholder="Masukkan NIP"
                                 class="form-control @error('nip') is-invalid @enderror">
-                            @error('username')
+                            @error('nip')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

@@ -15,8 +15,8 @@ class CreateStruktursTable extends Migration
     {
         Schema::create('strukturs', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('jabatan');
+            $table->string('nama', 100);
+            $table->string('jabatan', 100);
             $table->timestamps();
         });
     }

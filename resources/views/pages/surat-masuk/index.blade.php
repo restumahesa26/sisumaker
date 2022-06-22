@@ -8,7 +8,7 @@
             <a href="{{ route('surat-masuk.create') }}" class="btn btn-primary"><i class="bx bx-plus-circle me-1"></i>Tambah Data</a>
         @endif
     </div>
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-8">
             <form action="{{ route('surat-masuk.cari-surat') }}" method="get">
                 <input type="search" name="search" id="search" placeholder="Cari surat berdasarkan nomor surat, perihal, pengirim, atau penerima" class="form-control mb-3 w-100">
@@ -17,7 +17,7 @@
         <div class="col-2">
             <a href="{{ route('surat-masuk.index') }}" class="btn btn-primary">Refresh</a>
         </div>
-    </div>
+    </div> --}}
     <div class="nav-align-top mb-4">
         <ul class="nav nav-pills mb-3" role="tablist">
             <li class="nav-item">
@@ -66,9 +66,9 @@
                         <tbody class="table-border-bottom-0">
                             @forelse ($items as $item)
                             <tr>
-                                <td>
+                                <th>
                                     {{ $item->no_agenda }}
-                                </td>
+                                </th>
                                 <td>{{ $item->nomor_surat }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') }}</td>
                                 <td>{{ $item->perihal }}</td>
@@ -130,9 +130,9 @@
                         <tbody class="table-border-bottom-0">
                             @forelse ($items->where('tanggal_sekretaris', '=', NULL) as $item)
                             <tr>
-                                <td>
+                                <th>
                                     {{ $item->no_agenda }}
-                                </td>
+                                </th>
                                 <td>{{ $item->nomor_surat }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') }}</td>
                                 <td>{{ $item->perihal }}</td>
@@ -194,9 +194,9 @@
                         <tbody class="table-border-bottom-0">
                             @forelse ($items->where('tanggal_pimpinan', '=', NULL)->where('tanggal_sekretaris', '!=', NULL) as $item)
                             <tr>
-                                <td>
+                                <th>
                                     {{ $item->no_agenda }}
-                                </td>
+                                </th>
                                 <td>{{ $item->nomor_surat }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') }}</td>
                                 <td>{{ $item->perihal }}</td>
@@ -258,9 +258,9 @@
                         <tbody class="table-border-bottom-0">
                             @forelse ($items->where('tanggal_sekretaris', '!=', NULL)->where('tanggal_pimpinan', '!=', NULL) as $item)
                             <tr>
-                                <td>
+                                <th>
                                     {{ $item->no_agenda }}
-                                </td>
+                                </th>
                                 <td>{{ $item->nomor_surat }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') }}</td>
                                 <td>{{ $item->perihal }}</td>

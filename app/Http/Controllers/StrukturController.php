@@ -40,8 +40,8 @@ class StrukturController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => ['required', 'string', 'max:255'],
-            'jabatan' => ['required', 'string', 'max:255', 'unique:strukturs']
+            'nama' => ['required', 'string', 'max:100'],
+            'jabatan' => ['required', 'string', 'max:50', 'unique:strukturs']
         ]);
 
         Struktur::create([
@@ -88,14 +88,14 @@ class StrukturController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => ['required', 'string', 'max:255'],
+            'nama' => ['required', 'string', 'max:100'],
         ]);
 
         $item = Struktur::findOrFail($id);
 
         if ($request->jabatan != $item->jabatan) {
             $request->validate([
-                'jabatan' => ['required', 'string', 'max:255', 'unique:strukturs']
+                'jabatan' => ['required', 'string', 'max:50', 'unique:strukturs']
             ]);
         }
 
@@ -115,6 +115,10 @@ class StrukturController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Struktur::findOrFail($id);
+
+        $item->delete();
+
+        return redirect()->route('struktur.index')->with('success', 'Berhasil Menghapus Data Struktur');
     }
 }

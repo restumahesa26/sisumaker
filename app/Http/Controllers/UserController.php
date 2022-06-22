@@ -47,11 +47,11 @@ class UserController extends Controller
     {
         // membuat validasi
         $request->validate([
-            'nama' => ['required', 'string', 'max:255'],
+            'nama' => ['required', 'string', 'max:100'],
             'username' => ['required', 'string', 'max:255'],
-            'role' => ['required', 'in:Operator,Pimpinan,Admin'],
-            'nip' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'role' => ['required', 'in:Sekretariat,Sekretaris,Pimpinan'],
+            'nip' => ['required', 'string', 'max:18', 'min:18'],
+            'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -111,16 +111,16 @@ class UserController extends Controller
 
         // membuat validasi untuk nama, username, dan nip
         $request->validate([
-            'nama' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255'],
-            'nip' => ['required', 'string', 'max:255'],
+            'nama' => ['required', 'string', 'max:100'],
+            'username' => ['required', 'string', 'max:50'],
+            'nip' => ['required', 'string', 'max:18', 'min:18'],
             'role' => ['required', 'in:Operator,Pimpinan,Admin'],
         ]);
 
         // membuat validasi untuk email
         if ($request->email !== $item->email) {
             $request->validate([
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
             ]);
         }
 

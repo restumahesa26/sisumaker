@@ -16,9 +16,9 @@ class CreateSuratMasukDisposisisTable extends Migration
         Schema::create('surat_masuk_disposisis', function (Blueprint $table) {
             $table->id();
             $table->foreignId('surat_masuk_id')->references('id')->on('surat_masuks')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('tujuan');
-            $table->string('tindak_lanjut');
-            $table->string('catatan')->nullable();
+            $table->string('tujuan', 100);
+            $table->string('tindak_lanjut', 50);
+            $table->string('catatan', 100)->nullable();
             $table->timestamps();
         });
     }

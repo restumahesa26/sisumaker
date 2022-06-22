@@ -15,18 +15,18 @@ class CreateUndangansTable extends Migration
     {
         Schema::create('undangans', function (Blueprint $table) {
             $table->id();
-            $table->string('no_urut');
-            $table->string('pengirim');
-            $table->string('penerima');
+            $table->string('no_urut', 20);
+            $table->string('kode_unik', 50)->nullable();
+            $table->string('pengirim', 50);
+            $table->string('penerima', 50);
             $table->date('tanggal');
-            $table->string('nomor_surat');
-            $table->string('perihal');
-            $table->string('keterangan')->nullable();
-            $table->string('softcopy')->nullable();
+            $table->string('nomor_surat', 50)->unique();
+            $table->string('perihal', 100);
+            $table->string('keterangan', 100)->nullable();
+            $table->string('softcopy', 50)->nullable();
             $table->dateTime('tanggal_sekretariat');
             $table->dateTime('tanggal_sekretaris')->nullable();
             $table->dateTime('tanggal_pimpinan')->nullable();
-            $table->string('kode_unik')->nullable();
             $table->timestamps();
         });
     }

@@ -53,12 +53,12 @@ class SuratMasukController extends Controller
     {
         // membuat validasi
         $request->validate([
-            'no_agenda' => ['required', 'unique:surat_masuks'],
-            'nomor_surat' => ['required', 'string', 'max:255'],
+            'no_agenda' => ['required', 'unique:surat_masuks', 'numeric'],
+            'nomor_surat' => ['required', 'string', 'max:50', 'unique:surat_masuks',],
             'tanggal_surat' => ['required', 'date'],
-            'perihal' => ['required', 'string', 'max:255'],
-            'pengirim' => ['required', 'string', 'max:255'],
-            'penerima' => ['required', 'string', 'max:255'],
+            'perihal' => ['required', 'string', 'max:100'],
+            'pengirim' => ['required', 'string', 'max:50'],
+            'penerima' => ['required', 'string', 'max:50'],
             'softcopy' => 'required|mimes:jpeg,png,jpg,pdf',
         ]);
 
@@ -133,11 +133,10 @@ class SuratMasukController extends Controller
     {
         // membuat validasi
         $request->validate([
-            'nomor_surat' => ['required', 'string', 'max:255'],
             'tanggal_surat' => ['required', 'date'],
-            'perihal' => ['required', 'string', 'max:255'],
-            'pengirim' => ['required', 'string', 'max:255'],
-            'penerima' => ['required', 'string', 'max:255'],
+            'perihal' => ['required', 'string', 'max:100'],
+            'pengirim' => ['required', 'string', 'max:50'],
+            'penerima' => ['required', 'string', 'max:50'],
         ]);
 
         if ($request->softcopy) {
@@ -149,9 +148,15 @@ class SuratMasukController extends Controller
         // ambil data surat masuk berdasarkan id
         $item = SuratMasuk::findOrFail($id);
 
-        if ($id != $item->id) {
+        if ($request->no_agenda != $item->no_agenda) {
             $request->validate([
-                'no_agenda' => ['required', 'unique:surat_masuks'],
+                'no_agenda' => ['required', 'unique:surat_masuks', 'numeric'],
+            ]);
+        }
+
+        if ($request->nomor_surat != $item->nomor_surat) {
+            $request->validate([
+                'nomor_surat' => ['required', 'unique:surat_masuks', 'string', 'max:50'],
             ]);
         }
 
@@ -238,8 +243,7 @@ class SuratMasukController extends Controller
     {
         $query = $request->search;
 
-        $items = SuratMasuk::where('nomor_surat','LIKE','%'.$query.'%')->orWhere('perihal','LIKE','%'.$query.'%')->orWhere('pengirim','LIKE','%'.$query.'%')->orWhere('penerima','LIKE','%'.$query.'%')->get();
-        $items->appends(['search' => $query]);
+        $items = SuratMasuk::where('nomor_surat','LIKE','%'.$query.'%')->orWhere('perihal','LIKE','%'.$query.'%')->orWhere('pengirim','LIKE','%'.$query.'%')->orWhere('penerima','LIKE','%'.$query.'%')->get();;
 
         return view('pages.surat-masuk.index', [
             'items' => $items
@@ -248,6 +252,12 @@ class SuratMasukController extends Controller
 
     public function cetak_tanggal(Request $request)
     {
-        return Excel::download(new SuratMasukTanggalExport($request->awal, $request->akhir), 'surat-masuk-berdasarkan-tanggal.xlsx');
+        $check = SuratMasuk::whereDate('tanggal_surat', '>=', $request->awal)->whereDate('tanggal_surat', '<=', $request->akhir)->first();
+
+        if ($check != NULL) {
+            return Excel::download(new SuratMasukTanggalExport($request->awal, $request->akhir), 'surat-masuk-berdasarkan-tanggal.xlsx');
+        }else {
+            return redirect()->back()->with('error', 'Data Kosong');
+        }
     }
 }

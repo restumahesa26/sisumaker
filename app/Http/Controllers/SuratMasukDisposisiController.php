@@ -38,8 +38,8 @@ class SuratMasukDisposisiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'tujuan' => ['required', 'string', 'max:255'],
-            'tindak_lanjut' => ['required', 'string', 'max:255'],
+            'tujuan' => ['required', 'string', 'max:50'],
+            'tindak_lanjut' => ['required', 'string', 'max:50'],
         ]);
 
         SuratMasukDisposisi::create([
@@ -84,8 +84,8 @@ class SuratMasukDisposisiController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'tujuan' => ['required', 'string', 'max:255'],
-            'tindak_lanjut' => ['required', 'string', 'max:255'],
+            'tujuan' => ['required', 'string', 'max:50'],
+            'tindak_lanjut' => ['required', 'string', 'max:50'],
         ]);
 
         $item = SuratMasukDisposisi::findOrFail($id);

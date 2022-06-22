@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\SuratKeluarExport;
 use App\Exports\SuratKeluarTanggalExport;
 use App\Models\SuratKeluar;
+use App\Models\SuratMasuk;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,14 +51,14 @@ class SuratKeluarController extends Controller
     {
         // membuat validasi
         $request->validate([
-            'no_agenda' => ['required'],
-            'nomor_halaman' => ['required'],
-            'klasifikasi' => ['required'],
-            'nomor_surat' => ['required', 'string', 'max:255'],
+            'no_agenda' => ['required', 'numeric'],
+            'nomor_halaman' => ['required', 'numeric'],
+            'klasifikasi' => ['required', 'numeric'],
+            'nomor_surat' => ['required', 'string', 'max:50', 'unique:surat_keluars'],
             'tanggal_surat' => ['required', 'date'],
-            'perihal' => ['required', 'string', 'max:255'],
-            'pengirim' => ['required', 'string', 'max:255'],
-            'penerima' => ['required', 'string', 'max:255'],
+            'perihal' => ['required', 'string', 'max:100'],
+            'pengirim' => ['required', 'string', 'max:50'],
+            'penerima' => ['required', 'string', 'max:50'],
             'softcopy' => 'required|mimes:jpeg,png,jpg,pdf',
         ]);
 
@@ -129,14 +130,13 @@ class SuratKeluarController extends Controller
     {
         // membuat validasi
         $request->validate([
-            'nomor_surat' => ['required', 'string', 'max:255'],
             'tanggal_surat' => ['required', 'date'],
-            'perihal' => ['required', 'string', 'max:255'],
-            'pengirim' => ['required', 'string', 'max:255'],
-            'penerima' => ['required', 'string', 'max:255'],
-            'no_agenda' => ['required'],
-            'nomor_halaman' => ['required'],
-            'klasifikasi' => ['required'],
+            'perihal' => ['required', 'string', 'max:100'],
+            'pengirim' => ['required', 'string', 'max:50'],
+            'penerima' => ['required', 'string', 'max:50'],
+            'no_agenda' => ['required', 'numeric'],
+            'nomor_halaman' => ['required', 'numeric'],
+            'klasifikasi' => ['required', 'numeric'],
         ]);
 
         // ambil data surat masuk berdasarkan id
@@ -145,6 +145,12 @@ class SuratKeluarController extends Controller
         if ($request->softcopy) {
             $request->validate([
                 'softcopy' => 'required|mimes:jpeg,png,jpg,pdf',
+            ]);
+        }
+
+        if ($request->nomor_surat != $item->nomor_surat) {
+            $request->validate([
+                'nomor_surat' => ['required', 'string', 'max:50', 'unique:surat_keluars'],
             ]);
         }
 
@@ -203,7 +209,6 @@ class SuratKeluarController extends Controller
         $query = $request->search;
 
         $items = SuratKeluar::where('nomor_surat','LIKE','%'.$query.'%')->orWhere('perihal','LIKE','%'.$query.'%')->orWhere('pengirim','LIKE','%'.$query.'%')->orWhere('penerima','LIKE','%'.$query.'%')->get();
-        $items->appends(['search' => $query]);
 
         return view('pages.surat-keluar.index', [
             'items' => $items
@@ -212,6 +217,12 @@ class SuratKeluarController extends Controller
 
     public function cetak_tanggal(Request $request)
     {
-        return Excel::download(new SuratKeluarTanggalExport($request->awal, $request->akhir), 'surat-keluar-berdasarkan-tanggal.xlsx');
+        $check = SuratKeluar::whereDate('tanggal_surat', '>=', $request->awal)->whereDate('tanggal_surat', '<=', $request->akhir)->first();
+
+        if ($check != NULL) {
+            return Excel::download(new SuratKeluarTanggalExport($request->awal, $request->akhir), 'surat-keluar-berdasarkan-tanggal.xlsx');
+        }else {
+            return redirect()->back()->with('error', 'Data Kosong');
+        }
     }
 }

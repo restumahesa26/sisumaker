@@ -22,6 +22,8 @@
 
     @include('includes.home.style')
 
+    @stack('addon-style')
+
 </head>
 <body data-spy="scroll" data-target=".fixed-top">
 
@@ -38,8 +40,6 @@
     @include('includes.home.navbar')
 
     @yield('content')
-
-    @include('includes.home.footer')
 
     @include('includes.home.script')
 

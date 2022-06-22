@@ -89,6 +89,15 @@
                                 </span>
                             @enderror
                         </div>
+                        <div class="form-group mt-2">
+                            <label for="keterangan">Keterangan</label>
+                            <input type="text" name="keterangan" id="keterangan" value="{{ old('keterangan', $item->keterangan) }}" placeholder="Masukkan Keterangan" class="form-control @error('keterangan') is-invalid @enderror">
+                            @error('keterangan')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
                 </div>
                 <input type="hidden" id="no_agenda_value" value="{{ $item->no_agenda }}">

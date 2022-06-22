@@ -46,7 +46,7 @@
                         <tbody class="table-border-bottom-0">
                             @forelse ($items->where('role', 'Sekretariat') as $item)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
+                                <th>{{ $loop->iteration }}</th>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->username }}</td>
                                 <td>{{ $item->email }}</td>
@@ -90,7 +90,7 @@
                         <tbody class="table-border-bottom-0">
                             @forelse ($items->where('role', 'Sekretaris') as $item)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
+                                <th>{{ $loop->iteration }}</th>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->username }}</td>
                                 <td>{{ $item->email }}</td>
@@ -134,7 +134,7 @@
                         <tbody class="table-border-bottom-0">
                             @forelse ($items->where('role', 'Pimpinan') as $item)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
+                                <th>{{ $loop->iteration }}</th>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->username }}</td>
                                 <td>{{ $item->email }}</td>

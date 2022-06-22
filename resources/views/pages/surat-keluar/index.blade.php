@@ -13,7 +13,7 @@
             <div class="card">
                 <div class="d-flex align-items-end row">
                     <div class="card-body">
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col">
                                 <form action="{{ route('surat-keluar.cari-surat') }}" method="get">
                                     <input type="search" name="search" id="search" placeholder="Cari surat berdasarkan nomor surat, perihal, pengirim, atau penerima" class="form-control mb-3 w-100">
@@ -22,7 +22,7 @@
                             <div class="col">
                                 <a href="{{ route('surat-keluar.index') }}" class="btn btn-primary">Refresh</a>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="table-responsive text-nowrap">
                             <table class="table" id="table1">
                                 <thead>

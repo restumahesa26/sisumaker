@@ -51,7 +51,6 @@
                                 <option value="Kepala Sub Bidang Sosial dan Pemerintahan" @if (old('jabatan') == 'Kepala Sub Bidang Sosial dan Pemerintahan') selected @endif>Kepala Sub Bidang Sosial dan Pemerintahan</option>
                                 <option value="Kepala Sub Bidang Ekonomi dan Pembangunan" @if (old('jabatan') == 'Kepala Sub Bidang Ekonomi dan Pembangunan') selected @endif>Kepala Sub Bidang Ekonomi dan Pembangunan</option>
                                 <option value="Kepala Sub Bidang Inovasi dan Teknologi" @if (old('jabatan') == 'Kepala Sub Bidang Inovasi dan Teknologi') selected @endif>Kepala Sub Bidang Inovasi dan Teknologi</option>
-                                <option value="Kepala Unit Pelaksana Teknis Badan Perencanaan, Penelitian dan Pengembangan Daerah" @if (old('jabatan') == 'Kepala Unit Pelaksana Teknis Badan Perencanaan, Penelitian dan Pengembangan Daerah') selected @endif>Kepala Unit Pelaksana Teknis Badan Perencanaan, Penelitian dan Pengembangan Daerah</option>
                             </select>
                             @error('jabatan')
                             <span class="invalid-feedback" role="alert">
