@@ -11,9 +11,9 @@ class LaporanController extends Controller
 {
     public function index()
     {
-        $suratMasuk = SuratMasuk::latest('updated_at')->get();
-        $suratKeluar = SuratKeluar::latest('updated_at')->get();
-        $undangan = Undangan::latest('updated_at')->get();
+        $suratMasuk = SuratMasuk::all();
+        $suratKeluar = SuratKeluar::all();
+        $undangan = Undangan::all();
 
         return view('pages.laporan.index')->with(compact('suratMasuk', 'suratKeluar', 'undangan'));
     }
