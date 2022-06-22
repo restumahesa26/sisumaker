@@ -50,35 +50,35 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane fade show active" id="semua" role="tabpanel">
-                <div class="table-responsive text-nowrap">
+                <div class="table-responsive">
                     <table class="table" id="table1">
                         <thead>
                             <tr>
-                                <th>Nomor Agenda</th>
+                                <th style="width: 5%">Nomor Agenda</th>
                                 <th>Nomor Surat</th>
                                 <th>Tanggal Surat</th>
                                 <th>Perihal</th>
                                 <th>Pengirim</th>
-                                <th>Softcopy</th>
-                                <th>Aksi</th>
+                                <th style="width: 10%">Softcopy</th>
+                                <th style="width: 20% !important">Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
                             @forelse ($items as $item)
                             <tr>
-                                <th>
+                                <th style="width: 5%">
                                     {{ $item->no_agenda }}
                                 </th>
                                 <td>{{ $item->nomor_surat }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') }}</td>
                                 <td>{{ $item->perihal }}</td>
                                 <td>{{ $item->pengirim }}</td>
-                                <td>
+                                <td style="width: 10%">
                                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#softcopy-1{{ $item->id }}">
                                         Lihat File
                                     </button>
                                 </td>
-                                <td>
+                                <td style="width: 20%">
                                     @if (Auth::user()->role == 'Sekretariat')
                                         <a class="btn btn-info btn-sm" href="{{ route('surat-masuk.edit', $item->id) }}">
                                             <i class="bx bx-edit-alt me-1"></i> Edit
@@ -96,7 +96,7 @@
                                         </a>
                                         @if ($item->disposisi)
                                             <a class="btn btn-primary btn-sm" href="{{ route('surat-masuk.cetak-disposisi', $item->id) }}" target="_blank">
-                                                <i class="bx bx-printer me-1"></i> Cetak Disposisi
+                                                <i class="bx bx-printer me-1"></i> Cetak
                                             </a>
                                         @endif
 
@@ -114,35 +114,35 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="sekretaris" role="tabpanel">
-                <div class="table-responsive text-nowrap">
+                <div class="table-responsive align-items-center">
                     <table class="table" id="table2">
                         <thead>
                             <tr>
-                                <th>Nomor Agenda</th>
+                                <th style="width: 5%">Nomor Agenda</th>
                                 <th>Nomor Surat</th>
                                 <th>Tanggal Surat</th>
                                 <th>Perihal</th>
                                 <th>Pengirim</th>
-                                <th>Softcopy</th>
-                                <th>Aksi</th>
+                                <th style="width: 10%">Softcopy</th>
+                                <th style="width: 50% !important">Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
                             @forelse ($items->where('tanggal_sekretaris', '=', NULL) as $item)
                             <tr>
-                                <th>
+                                <th style="width: 5%">
                                     {{ $item->no_agenda }}
                                 </th>
                                 <td>{{ $item->nomor_surat }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') }}</td>
                                 <td>{{ $item->perihal }}</td>
                                 <td>{{ $item->pengirim }}</td>
-                                <td>
+                                <td style="width: 10%">
                                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#softcopy-2{{ $item->id }}">
                                         Lihat File
                                     </button>
                                 </td>
-                                <td>
+                                <td style="width: 20%">
                                     @if (Auth::user()->role == 'Sekretariat')
                                         <a class="btn btn-info btn-sm" href="{{ route('surat-masuk.edit', $item->id) }}">
                                             <i class="bx bx-edit-alt me-1"></i> Edit
@@ -160,7 +160,7 @@
                                         </a>
                                         @if ($item->disposisi)
                                             <a class="btn btn-primary btn-sm" href="{{ route('surat-masuk.cetak-disposisi', $item->id) }}" target="_blank">
-                                                <i class="bx bx-printer me-1"></i> Cetak Disposisi
+                                                <i class="bx bx-printer me-1"></i> Cetak
                                             </a>
                                         @endif
 
@@ -178,35 +178,35 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="pimpinan" role="tabpanel">
-                <div class="table-responsive text-nowrap">
+                <div class="table-responsive">
                     <table class="table" id="table3">
                         <thead>
                             <tr>
-                                <th>Nomor Agenda</th>
+                                <th style="width: 5%">Nomor Agenda</th>
                                 <th>Nomor Surat</th>
                                 <th>Tanggal Surat</th>
                                 <th>Perihal</th>
                                 <th>Pengirim</th>
-                                <th>Softcopy</th>
-                                <th>Aksi</th>
+                                <th style="width: 10%">Softcopy</th>
+                                <th style="width: 20% !important">Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
                             @forelse ($items->where('tanggal_pimpinan', '=', NULL)->where('tanggal_sekretaris', '!=', NULL) as $item)
                             <tr>
-                                <th>
+                                <th style="width: 5%">
                                     {{ $item->no_agenda }}
                                 </th>
                                 <td>{{ $item->nomor_surat }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') }}</td>
                                 <td>{{ $item->perihal }}</td>
                                 <td>{{ $item->pengirim }}</td>
-                                <td>
+                                <td style="width: 10%">
                                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#softcopy-3{{ $item->id }}">
                                         Lihat File
                                     </button>
                                 </td>
-                                <td>
+                                <td style="width: 20%">
                                     @if (Auth::user()->role == 'Sekretariat')
                                         <a class="btn btn-info btn-sm" href="{{ route('surat-masuk.edit', $item->id) }}">
                                             <i class="bx bx-edit-alt me-1"></i> Edit
@@ -224,7 +224,7 @@
                                         </a>
                                         @if ($item->disposisi)
                                             <a class="btn btn-primary btn-sm" href="{{ route('surat-masuk.cetak-disposisi', $item->id) }}" target="_blank">
-                                                <i class="bx bx-printer me-1"></i> Cetak Disposisi
+                                                <i class="bx bx-printer me-1"></i> Cetak
                                             </a>
                                         @endif
 
@@ -242,35 +242,35 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="selesai" role="tabpanel">
-                <div class="table-responsive text-nowrap">
+                <div class="table-responsive">
                     <table class="table" id="table4">
                         <thead>
                             <tr>
-                                <th>Nomor Agenda</th>
+                                <th style="width: 5%">Nomor Agenda</th>
                                 <th>Nomor Surat</th>
                                 <th>Tanggal Surat</th>
                                 <th>Perihal</th>
                                 <th>Pengirim</th>
-                                <th>Softcopy</th>
-                                <th>Aksi</th>
+                                <th style="width: 10%">Softcopy</th>
+                                <th style="width: 20% !important">Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
                             @forelse ($items->where('tanggal_sekretaris', '!=', NULL)->where('tanggal_pimpinan', '!=', NULL) as $item)
                             <tr>
-                                <th>
+                                <th style="width: 5%">
                                     {{ $item->no_agenda }}
                                 </th>
                                 <td>{{ $item->nomor_surat }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') }}</td>
                                 <td>{{ $item->perihal }}</td>
                                 <td>{{ $item->pengirim }}</td>
-                                <td>
+                                <td style="width: 10%">
                                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#softcopy-4{{ $item->id }}">
                                         Lihat File
                                     </button>
                                 </td>
-                                <td>
+                                <td style="width: 20%">
                                     @if (Auth::user()->role == 'Sekretariat')
                                         <a class="btn btn-info btn-sm" href="{{ route('surat-masuk.edit', $item->id) }}">
                                             <i class="bx bx-edit-alt me-1"></i> Edit
@@ -288,7 +288,7 @@
                                         </a>
                                         @if ($item->disposisi)
                                             <a class="btn btn-primary btn-sm" href="{{ route('surat-masuk.cetak-disposisi', $item->id) }}" target="_blank">
-                                                <i class="bx bx-printer me-1"></i> Cetak Disposisi
+                                                <i class="bx bx-printer me-1"></i> Cetak
                                             </a>
                                         @endif
 
@@ -424,16 +424,24 @@
 
     <script>
         $(document).ready(function () {
-            $('#table1').DataTable();
+            $('#table1').DataTable({
+                'ordering' : false
+            });
         });
         $(document).ready(function () {
-            $('#table2').DataTable();
+            $('#table2').DataTable({
+                'ordering' : false
+            });
         });
         $(document).ready(function () {
-            $('#table3').DataTable();
+            $('#table3').DataTable({
+                'ordering' : false
+            });
         });
         $(document).ready(function () {
-            $('#table4').DataTable();
+            $('#table4').DataTable({
+                'ordering' : false
+            });
         });
     </script>
 

@@ -22,7 +22,7 @@ class SuratKeluarController extends Controller
     public function index()
     {
         // ambil semua data surat keluar
-        $items = SuratKeluar::latest()->get();
+        $items = SuratKeluar::latest('updated_at')->get();
 
         // tampilkan ke halaman index surat keluar
         return view('pages.surat-keluar.index', [

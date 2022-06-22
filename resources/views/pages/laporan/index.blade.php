@@ -28,22 +28,22 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane fade show active" id="surat_masuk" role="tabpanel">
-                <a href="{{ route('surat-masuk.cetak-semua') }}" class="btn btn-primary px-5 mb-3" target="_blank">Cetak
+                <a href="{{ route('surat-masuk.cetak-semua') }}" class="btn btn-primary px-5 mb-3">Cetak
                     Semua Laporan</a>
                 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
                     data-bs-target="#surat_masuk_tanggal" style="margin-left: 14px !important;">
                     Cetak Berdasarkan Tanggal
                 </button>
-                <div class="table-responsive text-nowrap">
+                <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>Nomor Agenda</th>
                                 <th>Nomor Surat</th>
                                 <th>Tanggal Surat</th>
-                                <th>Tanggal Sekretariat</th>
-                                <th>Tanggal Sekretaris</th>
-                                <th>Tanggal Pimpinan</th>
+                                <th>Perihal</th>
+                                <th>Pengirim</th>
+                                <th>Penerima</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
@@ -54,12 +54,9 @@
                                 </th>
                                 <td>{{ $item->nomor_surat }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') }}</td>
-                                <td>{{ \Carbon\Carbon::parse($item->tanggal_sekretariat)->translatedFormat('d F Y H:i') }}
-                                </td>
-                                <td>{{ ($item->tanggal_sekretaris != NULL) ? \Carbon\Carbon::parse($item->tanggal_sekretaris)->translatedFormat('d F Y H:i') : '-' }}
-                                </td>
-                                <td>{{ ($item->tanggal_pimpinan != NULL) ? \Carbon\Carbon::parse($item->tanggal_pimpinan)->translatedFormat('d F Y H:i') : '-' }}
-                                </td>
+                                <td>{{ $item->perihal }}</td>
+                                <td>{{ $item->pengirim }}</td>
+                                <td>{{ $item->penerima }}</td>
                             </tr>
                             @empty
                             <tr class="text-center">
@@ -71,7 +68,7 @@
                 </div>
                 <div class="modal fade" id="surat_masuk_tanggal" data-bs-backdrop="static" tabindex="-1">
                     <div class="modal-dialog">
-                        <form class="modal-content" action="{{ route('surat-masuk.cetak-tanggal') }}" method="GET" target="_blank">
+                        <form class="modal-content" action="{{ route('surat-masuk.cetak-tanggal') }}">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="backDropModalTitle">Cetak Laporan Surat Masuk Berdasarkan Tanggal</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -97,13 +94,12 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="surat_keluar" role="tabpanel">
-                <a href="{{ route('surat-keluar.cetak-semua') }}" class="btn btn-primary px-5 mb-3"
-                    target="_blank">Cetak Semua Laporan</a>
+                <a href="{{ route('surat-keluar.cetak-semua') }}" class="btn btn-primary px-5 mb-3">Cetak Semua Laporan</a>
                 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
                     data-bs-target="#surat_keluar_tanggal" style="margin-left: 14px !important;">
                     Cetak Berdasarkan Tanggal
                 </button>
-                <div class="table-responsive text-nowrap">
+                <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
@@ -119,7 +115,7 @@
                             @forelse ($suratKeluar as $item)
                             <tr>
                                 <th>
-                                    {{ $item->no_agenda }}
+                                    {{ $item->nomor_halaman }}.{{ $item->no_agenda }}
                                 </th>
                                 <td>{{ $item->nomor_surat }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') }}</td>
@@ -138,7 +134,7 @@
                 </div>
                 <div class="modal fade" id="surat_keluar_tanggal" data-bs-backdrop="static" tabindex="-1">
                     <div class="modal-dialog">
-                        <form class="modal-content" action="{{ route('surat-keluar.cetak-tanggal') }}" method="GET" target="_blank">
+                        <form class="modal-content" action="{{ route('surat-keluar.cetak-tanggal') }}" method="GET">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="backDropModalTitle">Cetak Laporan Surat Keluar Berdasarkan Tanggal</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -166,13 +162,12 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="undangan" role="tabpanel">
-                <a href="{{ route('undangan.cetak-semua') }}" class="btn btn-primary px-5 mb-3"
-                    target="_blank">Cetak Semua Laporan</a>
+                <a href="{{ route('undangan.cetak-semua') }}" class="btn btn-primary px-5 mb-3">Cetak Semua Laporan</a>
                 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
                     data-bs-target="#undangan_tanggal" style="margin-left: 14px !important;">
                     Cetak Berdasarkan Tanggal
                 </button>
-                <div class="table-responsive text-nowrap">
+                <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
@@ -207,7 +202,7 @@
                 </div>
                 <div class="modal fade" id="undangan_tanggal" data-bs-backdrop="static" tabindex="-1">
                     <div class="modal-dialog">
-                        <form class="modal-content" action="{{ route('undangan.cetak-tanggal') }}" method="GET" target="_blank">
+                        <form class="modal-content" action="{{ route('undangan.cetak-tanggal') }}" method="GET">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="backDropModalTitle">Cetak Laporan Surat Keluar Berdasarkan Tanggal</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"

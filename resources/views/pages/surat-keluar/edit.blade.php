@@ -33,7 +33,7 @@
                         </div>
                         <div class="form-group mt-2">
                             <label for="klasifikasi">Klasifikasi<sup class="text-sm text-danger" id="pesan-error"></sup></label>
-                            <input type="number" name="klasifikasi" id="klasifikasi" value="{{ old('klasifikasi', $item->klasifikasi) }}" placeholder="Masukkan Klasifikasi" class="form-control @error('klasifikasi') is-invalid @enderror" min="1">
+                            <input type="number" name="klasifikasi" id="klasifikasi" value="{{ old('klasifikasi', $item->klasifikasi) }}" placeholder="Masukkan Klasifikasi" class="form-control @error('klasifikasi') is-invalid @enderror" min="1" step="0.1">
                             @error('klasifikasi')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

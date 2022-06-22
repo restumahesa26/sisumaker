@@ -23,35 +23,35 @@
                                 <a href="{{ route('surat-keluar.index') }}" class="btn btn-primary">Refresh</a>
                             </div>
                         </div> --}}
-                        <div class="table-responsive text-nowrap">
+                        <div class="table-responsive">
                             <table class="table" id="table1">
                                 <thead>
                                     <tr>
-                                        <th>Nomor Agenda</th>
+                                        <th style="width: 5%">Nomor Agenda</th>
                                         <th>Nomor Surat</th>
                                         <th>Tanggal Surat</th>
                                         <th>Perihal</th>
                                         <th>Pengirim</th>
-                                        <th>Softcopy</th>
-                                        <th>Aksi</th>
+                                        <th style="width: 10%">Softcopy</th>
+                                        <th style="width: 20% !important">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
                                     @forelse ($items as $item)
                                     <tr>
-                                        <th>
+                                        <th style="width: 5%">
                                             {{ $item->nomor_halaman }}.{{ $item->no_agenda }}
                                         </th>
                                         <td>{{ $item->nomor_surat }}</td>
                                         <td>{{ \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') }}</td>
                                         <td>{{ $item->perihal }}</td>
                                         <td>{{ $item->pengirim }}</td>
-                                        <td>
+                                        <td style="width: 10%">
                                             <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#softcopy-{{ $item->id }}">
                                                 Lihat File
                                             </button>
                                         </td>
-                                        <td>
+                                        <td style="width: 20%">
                                             @if (Auth::user()->role == 'Sekretariat')
                                             <a class="btn btn-info btn-sm" href="{{ route('surat-keluar.edit', $item->id) }}">
                                                 <i class="bx bx-edit-alt me-1"></i> Edit
@@ -125,7 +125,9 @@
 
     <script>
         $(document).ready(function () {
-            $('#table1').DataTable();
+            $('#table1').DataTable({
+                'ordering' : false
+            });
         });
     </script>
 
