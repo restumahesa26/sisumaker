@@ -24,7 +24,7 @@ class SuratMasukController extends Controller
     public function index()
     {
         // ambil semua data surat masuk
-        $items = SuratMasuk::latest('updated_at')->get();
+        $items = SuratMasuk::all();
 
         // tampilkan ke halaman index surat masuk
         return view('pages.surat-masuk.index', [

@@ -125,9 +125,7 @@
 
     <script>
         $(document).ready(function () {
-            $('#table1').DataTable({
-                'ordering' : false
-            });
+            $('#table1').DataTable();
         });
     </script>
 

@@ -21,7 +21,7 @@ class UndanganController extends Controller
      */
     public function index()
     {
-        $items = Undangan::latest('updated_at')->get();
+        $items = Undangan::all();
 
         return view('pages.undangan.index', [
             'items' => $items

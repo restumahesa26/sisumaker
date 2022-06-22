@@ -424,24 +424,16 @@
 
     <script>
         $(document).ready(function () {
-            $('#table1').DataTable({
-                'ordering' : false
-            });
+            $('#table1').DataTable();
         });
         $(document).ready(function () {
-            $('#table2').DataTable({
-                'ordering' : false
-            });
+            $('#table2').DataTable();
         });
         $(document).ready(function () {
-            $('#table3').DataTable({
-                'ordering' : false
-            });
+            $('#table3').DataTable();
         });
         $(document).ready(function () {
-            $('#table4').DataTable({
-                'ordering' : false
-            });
+            $('#table4').DataTable();
         });
     </script>
 
