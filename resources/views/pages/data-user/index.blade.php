@@ -177,6 +177,18 @@
         </div>
     </div>
 @endif
+@if(session()->has('error'))
+    <div class="bs-toast toast toast-placement-ex m-2 fade show bg-danger top-0 end-0 hide" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header top-0 end-0">
+            <i class="bx bx-bell me-2"></i>
+            <div class="me-auto fw-semibold">Gagal</div>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            {{ session()->get('error') }}
+        </div>
+    </div>
+@endif
 @endsection
 
 @push('addon-style')

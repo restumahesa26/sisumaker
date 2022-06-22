@@ -159,10 +159,14 @@ class UserController extends Controller
         // ambil data user berdasarkan id
         $item = User::findOrFail($id);
 
-        // lakukan proses hapus data
-        $item->delete();
+        if (Auth::user()->id == $item->id) {
+            return redirect()->back()->with('error', 'Gagal Menghapus Data User');
+        }else {
+            // lakukan proses hapus data
+            $item->delete();
 
-        // kembalikan ke halaman index data user
-        return redirect()->route('data-user.index');
+            // kembalikan ke halaman index data user
+            return redirect()->route('data-user.index')->with('success', 'Berhasil Menghapus Data User');
+        }
     }
 }
