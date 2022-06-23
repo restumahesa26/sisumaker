@@ -16,13 +16,15 @@ class SuratKeluarExport implements FromCollection, WithHeadings, ShouldAutoSize,
     */
     public function collection()
     {
-        return SuratKeluar::orderBy('no_agenda', 'ASC')->get();
+        return SuratKeluar::all();
     }
 
     public function map($item): array
     {
         return [
             $item->no_agenda,
+            $item->nomor_halaman,
+            $item->klasifikasi,
             $item->nomor_surat,
             Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y'),
             $item->perihal,
@@ -35,6 +37,8 @@ class SuratKeluarExport implements FromCollection, WithHeadings, ShouldAutoSize,
     {
         return [
             'No Agenda',
+            'No Halaman',
+            'Klasifikasi',
             'No Surat',
             'Tanggal Surat',
             'Perihal',

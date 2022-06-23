@@ -36,6 +36,8 @@ class SuratKeluarTanggalExport implements FromQuery, WithHeadings, ShouldAutoSiz
     {
         return [
             $item->no_agenda,
+            $item->nomor_halaman,
+            $item->klasifikasi,
             $item->nomor_surat,
             Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y'),
             $item->perihal,
@@ -48,6 +50,8 @@ class SuratKeluarTanggalExport implements FromQuery, WithHeadings, ShouldAutoSiz
     {
         return [
             'No Agenda',
+            'No Halaman',
+            'Klasifikasi',
             'No Surat',
             'Tanggal Surat',
             'Perihal',
